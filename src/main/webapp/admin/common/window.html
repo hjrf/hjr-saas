@@ -1,0 +1,47 @@
+<script>
+//弹出层基础效果（确认/取消/关闭）
+$('.JyesBtn').click(function(){
+	$(this).parents('.dialog').hide();
+	if($('.mask').attr('display','block')){
+		$('.mask').hide();
+	}
+});
+$('.JnoBtn,.JclosePanel').click(function(){
+	$(this).parents('.dialog').hide();
+	if($('.mask').attr('display','block')){
+		$('.mask').hide();
+	}
+});
+$('.mask').click(function(){
+	$(this).hide();
+	$('.dialog').hide();
+});
+// 基础弹出窗
+// 	$('.dialog').show();
+// 	$('.dialog').css('box-shadow','0 0 30px #d2d2d2');
+// 带遮罩
+// 	$('.dialog,.mask').show();
+// 	$('.dialog').css('box-shadow','none');
+// 自动关闭消息窗口
+// 	$('dialog').show().delay(5000).hide(0);
+
+</script>
+<dialog><span class="icon-volume-down"></span>你好，我是HTML5 dialog文本会话窗口,前面的图标自行替换</dialog>
+
+<div class="mask"></div>
+<div class="dialog">
+	<div class="dialog-hd">
+		<strong class="lt-title">标题</strong>
+		<a class="rt-operate icon-remove JclosePanel" title="关闭"></a>
+	</div>
+	<div class="dialog-bd">
+		<!--start::-->
+		<p>这里是基础弹窗,可以定义文本信息，HTML信息这里是基础弹窗,可以定义文本信息，HTML信息。</p>
+		<!--end::-->
+	</div>
+	<div class="dialog-ft">
+		<button class="btn btn-info JyesBtn">确认</button>
+		<button class="btn btn-secondary JnoBtn">关闭</button>
+	</div>
+</div>
+

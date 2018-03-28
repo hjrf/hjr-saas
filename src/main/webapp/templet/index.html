@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>hjr-saas</title>
+<meta name="keywords"  content="设置关键词..." />
+<meta name="description" content="设置描述..." />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<link rel="icon" href="images/icon/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script src="javascript/jquery.js"></script>
+<script src="javascript/plug-ins/customScrollbar.min.js"></script>
+<script src="javascript/plug-ins/echarts.min.js"></script>
+<script src="javascript/plug-ins/layerUi/layer.js"></script>
+<script src="javascript/plug-ins/pagination.js"></script>
+<script src="javascript/public.js"></script>
+
+<!-- angular.js -->
+<script src="../js/angular-1.6.4/angular.min.js"></script>
+<script src="../js/angular-1.6.4/angular-route.min.js"></script>
+<script src="../js/angular-1.6.4/app-admin.js"></script>
+<!-- angular.js -->
+
+<!-- 控制器 -->
+	<!-- 用户 -->
+	<script src="../admin/user/ctrl.js"></script>
+	<!-- 用户 -->
+	<!-- 报表 -->
+	<script src="../admin/log/ctrl.js"></script>
+	<!-- 报表 -->
+	<!-- 权限 -->
+	<script src="../admin/role/ctrl.js"></script>
+	<!-- 权限 -->
+
+
+
+
+<!-- 控制器 -->
+
+<!-- 弹窗 -->
+<script src="../js/common/window.js"></script>
+<!-- 分页 -->
+	<script src="../js/jquery/pager/jquery.pager.js"></script>
+	<link rel="stylesheet" type="text/css" href="../js/jquery/pager/jquery.pager.css" />
+<!-- 分页 -->
+<!-- 树-->
+	<script src="../js/jquery/ztree.3.5.26/jquery.ztree.core.js"></script>
+	<script src="../js/jquery/ztree.3.5.26/jquery.ztree.excheck.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../js/jquery/ztree.3.5.26/jquery.zTreeStyle.css" />
+<!-- 树 -->
+</head>
+<body ng-app="mainApp" ng-controller="MainController">
+<div class="main-wrap">
+	<div class="side-nav">
+		<div class="side-logo">
+			<div class="logo">
+				<span class="logo-ico">
+					<i class="i-l-1"></i>
+					<i class="i-l-2"></i>
+					<i class="i-l-3"></i>
+				</span>
+				<strong>hjr-saas</strong>
+			</div>
+		</div>
+		
+		<nav class="side-menu content mCustomScrollbar" data-mcs-theme="minimal-dark">
+			<h2>
+				<a href="index.html" class="InitialPage"><i class="icon-dashboard"></i>数据概况</a>
+			</h2>
+			<ul>
+				<li ng-repeat="nt in navTree track by $id(nt)" ng-repeat-finish>
+					<dl>
+						<dt>
+							<i class="icon-columns"></i>{{nt.name}}<i class="icon-angle-right"></i>
+						</dt>
+						<dd ng-repeat="n in nt.children track by $id(n)">
+							<a href="{{n.url}}">{{n.name}}</a>
+						</dd>
+					</dl>
+				</li>
+<!-- 				<li> -->
+<!-- 					<dl> -->
+<!-- 						<dt> -->
+<!-- 							<i class="icon-inbox"></i>按钮UI<i class="icon-angle-right"></i> -->
+<!-- 						</dt> -->
+<!-- 						<dd> -->
+<!-- 							<a href="flex-layout.html">弹性盒子布局</a> -->
+<!-- 						</dd> -->
+<!-- 						<dd> -->
+<!-- 							<a href="flow-layout.html">瀑布流布局</a> -->
+<!-- 						</dd> -->
+<!-- 						<dd> -->
+<!-- 							<a href="button.html">基础按钮</a> -->
+<!-- 						</dd> -->
+<!-- 					</dl> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<dl> -->
+<!-- 						<dt> -->
+<!-- 							<i class="icon-table"></i>表格UI<i class="icon-angle-right"></i> -->
+<!-- 						</dt> -->
+<!-- 						<dd> -->
+<!-- 							<a href="table.html">基础表格</a> -->
+<!-- 						</dd> -->
+<!-- 					</dl> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<dl> -->
+<!-- 						<dt> -->
+<!-- 							<i class="icon-list-alt"></i>表单UI<i class="icon-angle-right"></i> -->
+<!-- 						</dt> -->
+<!-- 						<dd> -->
+<!-- 							<a href="form.html">表单结构样式</a> -->
+<!-- 						</dd> -->
+<!-- 					</dl> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<dl> -->
+<!-- 						<dt> -->
+<!-- 							<i class="icon-external-link"></i>弹出窗口<i class="icon-angle-right"></i> -->
+<!-- 						</dt> -->
+<!-- 						<dd> -->
+<!-- 							<a href="popups.html">基础弹出层</a> -->
+<!-- 						</dd> -->
+<!-- 					</dl> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<dl> -->
+<!-- 						<dt> -->
+<!-- 							<i class="icon-bar-chart"></i>百度统计echarts图表<i class="icon-angle-right"></i> -->
+<!-- 						</dt> -->
+<!-- 						<dd> -->
+<!-- 							<a href="echarts.html">echarts统计图表</a> -->
+<!-- 						</dd> -->
+<!-- 					</dl> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<dl> -->
+<!-- 						<dt> -->
+<!-- 							<i class="icon-font"></i>文本编辑器<i class="icon-angle-right"></i> -->
+<!-- 						</dt> -->
+<!-- 						<dd> -->
+<!-- 							<a href="ueditor.html">百度UEDITOR编辑器</a> -->
+<!-- 						</dd> -->
+<!-- 					</dl> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<dl> -->
+<!-- 						<dt> -->
+<!-- 							<i class="icon-road"></i>进度条<i class="icon-angle-right"></i> -->
+<!-- 						</dt> -->
+<!-- 						<dd> -->
+<!-- 							<a href="progress.html">progress进度条兼容</a> -->
+<!-- 						</dd> -->
+<!-- 					</dl> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<dl> -->
+<!-- 						<dt> -->
+<!-- 							<i class="icon-tags"></i>Tab选项卡<i class="icon-angle-right"></i> -->
+<!-- 						</dt> -->
+<!-- 						<dd> -->
+<!-- 							<a href="tab.html">Tab选项卡</a> -->
+<!-- 						</dd> -->
+<!-- 					</dl> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<dl> -->
+<!-- 						<dt> -->
+<!-- 							<i class="icon-filter"></i>下拉菜单<i class="icon-angle-right"></i> -->
+<!-- 						</dt> -->
+<!-- 						<dd> -->
+<!-- 							<a href="button-dropdown.html">按钮式下拉菜单</a> -->
+<!-- 						</dd> -->
+<!-- 					</dl> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<dl> -->
+<!-- 						<dt> -->
+<!-- 							<i class="icon-sitemap"></i>页面分组标题<i class="icon-angle-right"></i> -->
+<!-- 						</dt> -->
+<!-- 						<dd> -->
+<!-- 							<a href="title.html">页面标题</a> -->
+<!-- 						</dd> -->
+<!-- 					</dl> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<dl> -->
+<!-- 						<dt> -->
+<!-- 							<i class="icon-columns"></i>分页<i class="icon-angle-right"></i> -->
+<!-- 						</dt> -->
+<!-- 						<dd> -->
+<!-- 							<a href="paging.html">jquery分页效果</a> -->
+<!-- 						</dd> -->
+<!-- 					</dl> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<dl> -->
+<!-- 						<dt> -->
+<!-- 							<i class="icon-spinner"></i>旋转动画<i class="icon-angle-right"></i> -->
+<!-- 						</dt> -->
+<!-- 						<dd> -->
+<!-- 							<a href="animation.html">刷新加载动画</a> -->
+<!-- 						</dd> -->
+<!-- 					</dl> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<dl> -->
+<!-- 						<dt> -->
+<!-- 							<i class="icon-fighter-jet"></i>面包屑导航<i class="icon-angle-right"></i> -->
+<!-- 						</dt> -->
+<!-- 						<dd> -->
+<!-- 							<a href="breadcrumb.html">面包屑</a> -->
+<!-- 						</dd> -->
+<!-- 					</dl> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<dl> -->
+<!-- 						<dt> -->
+<!-- 							<i class="icon-laptop"></i>文本面板<i class="icon-angle-right"></i> -->
+<!-- 						</dt> -->
+<!-- 						<dd> -->
+<!-- 							<a href="text-panel.html">文本面板</a> -->
+<!-- 						</dd> -->
+<!-- 					</dl> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<dl> -->
+<!-- 						<dt> -->
+<!-- 							<i class="icon-leaf"></i>块引用<i class="icon-angle-right"></i> -->
+<!-- 						</dt> -->
+<!-- 						<dd> -->
+<!-- 							<a href="blockquote.html">块引用</a> -->
+<!-- 						</dd> -->
+<!-- 					</dl> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<dl> -->
+<!-- 						<dt> -->
+<!-- 							<i class="icon-star"></i>第三方弹窗组件<i class="icon-angle-right"></i> -->
+<!-- 						</dt> -->
+<!-- 						<dd> -->
+<!-- 							<a href="layer.html">web弹层组件</a> -->
+<!-- 						</dd> -->
+<!-- 					</dl> -->
+<!-- 				</li> -->
+			</ul>
+		</nav>
+		<footer class="side-footer">hjr</footer>
+	</div>
+	<div class="content-wrap">
+		<header class="top-hd">
+			<div class="hd-lt">
+				<a class="icon-reorder"></a>
+			</div>
+			<div class="hd-rt">
+				<ul>
+					<li>
+						<a href="#" target="_blank"><i class="icon-home"></i>前台访问</a>
+					</li>
+					<li>
+						<a><i class="icon-random"></i>清除缓存</a>
+					</li>
+					<li>
+						<a><i class="icon-user"></i>管理员:<em>hjr</em></a>
+					</li>
+					<li>
+						<a><i class="icon-bell-alt"></i>系统消息</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" id="JsSignOut"><i class="icon-signout"></i>安全退出</a>
+					</li>
+				</ul>
+			</div>
+		</header>
+
+					
+					<div ng-view="">
+    				</div>
+					
+	
+		<footer class="btm-ft">
+			<p class="clear">
+				<span class="fl">©Copyright 2016 <a href="#" title="hjr" target="_blank">hjr</a></span>
+				<span class="fr text-info">
+					<em class="uppercase">
+						<i class="icon-user"></i>
+
+					</em> | 
+					<em class="uppercase"><i class="icon-envelope-alt"></i>
+						hjt： <a href="" target="_blank">hjr</a>
+					</em>
+					
+				</span>
+			</p>
+		</footer>
+	</div>
+</div>
+</body>
+</html>

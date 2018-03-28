@@ -1,0 +1,49 @@
+<main ng-show="listShow"  class="main-cont content mCustomScrollbar">
+			<!--开始::内容-->
+				<section class="page-hd">
+					<header>
+						<h2 class="title">表格系列展示</h2>
+						<p class="title-description">
+							用户类型
+							<select ng-model="searchData.drop" name="role" style="width:auto;" required>
+								<option>女装</option>
+								<option>男装</option>
+							</select>
+							
+							
+							<input style="width:10%" ng-model="searchData.str"  type="text" placeholder="输入搜素内容" class="form-control form-boxed">
+							<button ng-click="search()" class="btn btn-primary">搜索</button>
+							<button ng-click="del()" style="float:right" class="btn btn-primary">删除</button>
+						</p>
+						
+					</header>
+					<hr>
+				</section>
+			
+				<table class="table table-bordered table-striped mb-15">
+					<thead>
+						<tr>
+							<th><input id="selectAllFather" ng-click="selectAll()" type="checkbox"/></th>
+							<th>用户名</th>
+							<th>角色</th>
+							<th>操作</th>					
+							<th>操作时间</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="cen" ng-repeat="model in models track by $id(model)">
+							<td><input class="selectAllChild" id={{model}} type="checkbox"/></td>
+							<td><span ng-bind="model.username"></td>
+							<td><span ng-bind="model.role"></span></td>
+							<td><span ng-bind="model.operate"></span></td>
+							<td><span ng-bind="model.operateTime"></span></td>
+						</tr>
+					</tbody>
+				</table>
+			<div class="pager" id="pager"></div>	
+		<!--开始::结束-->
+</main>	
+
+<div ng-include="'../admin/user/modify.html'"></div>		
+<div ng-include="'../admin/common/window.html'"></div>

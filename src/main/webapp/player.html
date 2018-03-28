@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Title of the document</title>
+    <script src="javascript/jquery.js"></script>
+</head>
+<body>
+<script>
+    function getPlayer(jsonParams) {
+        console.log(jsonParams);
+
+    }
+
+    $(document).ready(function(){
+        htmlobj = $.ajax({url:"/mud_get/player",async:false});
+        console.log(htmlobj);
+    });
+</script>
+<table>
+    <tr>
+        <th>
+        【{0}】 &nbsp {1}  &nbsp [{2}]"
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <span style='color:#679C77'>【气血】{3}/{4} </span>
+        </td>
+        <td>
+            <span style='color:#C38A22'>【种族】{5}</span>"
+        </td>
+    </tr>
+    <tr>
+        <span style='color:#679C77'>【内力】{6}/{7} </span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style='color:#C38A22'>【年龄】{8}</span>"
+    </tr>
+    <tr>
+        <span style='color:#679C77'>【体力】{9}/{10} </span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style='color:#C38A22'>【寿命】{11}</span>"
+    </tr>
+    <tr>
+        <span style='color:#679C77'>【伤害】{12} </span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style='color:#C38A22'>【居住】{13}</span>"
+    </tr>
+    <tr>
+        <span style='color:#679C77'>【防御】{14} </span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style='color:#C38A22'>【声望】{15}</span>"
+    </tr>
+    <tr>
+        <span style='color:#679C77'>【速度】{16} </span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span style='color:#C38A22'>【心情】{17}</span>"
+    </tr>
+</table>
+</body>
+</html>

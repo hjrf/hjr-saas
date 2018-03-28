@@ -1,0 +1,37 @@
+<form name="myForm" ng-show="!listShow" class="main-cont content mCustomScrollbar" novalidate>
+<div class="page-wrap">
+<!--开始::内容-->
+				<section class="page-hd">
+				操作
+				</section>
+				<div class="form-group-col-2">
+					<div class="form-label">角色名：</div>
+					<div class="form-cont">
+						<input type="text" placeholder="请输入..." class="form-control form-boxed" name="name" ng-model="formData.name" ng-maxlength="10" required>
+        				<span style="color:red" ng-show="myForm.name.$error.required" class="help-block"><i class="icon-warning-sign"/>必填</span>
+        				<span style="color:red" ng-show="myForm.name.$error.maxlength" class="help-block"><i class="icon-warning-sign"/>小于10</span>
+					</div>
+				</div>
+				<div class="form-group-col-2">
+					<div class="form-label">是否禁用：</div>
+					<div class="form-cont">
+						<label class="radio">
+							<input type="radio" name="isDisable" value="1" ng-model="formData.isDisable" />
+							<span>是</span>
+						</label>
+						<label class="radio">
+							<input type="radio" name="isDisable" value="0" ng-checked="true"  ng-model="formData.isDisable" />
+							<span>否</span>
+						</label>
+					</div>
+				</div>
+				
+				<div class="zTreeDemoBackground left">
+					<ul id="navTree" class="ztree"></ul>
+				</div>
+				
+			<div ng-include="'../admin/filed/submit.html'"></div>
+		
+<!--开始::结束-->
+</div>							
+</form>
