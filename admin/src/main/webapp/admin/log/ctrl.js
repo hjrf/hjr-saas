@@ -1,6 +1,6 @@
 mainApp.controller('LogController',function ($scope,$http,$location,$window) { 	
 	var	pagenumber = 3; //pagenumber：每页记录数  
-	var	baseUrl = "/log/"; //pagenumber：每页记录数
+	var	baseUrl = "/logger/"; //pagenumber：每页记录数
 	var customerArray = new Array();//往后台传的参数集合
 	var page = {"pagenumber":pagenumber,"current":1};//往后台传的参数集合-分页功能
 	var search = { "search": [{"whereFiled":"","where":"","likeFiled":"","like":""}]};

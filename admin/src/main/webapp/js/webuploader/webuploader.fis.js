@@ -356,7 +356,7 @@ return (function( root, factory ) {
              * @method bindFn
              * @example
              * var doSomething = function() {
-             *         console.log( this.name );
+             *         console.logger( this.name );
              *     },
              *     obj = {
              *         name: 'Object Name'
@@ -370,8 +370,8 @@ return (function( root, factory ) {
     
             /**
              * 引用Console.log如果存在的话，否则引用一个[空函数noop](#WebUploader:Base.noop)。
-             * @grammar Base.log( args... ) => undefined
-             * @method log
+             * @grammar Base.logger( args... ) => undefined
+             * @method logger
              */
             log: (function() {
                 if ( window.console ) {
@@ -406,7 +406,7 @@ return (function( root, factory ) {
              * @example
              * function doSomthing() {
              *     var args = Base.slice( arguments, 1 );
-             *     console.log( args );
+             *     console.logger( args );
              * }
              *
              * doSomthing( 'ignored', 'arg2', 'arg3' );    // => Array ["arg2", "arg3"]
@@ -444,12 +444,12 @@ return (function( root, factory ) {
              * @param {Number} [pointLength=2] 精确到的小数点数。
              * @param {Array} [units=[ 'B', 'K', 'M', 'G', 'TB' ]] 单位数组。从字节，到千字节，一直往上指定。如果单位数组里面只指定了到了K(千字节)，同时文件大小大于M, 此方法的输出将还是显示成多少K.
              * @example
-             * console.log( Base.formatSize( 100 ) );    // => 100B
-             * console.log( Base.formatSize( 1024 ) );    // => 1.00K
-             * console.log( Base.formatSize( 1024, 0 ) );    // => 1K
-             * console.log( Base.formatSize( 1024 * 1024 ) );    // => 1.00M
-             * console.log( Base.formatSize( 1024 * 1024 * 1024 ) );    // => 1.00G
-             * console.log( Base.formatSize( 1024 * 1024 * 1024, 0, ['B', 'KB', 'MB'] ) );    // => 1024MB
+             * console.logger( Base.formatSize( 100 ) );    // => 100B
+             * console.logger( Base.formatSize( 1024 ) );    // => 1.00K
+             * console.logger( Base.formatSize( 1024, 0 ) );    // => 1K
+             * console.logger( Base.formatSize( 1024 * 1024 ) );    // => 1.00M
+             * console.logger( Base.formatSize( 1024 * 1024 * 1024 ) );    // => 1.00G
+             * console.logger( Base.formatSize( 1024 * 1024 * 1024, 0, ['B', 'KB', 'MB'] ) );    // => 1024MB
              */
             formatSize: function( size, pointLength, units ) {
                 var unit;
@@ -2985,8 +2985,8 @@ return (function( root, factory ) {
              * @description 返回指定状态的文件集合，不传参数将返回所有状态的文件。
              * @for  Uploader
              * @example
-             * console.log( uploader.getFiles() );    // => all files
-             * console.log( uploader.getFiles('error') )    // => all error files.
+             * console.logger( uploader.getFiles() );    // => all files
+             * console.logger( uploader.getFiles('error') )    // => all error files.
              */
             getFiles: function() {
                 return this.queue.getFiles.apply( this.queue, arguments );
@@ -4399,12 +4399,12 @@ return (function( root, factory ) {
              *
              *         // 及时显示进度
              *         .progress(function(percentage) {
-             *             console.log('Percentage:', percentage);
+             *             console.logger('Percentage:', percentage);
              *         })
              *
              *         // 完成
              *         .then(function(val) {
-             *             console.log('md5 result:', val);
+             *             console.logger('md5 result:', val);
              *         });
              *
              * });
@@ -5386,7 +5386,7 @@ return (function( root, factory ) {
         //         i,
         //         b;
         //     if (!length || offset + length > dataView.byteLength) {
-        //         Base.log('Invalid Exif data: Invalid thumbnail data.');
+        //         Base.logger('Invalid Exif data: Invalid thumbnail data.');
         //         return;
         //     }
         //     hexData = [];
@@ -6171,7 +6171,7 @@ return (function( root, factory ) {
     
                     // benchmarking
                     // var duration = new Date().getTime() - time_start;
-                    // console.log('Encoding time: '+ currentQuality + 'ms');
+                    // console.logger('Encoding time: '+ currentQuality + 'ms');
                     //
     
                     return jpegDataUri
@@ -6196,7 +6196,7 @@ return (function( root, factory ) {
     
                 initQuantTables(sf);
                 currentQuality = quality;
-                // console.log('Quality set to: '+quality +'%');
+                // console.logger('Quality set to: '+quality +'%');
             }
     
             function init(){
@@ -6210,7 +6210,7 @@ return (function( root, factory ) {
     
                 setQuality(quality);
                 // var duration = new Date().getTime() - time_start;
-                // console.log('Initialization '+ duration + 'ms');
+                // console.logger('Initialization '+ duration + 'ms');
             }
     
             init();
@@ -6363,7 +6363,7 @@ return (function( root, factory ) {
                 //             tmp = x;
                 //             x = y;
                 //             y = iw * s - tmp - w;
-                //             console.log(ih * s, tmp, w)
+                //             console.logger(ih * s, tmp, w)
                 //             break;
                 //     }
     
@@ -7590,7 +7590,7 @@ return (function( root, factory ) {
                 uid = parts[ 0 ];
                 type = parts[ 1 ];
     
-                // console.log.apply( console, arguments );
+                // console.logger.apply( console, arguments );
     
                 if ( type === 'Ready' && uid === me.uid ) {
                     me.trigger('ready');
@@ -7598,7 +7598,7 @@ return (function( root, factory ) {
                     clients[ uid ].trigger( type.toLowerCase(), evt, obj );
                 }
     
-                // Base.log( evt, obj );
+                // Base.logger( evt, obj );
             }
     
             // flash的接受器。
@@ -7981,7 +7981,7 @@ return (function( root, factory ) {
     /**
      * @fileOverview 日志组件，主要用来收集错误信息，可以帮助 webuploader 更好的定位问题和发展。
      *
-     * 如果您不想要启用此功能，请在打包的时候去掉 log 模块。
+     * 如果您不想要启用此功能，请在打包的时候去掉 logger 模块。
      *
      * 或者可以在初始化的时候通过 options.disableWidgets 属性禁用。
      *
@@ -7989,7 +7989,7 @@ return (function( root, factory ) {
      * WebUploader.create({
      *     ...
      *
-     *     disableWidgets: 'log',
+     *     disableWidgets: 'logger',
      *
      *     ...
      * })
@@ -8073,7 +8073,7 @@ return (function( root, factory ) {
      */
     define('webuploader',[
         'preset/all',
-        'widgets/log'
+        'widgets/logger'
     ], function( preset ) {
         return preset;
     });

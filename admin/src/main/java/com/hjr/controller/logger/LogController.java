@@ -1,4 +1,4 @@
-package com.hjr.controller.log;
+package com.hjr.controller.logger;
 
 import com.hjr.controller.BaseController;
 import com.hjr.model.LogModel;

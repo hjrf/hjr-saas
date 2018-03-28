@@ -11,7 +11,9 @@
 
     <modules>
         <module>admin</module>
-        <module>eurekaServer</module>
+        <module>eureka-server</module>
+        <module>config-server</module>
+        <module>config-client</module>
         <module>feign</module>
         <module>mud</module>
         <module>zuul</module>

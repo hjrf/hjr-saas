@@ -381,7 +381,7 @@
              * @method bindFn
              * @example
              * var doSomething = function() {
-             *         console.log( this.name );
+             *         console.logger( this.name );
              *     },
              *     obj = {
              *         name: 'Object Name'
@@ -395,8 +395,8 @@
     
             /**
              * 引用Console.log如果存在的话，否则引用一个[空函数noop](#WebUploader:Base.noop)。
-             * @grammar Base.log( args... ) => undefined
-             * @method log
+             * @grammar Base.logger( args... ) => undefined
+             * @method logger
              */
             log: (function() {
                 if ( window.console ) {
@@ -431,7 +431,7 @@
              * @example
              * function doSomthing() {
              *     var args = Base.slice( arguments, 1 );
-             *     console.log( args );
+             *     console.logger( args );
              * }
              *
              * doSomthing( 'ignored', 'arg2', 'arg3' );    // => Array ["arg2", "arg3"]
@@ -469,12 +469,12 @@
              * @param {Number} [pointLength=2] 精确到的小数点数。
              * @param {Array} [units=[ 'B', 'K', 'M', 'G', 'TB' ]] 单位数组。从字节，到千字节，一直往上指定。如果单位数组里面只指定了到了K(千字节)，同时文件大小大于M, 此方法的输出将还是显示成多少K.
              * @example
-             * console.log( Base.formatSize( 100 ) );    // => 100B
-             * console.log( Base.formatSize( 1024 ) );    // => 1.00K
-             * console.log( Base.formatSize( 1024, 0 ) );    // => 1K
-             * console.log( Base.formatSize( 1024 * 1024 ) );    // => 1.00M
-             * console.log( Base.formatSize( 1024 * 1024 * 1024 ) );    // => 1.00G
-             * console.log( Base.formatSize( 1024 * 1024 * 1024, 0, ['B', 'KB', 'MB'] ) );    // => 1024MB
+             * console.logger( Base.formatSize( 100 ) );    // => 100B
+             * console.logger( Base.formatSize( 1024 ) );    // => 1.00K
+             * console.logger( Base.formatSize( 1024, 0 ) );    // => 1K
+             * console.logger( Base.formatSize( 1024 * 1024 ) );    // => 1.00M
+             * console.logger( Base.formatSize( 1024 * 1024 * 1024 ) );    // => 1.00G
+             * console.logger( Base.formatSize( 1024 * 1024 * 1024, 0, ['B', 'KB', 'MB'] ) );    // => 1024MB
              */
             formatSize: function( size, pointLength, units ) {
                 var unit;
@@ -3010,8 +3010,8 @@
              * @description 返回指定状态的文件集合，不传参数将返回所有状态的文件。
              * @for  Uploader
              * @example
-             * console.log( uploader.getFiles() );    // => all files
-             * console.log( uploader.getFiles('error') )    // => all error files.
+             * console.logger( uploader.getFiles() );    // => all files
+             * console.logger( uploader.getFiles('error') )    // => all error files.
              */
             getFiles: function() {
                 return this.queue.getFiles.apply( this.queue, arguments );
@@ -4424,12 +4424,12 @@
              *
              *         // 及时显示进度
              *         .progress(function(percentage) {
-             *             console.log('Percentage:', percentage);
+             *             console.logger('Percentage:', percentage);
              *         })
              *
              *         // 完成
              *         .then(function(val) {
-             *             console.log('md5 result:', val);
+             *             console.logger('md5 result:', val);
              *         });
              *
              * });
@@ -5411,7 +5411,7 @@
         //         i,
         //         b;
         //     if (!length || offset + length > dataView.byteLength) {
-        //         Base.log('Invalid Exif data: Invalid thumbnail data.');
+        //         Base.logger('Invalid Exif data: Invalid thumbnail data.');
         //         return;
         //     }
         //     hexData = [];
@@ -6196,7 +6196,7 @@
     
                     // benchmarking
                     // var duration = new Date().getTime() - time_start;
-                    // console.log('Encoding time: '+ currentQuality + 'ms');
+                    // console.logger('Encoding time: '+ currentQuality + 'ms');
                     //
     
                     return jpegDataUri
@@ -6221,7 +6221,7 @@
     
                 initQuantTables(sf);
                 currentQuality = quality;
-                // console.log('Quality set to: '+quality +'%');
+                // console.logger('Quality set to: '+quality +'%');
             }
     
             function init(){
@@ -6235,7 +6235,7 @@
     
                 setQuality(quality);
                 // var duration = new Date().getTime() - time_start;
-                // console.log('Initialization '+ duration + 'ms');
+                // console.logger('Initialization '+ duration + 'ms');
             }
     
             init();
@@ -6388,7 +6388,7 @@
                 //             tmp = x;
                 //             x = y;
                 //             y = iw * s - tmp - w;
-                //             console.log(ih * s, tmp, w)
+                //             console.logger(ih * s, tmp, w)
                 //             break;
                 //     }
     
@@ -7615,7 +7615,7 @@
                 uid = parts[ 0 ];
                 type = parts[ 1 ];
     
-                // console.log.apply( console, arguments );
+                // console.logger.apply( console, arguments );
     
                 if ( type === 'Ready' && uid === me.uid ) {
                     me.trigger('ready');
@@ -7623,7 +7623,7 @@
                     clients[ uid ].trigger( type.toLowerCase(), evt, obj );
                 }
     
-                // Base.log( evt, obj );
+                // Base.logger( evt, obj );
             }
     
             // flash的接受器。

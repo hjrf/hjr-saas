@@ -14,8 +14,8 @@ $routeProvider
 		templateUrl: baseUrl+'role/show.html',
 	    controller: 'RoleController'
 	})
-	.when('/log', {
-		templateUrl: baseUrl+'log/show.html',
+	.when('/logger', {
+		templateUrl: baseUrl+'logger/show.html',
 	    controller: 'LogController'
 	})
 	.when('/api/mud', {

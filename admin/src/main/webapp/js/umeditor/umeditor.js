@@ -40,7 +40,7 @@ var browser = UM.browser = function(){
              * @example
              * ```javascript
              * if ( UE.browser.ie ) {
-         *     console.log( '当前浏览器是IE' );
+         *     console.logger( '当前浏览器是IE' );
          * }
              * ```
              */
@@ -51,7 +51,7 @@ var browser = UM.browser = function(){
              * @example
              * ```javascript
              * if ( UE.browser.opera ) {
-         *     console.log( '当前浏览器是Opera' );
+         *     console.logger( '当前浏览器是Opera' );
          * }
              * ```
              */
@@ -62,7 +62,7 @@ var browser = UM.browser = function(){
              * @example
              * ```javascript
              * if ( UE.browser.webkit ) {
-         *     console.log( '当前浏览器是webkit内核浏览器' );
+         *     console.logger( '当前浏览器是webkit内核浏览器' );
          * }
              * ```
              */
@@ -73,7 +73,7 @@ var browser = UM.browser = function(){
              * @example
              * ```javascript
              * if ( UE.browser.mac ) {
-         *     console.log( '当前浏览器运行在mac平台下' );
+         *     console.logger( '当前浏览器运行在mac平台下' );
          * }
              * ```
              */
@@ -84,7 +84,7 @@ var browser = UM.browser = function(){
              * @example
              * ```javascript
              * if ( UE.browser.quirks ) {
-         *     console.log( '当前浏览器运行处于“怪异模式”' );
+         *     console.logger( '当前浏览器运行处于“怪异模式”' );
          * }
              * ```
              */
@@ -96,7 +96,7 @@ var browser = UM.browser = function(){
      * @example
      * ```javascript
      * if ( UE.browser.gecko ) {
-    *     console.log( '当前浏览器内核是gecko内核' );
+    *     console.logger( '当前浏览器内核是gecko内核' );
     * }
      * ```
      */
@@ -127,7 +127,7 @@ var browser = UM.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.ie9Compat ) {
-         *     console.log( '当前浏览器运行在IE9兼容模式下' );
+         *     console.logger( '当前浏览器运行在IE9兼容模式下' );
          * }
          * ```
          */
@@ -139,7 +139,7 @@ var browser = UM.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.ie8 ) {
-         *     console.log( '当前浏览器是IE8浏览器' );
+         *     console.logger( '当前浏览器是IE8浏览器' );
          * }
          * ```
          */
@@ -151,7 +151,7 @@ var browser = UM.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.ie8Compat ) {
-         *     console.log( '当前浏览器运行在IE8兼容模式下' );
+         *     console.logger( '当前浏览器运行在IE8兼容模式下' );
          * }
          * ```
          */
@@ -163,7 +163,7 @@ var browser = UM.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.ie7Compat ) {
-         *     console.log( '当前浏览器运行在IE7兼容模式下' );
+         *     console.logger( '当前浏览器运行在IE7兼容模式下' );
          * }
          * ```
          */
@@ -176,7 +176,7 @@ var browser = UM.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.ie6Compat ) {
-         *     console.log( '当前浏览器运行在IE6模式或者怪异模式下' );
+         *     console.logger( '当前浏览器运行在IE6模式或者怪异模式下' );
          * }
          * ```
          */
@@ -245,7 +245,7 @@ var browser = UM.browser = function(){
      * </ul>
      * @example
      * ```javascript
-     * console.log( '当前浏览器版本号是： ' + UE.browser.version );
+     * console.logger( '当前浏览器版本号是： ' + UE.browser.version );
      * ```
      */
     browser.version = version;
@@ -255,7 +255,7 @@ var browser = UM.browser = function(){
      * @example
      * ```javascript
      * if ( UE.browser.isCompatible ) {
-     *     console.log( '浏览器与UEditor能够良好兼容' );
+     *     console.logger( '浏览器与UEditor能够良好兼容' );
      * }
      * ```
      */
@@ -293,11 +293,11 @@ var utils = UM.utils = {
      * * context  iterator的上下文
      * @example
      * UM.utils.each([1,2],function(v,i){
-     *     console.log(v)//值
-     *     console.log(i)//索引
+     *     console.logger(v)//值
+     *     console.logger(i)//索引
      * })
      * UM.utils.each(document.getElementsByTagName('*'),function(n){
-     *     console.log(n.tagName)
+     *     console.logger(n.tagName)
      * })
      */
     each : function(obj, iterator, context) {
@@ -362,7 +362,7 @@ var utils = UM.utils = {
      * }
      * SuperClass.prototype = {
      *     hello:function(str){
-     *         console.log(this.name + str);
+     *         console.logger(this.name + str);
      *     }
      * }
      * function SubClass(){
@@ -398,7 +398,7 @@ var utils = UM.utils = {
      * @grammar UM.utils.defer(fn,delay,exclusion)  =>fn   //延迟delay毫秒执行fn，若exclusion为真，则互斥执行fn
      * @example
      * function test(){
-     *     console.log("延迟输出！");
+     *     console.logger("延迟输出！");
      * }
      * //非互斥延迟执行
      * var testDefer = UM.utils.defer(test,1000);
@@ -546,7 +546,7 @@ var utils = UM.utils = {
      *     type:"text/javascript",
      *     defer:"defer"
      * }, function () {
-     *     console.log('加载成功！')
+     *     console.logger('加载成功！')
      * });
      */
     loadFile:function () {
@@ -802,7 +802,7 @@ EventBase.prototype = {
      * @grammar editor.addListener(types,fn)  //types为事件名称，多个可用空格分隔
      * @example
      * editor.addListener('selectionchange',function(){
-     *      console.log("选区已经变化！");
+     *      console.logger("选区已经变化！");
      * })
      * editor.addListener('beforegetcontent aftergetcontent',function(type){
      *         if(type == 'beforegetcontent'){
@@ -810,7 +810,7 @@ EventBase.prototype = {
      *         }else{
      *             //do something
      *         }
-     *         console.log(this.getContent) // this是注册的事件的编辑器实例
+     *         console.logger(this.getContent) // this是注册的事件的编辑器实例
      * })
      */
     addListener:function (types, listener) {
@@ -1365,7 +1365,7 @@ var domUtils = dom.domUtils = {
      * <script>
      *
      *     //output: i节点
-     *     console.log( UE.dom.domUtils.getNextDomNode( document.getElementById( "test" ) ) );
+     *     console.logger( UE.dom.domUtils.getNextDomNode( document.getElementById( "test" ) ) );
      *
      * </script>
      * ```
@@ -1382,7 +1382,7 @@ var domUtils = dom.domUtils = {
      *
      *     //由于id为test的i节点之后没有兄弟节点， 则查找其父节点（div）后面的兄弟节点
      *     //output: b节点
-     *     console.log( UE.dom.domUtils.getNextDomNode( document.getElementById( "test" ) ) );
+     *     console.logger( UE.dom.domUtils.getNextDomNode( document.getElementById( "test" ) ) );
      *
      * </script>
      * ```
@@ -1434,7 +1434,7 @@ var domUtils = dom.domUtils = {
      * ```javascript
      * var commonAncestor = UE.dom.domUtils.getCommonAncestor( document.body, document.body.firstChild );
      * //output: true
-     * console.log( commonAncestor.tagName.toLowerCase() === 'body' );
+     * console.logger( commonAncestor.tagName.toLowerCase() === 'body' );
      * ```
      */
     getCommonAncestor:function (nodeA, nodeB) {
@@ -1482,7 +1482,7 @@ var domUtils = dom.domUtils = {
      *      UE.dom.domUtils.clearEmptySibling( document.getElementById( "test" ) );
      *
      *      //output: <div></div><span id="test"></span><em>xxx</em><span></span>
-     *      console.log( document.body.innerHTML );
+     *      console.logger( document.body.innerHTML );
      *
      * </script>
      * ```
@@ -1777,7 +1777,7 @@ var domUtils = dom.domUtils = {
      *     UE.dom.domUtils.removeStyle( testNode, 'color' );
      *
      *     //output: background: blue;
-     *     console.log( testNode.style.cssText );
+     *     console.logger( testNode.style.cssText );
      *
      * </script>
      * ```
@@ -5255,7 +5255,7 @@ var filterWord = UM.filterWord = function () {
          * @example
          * ```javascript
          * traversal(node, function(){
-         *     console.log(node.type);
+         *     console.logger(node.type);
          * });
          * ```
          */

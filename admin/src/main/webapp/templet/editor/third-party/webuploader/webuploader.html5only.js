@@ -370,7 +370,7 @@
              * @method bindFn
              * @example
              * var doSomething = function() {
-             *         console.log( this.name );
+             *         console.logger( this.name );
              *     },
              *     obj = {
              *         name: 'Object Name'
@@ -383,9 +383,9 @@
             bindFn: bindFn,
     
             /**
-             * 引用Console.log如果存在的话，否则引用一个[空函数loop](#WebUploader:Base.log)。
-             * @grammar Base.log( args... ) => undefined
-             * @method log
+             * 引用Console.log如果存在的话，否则引用一个[空函数loop](#WebUploader:Base.logger)。
+             * @grammar Base.logger( args... ) => undefined
+             * @method logger
              */
             log: (function() {
                 if ( window.console ) {
@@ -420,7 +420,7 @@
              * @example
              * function doSomthing() {
              *     var args = Base.slice( arguments, 1 );
-             *     console.log( args );
+             *     console.logger( args );
              * }
              *
              * doSomthing( 'ignored', 'arg2', 'arg3' );    // => Array ["arg2", "arg3"]
@@ -458,12 +458,12 @@
              * @param {Number} [pointLength=2] 精确到的小数点数。
              * @param {Array} [units=[ 'B', 'K', 'M', 'G', 'TB' ]] 单位数组。从字节，到千字节，一直往上指定。如果单位数组里面只指定了到了K(千字节)，同时文件大小大于M, 此方法的输出将还是显示成多少K.
              * @example
-             * console.log( Base.formatSize( 100 ) );    // => 100B
-             * console.log( Base.formatSize( 1024 ) );    // => 1.00K
-             * console.log( Base.formatSize( 1024, 0 ) );    // => 1K
-             * console.log( Base.formatSize( 1024 * 1024 ) );    // => 1.00M
-             * console.log( Base.formatSize( 1024 * 1024 * 1024 ) );    // => 1.00G
-             * console.log( Base.formatSize( 1024 * 1024 * 1024, 0, ['B', 'KB', 'MB'] ) );    // => 1024MB
+             * console.logger( Base.formatSize( 100 ) );    // => 100B
+             * console.logger( Base.formatSize( 1024 ) );    // => 1.00K
+             * console.logger( Base.formatSize( 1024, 0 ) );    // => 1K
+             * console.logger( Base.formatSize( 1024 * 1024 ) );    // => 1.00M
+             * console.logger( Base.formatSize( 1024 * 1024 * 1024 ) );    // => 1.00G
+             * console.logger( Base.formatSize( 1024 * 1024 * 1024, 0, ['B', 'KB', 'MB'] ) );    // => 1024MB
              */
             formatSize: function( size, pointLength, units ) {
                 var unit;
@@ -2819,8 +2819,8 @@
              * @description 返回指定状态的文件集合，不传参数将返回所有状态的文件。
              * @for  Uploader
              * @example
-             * console.log( uploader.getFiles() );    // => all files
-             * console.log( uploader.getFiles('error') )    // => all error files.
+             * console.logger( uploader.getFiles() );    // => all files
+             * console.logger( uploader.getFiles('error') )    // => all error files.
              */
             getFiles: function() {
                 return this.queue.getFiles.apply( this.queue, arguments );
@@ -4872,7 +4872,7 @@
         //         i,
         //         b;
         //     if (!length || offset + length > dataView.byteLength) {
-        //         Base.log('Invalid Exif data: Invalid thumbnail data.');
+        //         Base.logger('Invalid Exif data: Invalid thumbnail data.');
         //         return;
         //     }
         //     hexData = [];
