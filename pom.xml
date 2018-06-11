@@ -7,8 +7,6 @@
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
 
-
-
     <modules>
         <module>admin</module>
         <module>eureka-server</module>
@@ -26,13 +24,5 @@
         </repository>
     </repositories>
 
-    <plugins>
-        <plugin>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-        </plugin>
-    </plugins>
-
-    <finalName>hjr-saas</finalName>
 
 </project>

@@ -28,7 +28,8 @@ public class MudInitController extends BaseController {
 		List<Map<String, Object>> returnMsg = new ArrayList<Map<String, Object>>();
 		try {
 			InputStream in = this.getClass().getResourceAsStream("/excel/all_init.xls");
-			Workbook workbook = Workbook.getWorkbook(in);
+			File excel = new File("D://excel/all_init.xls");//参数为空
+			Workbook workbook = Workbook.getWorkbook(excel);
 			int sheetNum = workbook.getNumberOfSheets();// sheet的数目
 			Sheet sheet = workbook.getSheet(0);
 			String sheetName = sheet.getName();
@@ -54,7 +55,9 @@ public class MudInitController extends BaseController {
 		List<Map<String, Object>> returnMsg = new ArrayList<Map<String, Object>>();
 		try {
 			InputStream in = this.getClass().getResourceAsStream("/excel/all_init.xls");
-			Workbook workbook = Workbook.getWorkbook(in);
+			String path = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+			File excel = new File("D://excel/all_init.xls");//参数为空
+			Workbook workbook = Workbook.getWorkbook(excel);
 			int sheetNum = workbook.getNumberOfSheets();// sheet的数目
 			Sheet sheet = workbook.getSheet(0);
 			String sheetName = sheet.getName();
@@ -80,7 +83,9 @@ public class MudInitController extends BaseController {
 		List<Map<String, Object>> returnMsg = new ArrayList<Map<String, Object>>();
 		try {
 			InputStream in = this.getClass().getResourceAsStream("/excel/all_init.xls");
-			Workbook workbook = Workbook.getWorkbook(in);
+			String path = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+			File excel = new File("D://excel/all_init.xls");//参数为空
+			Workbook workbook = Workbook.getWorkbook(excel);
 			int sheetNum = workbook.getNumberOfSheets();// sheet的数目
 			Sheet sheet = workbook.getSheet(1);
 			String sheetName = sheet.getName();
@@ -106,7 +111,9 @@ public class MudInitController extends BaseController {
 		List<Map<String, Object>> returnMsg = new ArrayList<Map<String, Object>>();
 		try {
 			InputStream in = this.getClass().getResourceAsStream("/excel/all_init.xls");
-			Workbook workbook = Workbook.getWorkbook(in);
+			String path = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+			File excel = new File("D://excel/all_init.xls");//参数为空
+			Workbook workbook = Workbook.getWorkbook(excel);
 			int sheetNum = workbook.getNumberOfSheets();// sheet的数目
 			Sheet sheet = workbook.getSheet(2);
 			String sheetName = sheet.getName();
@@ -132,7 +139,9 @@ public class MudInitController extends BaseController {
 		List<Map<String, Object>> returnMsg = new ArrayList<Map<String, Object>>();
 		try {
 			InputStream in = this.getClass().getResourceAsStream("/excel/all_init.xls");
-			Workbook workbook = Workbook.getWorkbook(in);
+			String path = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+			File excel = new File("D://excel/all_init.xls");//参数为空
+			Workbook workbook = Workbook.getWorkbook(excel);
 			int sheetNum = workbook.getNumberOfSheets();// sheet的数目
 			Sheet sheet = workbook.getSheet(3);
 			String sheetName = sheet.getName();
@@ -158,7 +167,9 @@ public class MudInitController extends BaseController {
 		List<Map<String, Object>> returnMsg = new ArrayList<Map<String, Object>>();
 		try {
 			InputStream in = this.getClass().getResourceAsStream("/excel/all_init.xls");
-			Workbook workbook = Workbook.getWorkbook(in);
+			String path = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+			File excel = new File("D://excel/all_init.xls");//参数为空
+			Workbook workbook = Workbook.getWorkbook(excel);
 			int sheetNum = workbook.getNumberOfSheets();// sheet的数目
 			Sheet sheet = workbook.getSheet(4);
 			String sheetName = sheet.getName();
@@ -184,7 +195,9 @@ public class MudInitController extends BaseController {
 		List<Map<String, Object>> returnMsg = new ArrayList<Map<String, Object>>();
 		try {
 			InputStream in = this.getClass().getResourceAsStream("/excel/all_init.xls");
-			Workbook workbook = Workbook.getWorkbook(in);
+			String path = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+			File excel = new File("D://excel/all_init.xls");//参数为空
+			Workbook workbook = Workbook.getWorkbook(excel);
 			int sheetNum = workbook.getNumberOfSheets();// sheet的数目
 			Sheet sheet = workbook.getSheet(5);
 			String sheetName = sheet.getName();
@@ -210,9 +223,39 @@ public class MudInitController extends BaseController {
 		List<Map<String, Object>> returnMsg = new ArrayList<Map<String, Object>>();
 		try {
 			InputStream in = this.getClass().getResourceAsStream("/excel/all_init.xls");
-			Workbook workbook = Workbook.getWorkbook(in);
+			String path = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+			File excel = new File("D://excel/all_init.xls");//参数为空
+			Workbook workbook = Workbook.getWorkbook(excel);
 			int sheetNum = workbook.getNumberOfSheets();// sheet的数目
 			Sheet sheet = workbook.getSheet(6);
+			String sheetName = sheet.getName();
+			int sheetRows = getRightRows(sheet);
+			int sheetColumns = getRightCols(sheet);
+			for (int i = 1; i < sheetRows; i++) {
+				Map<String, Object> map = new HashMap<>();
+				for (int j = 0; j < sheetColumns; j++) {
+					map.put(sheet.getCell(j, 0).getContents(), sheet.getCell(j, i).getContents());
+				}
+				returnMsg.add(map);
+			}
+		} catch (Exception e) {
+			return null;
+		}
+
+		return returnMsg;
+	}
+
+	@ResponseBody // 表示返回的是json对象
+	@RequestMapping(value = "/ite_have_skill", method = RequestMethod.GET)
+	public List<Map<String, Object>> getIteHaveSkillDataByGet() {
+		List<Map<String, Object>> returnMsg = new ArrayList<Map<String, Object>>();
+		try {
+			InputStream in = this.getClass().getResourceAsStream("/excel/all_init.xls");
+			String path = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+			File excel = new File("D://excel/all_init.xls");//参数为空
+			Workbook workbook = Workbook.getWorkbook(excel);
+			int sheetNum = workbook.getNumberOfSheets();// sheet的数目
+			Sheet sheet = workbook.getSheet(7);
 			String sheetName = sheet.getName();
 			int sheetRows = getRightRows(sheet);
 			int sheetColumns = getRightCols(sheet);
@@ -236,9 +279,11 @@ public class MudInitController extends BaseController {
 		List<Map<String, Object>> returnMsg = new ArrayList<Map<String, Object>>();
 		try {
 			InputStream in = this.getClass().getResourceAsStream("/excel/all_init.xls");
-			Workbook workbook = Workbook.getWorkbook(in);
+			String path = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+			File excel = new File("D://excel/all_init.xls");//参数为空
+			Workbook workbook = Workbook.getWorkbook(excel);
 			int sheetNum = workbook.getNumberOfSheets();// sheet的数目
-			Sheet sheet = workbook.getSheet(7);
+			Sheet sheet = workbook.getSheet(8);
 			String sheetName = sheet.getName();
 			int sheetRows = getRightRows(sheet);
 			int sheetColumns = getRightCols(sheet);
@@ -261,9 +306,11 @@ public class MudInitController extends BaseController {
 		List<Map<String, Object>> returnMsg = new ArrayList<Map<String, Object>>();
 		try {
 			InputStream in = this.getClass().getResourceAsStream("/excel/all_init.xls");
-			Workbook workbook = Workbook.getWorkbook(in);
+			String path = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+			File excel = new File("D://excel/all_init.xls");//参数为空
+			Workbook workbook = Workbook.getWorkbook(excel);
 			int sheetNum = workbook.getNumberOfSheets();// sheet的数目
-			Sheet sheet = workbook.getSheet(8);
+			Sheet sheet = workbook.getSheet(9);
 			String sheetName = sheet.getName();
 			int sheetRows = getRightRows(sheet);
 			int sheetColumns = getRightCols(sheet);
@@ -285,9 +332,11 @@ public class MudInitController extends BaseController {
 		List<Map<String, Object>> returnMsg = new ArrayList<Map<String, Object>>();
 		try {
 			InputStream in = this.getClass().getResourceAsStream("/excel/all_init.xls");
-			Workbook workbook = Workbook.getWorkbook(in);
+			String path = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+			File excel = new File("D://excel/all_init.xls");//参数为空
+			Workbook workbook = Workbook.getWorkbook(excel);
 			int sheetNum = workbook.getNumberOfSheets();// sheet的数目
-			Sheet sheet = workbook.getSheet(9);
+			Sheet sheet = workbook.getSheet(10);
 			String sheetName = sheet.getName();
 			int sheetRows = getRightRows(sheet);
 			int sheetColumns = getRightCols(sheet);
@@ -310,9 +359,11 @@ public class MudInitController extends BaseController {
 		List<Map<String, Object>> returnMsg = new ArrayList<Map<String, Object>>();
 		try {
 			InputStream in = this.getClass().getResourceAsStream("/excel/all_init.xls");
-			Workbook workbook = Workbook.getWorkbook(in);
+			String path = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+			File excel = new File("D://excel/all_init.xls");//参数为空
+			Workbook workbook = Workbook.getWorkbook(excel);
 			int sheetNum = workbook.getNumberOfSheets();// sheet的数目
-			Sheet sheet = workbook.getSheet(10);
+			Sheet sheet = workbook.getSheet(11);
 			String sheetName = sheet.getName();
 			int sheetRows = getRightRows(sheet);
 			int sheetColumns = getRightCols(sheet);
@@ -335,7 +386,9 @@ public class MudInitController extends BaseController {
 		List<Map<String, Object>> returnMsg = new ArrayList<Map<String, Object>>();
 		try {
 			InputStream in = this.getClass().getResourceAsStream("/excel/all_map.xls");
-			Workbook workbook = Workbook.getWorkbook(in);
+			String path = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+			File excel = new File("D://excel/all_init.xls");//参数为空
+			Workbook workbook = Workbook.getWorkbook(excel);
 			int sheetNum = workbook.getNumberOfSheets();// sheet的数目
 			for (int n = 0; n < sheetNum; n++) {
 				Sheet sheet = workbook.getSheet(6);
@@ -409,7 +462,9 @@ public class MudInitController extends BaseController {
 	public boolean putToMongoByGet() {
 		try {
 			InputStream in = this.getClass().getResourceAsStream("/excel/all_int.xls");
-			Workbook workbook = Workbook.getWorkbook(in);
+			String path = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
+			File excel = new File(path+"/excel/all_init.xls");//参数为空
+			Workbook workbook = Workbook.getWorkbook(excel);
 			int sheetNum = workbook.getNumberOfSheets();// sheet的数目
 			for (int n = 0; n < sheetNum; n++) {
 				List<Map<String, Object>> returnMsg = new ArrayList<Map<String, Object>>();
