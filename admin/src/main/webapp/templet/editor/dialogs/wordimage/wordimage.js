@@ -9,7 +9,7 @@
 
 
 var wordImage = {};
-//(function(){
+//(setting(){
 var g = baidu.g,
 	flashObj,flashContainer;
 

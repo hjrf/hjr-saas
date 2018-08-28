@@ -40,7 +40,7 @@ var browser = UM.browser = function(){
              * @example
              * ```javascript
              * if ( UE.browser.ie ) {
-         *     console.logger( '当前浏览器是IE' );
+         *     console.log( '当前浏览器是IE' );
          * }
              * ```
              */
@@ -51,7 +51,7 @@ var browser = UM.browser = function(){
              * @example
              * ```javascript
              * if ( UE.browser.opera ) {
-         *     console.logger( '当前浏览器是Opera' );
+         *     console.log( '当前浏览器是Opera' );
          * }
              * ```
              */
@@ -62,7 +62,7 @@ var browser = UM.browser = function(){
              * @example
              * ```javascript
              * if ( UE.browser.webkit ) {
-         *     console.logger( '当前浏览器是webkit内核浏览器' );
+         *     console.log( '当前浏览器是webkit内核浏览器' );
          * }
              * ```
              */
@@ -73,7 +73,7 @@ var browser = UM.browser = function(){
              * @example
              * ```javascript
              * if ( UE.browser.mac ) {
-         *     console.logger( '当前浏览器运行在mac平台下' );
+         *     console.log( '当前浏览器运行在mac平台下' );
          * }
              * ```
              */
@@ -84,7 +84,7 @@ var browser = UM.browser = function(){
              * @example
              * ```javascript
              * if ( UE.browser.quirks ) {
-         *     console.logger( '当前浏览器运行处于“怪异模式”' );
+         *     console.log( '当前浏览器运行处于“怪异模式”' );
          * }
              * ```
              */
@@ -96,7 +96,7 @@ var browser = UM.browser = function(){
      * @example
      * ```javascript
      * if ( UE.browser.gecko ) {
-    *     console.logger( '当前浏览器内核是gecko内核' );
+    *     console.log( '当前浏览器内核是gecko内核' );
     * }
      * ```
      */
@@ -127,7 +127,7 @@ var browser = UM.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.ie9Compat ) {
-         *     console.logger( '当前浏览器运行在IE9兼容模式下' );
+         *     console.log( '当前浏览器运行在IE9兼容模式下' );
          * }
          * ```
          */
@@ -139,7 +139,7 @@ var browser = UM.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.ie8 ) {
-         *     console.logger( '当前浏览器是IE8浏览器' );
+         *     console.log( '当前浏览器是IE8浏览器' );
          * }
          * ```
          */
@@ -151,7 +151,7 @@ var browser = UM.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.ie8Compat ) {
-         *     console.logger( '当前浏览器运行在IE8兼容模式下' );
+         *     console.log( '当前浏览器运行在IE8兼容模式下' );
          * }
          * ```
          */
@@ -163,7 +163,7 @@ var browser = UM.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.ie7Compat ) {
-         *     console.logger( '当前浏览器运行在IE7兼容模式下' );
+         *     console.log( '当前浏览器运行在IE7兼容模式下' );
          * }
          * ```
          */
@@ -176,7 +176,7 @@ var browser = UM.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.ie6Compat ) {
-         *     console.logger( '当前浏览器运行在IE6模式或者怪异模式下' );
+         *     console.log( '当前浏览器运行在IE6模式或者怪异模式下' );
          * }
          * ```
          */
@@ -245,7 +245,7 @@ var browser = UM.browser = function(){
      * </ul>
      * @example
      * ```javascript
-     * console.logger( '当前浏览器版本号是： ' + UE.browser.version );
+     * console.log( '当前浏览器版本号是： ' + UE.browser.version );
      * ```
      */
     browser.version = version;
@@ -255,7 +255,7 @@ var browser = UM.browser = function(){
      * @example
      * ```javascript
      * if ( UE.browser.isCompatible ) {
-     *     console.logger( '浏览器与UEditor能够良好兼容' );
+     *     console.log( '浏览器与UEditor能够良好兼容' );
      * }
      * ```
      */
@@ -292,12 +292,12 @@ var utils = UM.utils = {
      * * iterator 遍历的方法,方法的第一个是遍历的值，第二个是索引，第三个是obj
      * * context  iterator的上下文
      * @example
-     * UM.utils.each([1,2],function(v,i){
-     *     console.logger(v)//值
-     *     console.logger(i)//索引
+     * UM.utils.each([1,2],setting(v,i){
+     *     console.log(v)//值
+     *     console.log(i)//索引
      * })
-     * UM.utils.each(document.getElementsByTagName('*'),function(n){
-     *     console.logger(n.tagName)
+     * UM.utils.each(document.getElementsByTagName('*'),setting(n){
+     *     console.log(n.tagName)
      * })
      */
     each : function(obj, iterator, context) {
@@ -357,15 +357,15 @@ var utils = UM.utils = {
      * @name inherits
      * @grammar UM.utils.inherits(subClass,superClass) => subClass
      * @example
-     * function SuperClass(){
+     * setting SuperClass(){
      *     this.name = "小李";
      * }
      * SuperClass.prototype = {
-     *     hello:function(str){
-     *         console.logger(this.name + str);
+     *     hello:setting(str){
+     *         console.log(this.name + str);
      *     }
      * }
-     * function SubClass(){
+     * setting SubClass(){
      *     this.name = "小张";
      * }
      * UM.utils.inherits(SubClass,SuperClass);
@@ -397,8 +397,8 @@ var utils = UM.utils = {
      * @grammar UM.utils.defer(fn,delay)  =>fn   //延迟delay毫秒执行fn，返回fn
      * @grammar UM.utils.defer(fn,delay,exclusion)  =>fn   //延迟delay毫秒执行fn，若exclusion为真，则互斥执行fn
      * @example
-     * function test(){
-     *     console.logger("延迟输出！");
+     * setting test(){
+     *     console.log("延迟输出！");
      * }
      * //非互斥延迟执行
      * var testDefer = UM.utils.defer(test,1000);
@@ -545,8 +545,8 @@ var utils = UM.utils = {
      *     tag:"script",
      *     type:"text/javascript",
      *     defer:"defer"
-     * }, function () {
-     *     console.logger('加载成功！')
+     * }, setting () {
+     *     console.log('加载成功！')
      * });
      */
     loadFile:function () {
@@ -801,16 +801,16 @@ EventBase.prototype = {
      * @name addListener
      * @grammar editor.addListener(types,fn)  //types为事件名称，多个可用空格分隔
      * @example
-     * editor.addListener('selectionchange',function(){
-     *      console.logger("选区已经变化！");
+     * editor.addListener('selectionchange',setting(){
+     *      console.log("选区已经变化！");
      * })
-     * editor.addListener('beforegetcontent aftergetcontent',function(type){
+     * editor.addListener('beforegetcontent aftergetcontent',setting(type){
      *         if(type == 'beforegetcontent'){
      *             //do something
      *         }else{
      *             //do something
      *         }
-     *         console.logger(this.getContent) // this是注册的事件的编辑器实例
+     *         console.log(this.getContent) // this是注册的事件的编辑器实例
      * })
      */
     addListener:function (types, listener) {
@@ -869,7 +869,7 @@ EventBase.prototype = {
 /**
  * 获得对象所拥有监听类型的所有监听器
  * @public
- * @function
+ * @setting
  * @param {Object} obj  查询监听器的对象
  * @param {String} type 事件类型
  * @param {Boolean} force  为true且当前所有type类型的侦听器不存在时，创建一个空监听器数组
@@ -1365,7 +1365,7 @@ var domUtils = dom.domUtils = {
      * <script>
      *
      *     //output: i节点
-     *     console.logger( UE.dom.domUtils.getNextDomNode( document.getElementById( "test" ) ) );
+     *     console.log( UE.dom.domUtils.getNextDomNode( document.getElementById( "test" ) ) );
      *
      * </script>
      * ```
@@ -1382,7 +1382,7 @@ var domUtils = dom.domUtils = {
      *
      *     //由于id为test的i节点之后没有兄弟节点， 则查找其父节点（div）后面的兄弟节点
      *     //output: b节点
-     *     console.logger( UE.dom.domUtils.getNextDomNode( document.getElementById( "test" ) ) );
+     *     console.log( UE.dom.domUtils.getNextDomNode( document.getElementById( "test" ) ) );
      *
      * </script>
      * ```
@@ -1434,7 +1434,7 @@ var domUtils = dom.domUtils = {
      * ```javascript
      * var commonAncestor = UE.dom.domUtils.getCommonAncestor( document.body, document.body.firstChild );
      * //output: true
-     * console.logger( commonAncestor.tagName.toLowerCase() === 'body' );
+     * console.log( commonAncestor.tagName.toLowerCase() === 'body' );
      * ```
      */
     getCommonAncestor:function (nodeA, nodeB) {
@@ -1482,7 +1482,7 @@ var domUtils = dom.domUtils = {
      *      UE.dom.domUtils.clearEmptySibling( document.getElementById( "test" ) );
      *
      *      //output: <div></div><span id="test"></span><em>xxx</em><span></span>
-     *      console.logger( document.body.innerHTML );
+     *      console.log( document.body.innerHTML );
      *
      * </script>
      * ```
@@ -1777,7 +1777,7 @@ var domUtils = dom.domUtils = {
      *     UE.dom.domUtils.removeStyle( testNode, 'color' );
      *
      *     //output: background: blue;
-     *     console.logger( testNode.style.cssText );
+     *     console.log( testNode.style.cssText );
      *
      * </script>
      * ```
@@ -1826,7 +1826,7 @@ var domUtils = dom.domUtils = {
 
     /**
      * 删除_moz_dirty属性
-     * @function
+     * @setting
      */
     removeDirtyAttr: function (node) {
         for (var i = 0, ci, nodes = node.getElementsByTagName('*'); ci = nodes[i++];) {
@@ -1836,7 +1836,7 @@ var domUtils = dom.domUtils = {
     },
     /**
      * 返回子节点的数量
-     * @function
+     * @setting
      * @param {Node}    node    父节点
      * @param  {Function}    fn    过滤子节点的规则，若为空，则得到所有子节点的数量
      * @return {Number}    符合条件子节点的数量
@@ -1857,7 +1857,7 @@ var domUtils = dom.domUtils = {
 
     /**
      * 判断是否为空节点
-     * @function
+     * @setting
      * @param {Node}    node    节点
      * @return {Boolean}    是否为空节点
      */
@@ -1869,7 +1869,7 @@ var domUtils = dom.domUtils = {
 
     /**
      * 判断节点是否为br
-     * @function
+     * @setting
      * @param {Node}    node   节点
      */
     isBr: function (node) {
@@ -3018,7 +3018,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
         /**
          * 获取原生seleciton对象
          * @public
-         * @function
+         * @setting
          * @name    UM.dom.Selection.getNative
          * @return {Selection}    获得selection对象
          */
@@ -3033,7 +3033,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
         /**
          * 获得ieRange
          * @public
-         * @function
+         * @setting
          * @name    UM.dom.Selection.getIERange
          * @return {ieRange}    返回ie原生的Range
          */
@@ -3054,7 +3054,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
         /**
          * 缓存当前选区的range和选区的开始节点
          * @public
-         * @function
+         * @setting
          * @name    UM.dom.Selection.cache
          */
         cache:function () {
@@ -3077,7 +3077,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
         /**
          * 清空缓存
          * @public
-         * @function
+         * @setting
          * @name    UM.dom.Selection.clear
          */
         clear:function () {
@@ -3093,7 +3093,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
         /**
          * 获取选区对应的Range
          * @public
-         * @function
+         * @setting
          * @name    UM.dom.Selection.getRange
          * @returns {UM.dom.Range}    得到Range对象
          */
@@ -3155,7 +3155,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
         /**
          * 获取开始元素，用于状态反射
          * @public
-         * @function
+         * @setting
          * @name    UM.dom.Selection.getStart
          * @return {Element}     获得开始元素
          */
@@ -3201,7 +3201,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
         /**
          * 得到选区中的文本
          * @public
-         * @function
+         * @setting
          * @name    UM.dom.Selection.getText
          * @return  {String}    选区中包含的文本
          */
@@ -3344,7 +3344,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          * @example
          * var editor = new UM.ui.Editor();
          * editor.render("myEditor");
-         * editor.ready(function(){
+         * editor.ready(setting(){
          *     editor.setContent("欢迎使用UEditor！");
          * })
          */
@@ -3686,7 +3686,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          * @example
          * getContent默认是会现调用hasContents来判断编辑器是否为空，如果是，就直接返回空字符串
          * 你也可以传入一个fn来接替hasContents的工作，定制判断的规则
-         * editor.getContent(function(){
+         * editor.getContent(setting(){
          *     return false //编辑器没有内容 ，getContent直接返回空
          * })
          */
@@ -3763,7 +3763,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          * @grammar editor.setContent(html)
          * @example
          * var editor = new UM.ui.Editor()
-         * editor.ready(function(){
+         * editor.ready(setting(){
          *     //需要ready后执行，否则可能报错
          *     editor.setContent("欢迎使用UEditor！");
          * })
@@ -5254,8 +5254,8 @@ var filterWord = UM.filterWord = function () {
          * @param { Function } fn 遍历到节点的时，传入节点作为参数，运行此函数
          * @example
          * ```javascript
-         * traversal(node, function(){
-         *     console.logger(node.type);
+         * traversal(node, setting(){
+         *     console.log(node.type);
          * });
          * ```
          */
@@ -6158,9 +6158,9 @@ UM.commands['print'] = {
             d = w.document;
         d.open();
         d.write('<html><head></head><body><div>'+this.getContent(null,null,true)+'</div><script>' +
-            "setTimeout(function(){" +
+            "setTimeout(setting(){" +
             "window.print();" +
-            "setTimeout(function(){" +
+            "setTimeout(setting(){" +
             "window.parent.$('#" + id + "').remove();" +
             "},100);" +
             "},200);" +
@@ -7396,10 +7396,10 @@ UM.plugins['selectall'] = function(){
     });
 };
 
-//UM.plugins['removeformat'] = function () {
+//UM.plugins['removeformat'] = setting () {
 //    var me = this;
 //    me.commands['removeformat'] = {
-//        execCommand: function () {
+//        execCommand: setting () {
 //            me.document.execCommand('removeformat');
 //
 //            /* 处理ie8和firefox选区有链接时,清除格式的bug */
@@ -7409,7 +7409,7 @@ UM.plugins['selectall'] = function(){
 //                    rng = me.selection.getRange(),
 //                    bk = rng.createBookmark();
 //
-//                function isEleInBookmark(node, bk){
+//                setting isEleInBookmark(node, bk){
 //                    if ( (domUtils.getPosition(node, bk.start) & domUtils.POSITION_FOLLOWING) &&
 //                        (domUtils.getPosition(bk.end, node) & domUtils.POSITION_FOLLOWING) ) {
 //                        return true;
@@ -7420,7 +7420,7 @@ UM.plugins['selectall'] = function(){
 //                    return false;
 //                }
 //
-//                $(common).find('a').each(function (k, a) {
+//                $(common).find('a').each(setting (k, a) {
 //                    if ( isEleInBookmark(a, bk) ) {
 //                        a.removeAttribute('style');
 //                    }
@@ -7886,7 +7886,7 @@ UM.plugins['autosave'] = function() {
 
                 },
 //               暂时没有用到
-//                clear: function () {
+//                clear: setting () {
 //
 //                    var expiresTime = new Date();
 //                    expiresTime.setFullYear( expiresTime.getFullYear() - 1 );
@@ -8265,7 +8265,7 @@ UM.plugins.xssFilter = function() {
 (function ($) {
     //对jquery的扩展
     $.parseTmpl = function parse(str, data) {
-        var tmpl = 'var __p=[],print=function(){__p.push.apply(__p,arguments);};' + 'with(obj||{}){__p.push(\'' + str.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/<%=([\s\S]+?)%>/g,function (match, code) {
+        var tmpl = 'var __p=[],print=setting(){__p.push.apply(__p,arguments);};' + 'with(obj||{}){__p.push(\'' + str.replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/<%=([\s\S]+?)%>/g,function (match, code) {
             return "',obj." + code.replace(/\\'/g, "'") + ",'";
         }).replace(/<%([\s\S]+?)%>/g,function (match, code) {
                 return "');" + code.replace(/\\'/g, "'").replace(/[\r\n\t]/g, ' ') + "__p.push('";

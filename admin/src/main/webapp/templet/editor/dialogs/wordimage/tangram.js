@@ -42,7 +42,7 @@ baidu.dom = baidu.dom || {};
 /**
  * 从文档中获取指定的DOM元素
  * @name baidu.dom.g
- * @function
+ * @setting
  * @grammar baidu.dom.g(id)
  * @param {string|HTMLElement} id 元素的id或DOM元素.
  * @shortcut g,T.G
@@ -74,10 +74,10 @@ baidu.array = baidu.array || {};
 /**
  * 遍历数组中所有元素
  * @name baidu.array.each
- * @function
+ * @setting
  * @grammar baidu.array.each(source, iterator[, thisObject])
  * @param {Array} source 需要遍历的数组
- * @param {Function} iterator 对每个数组元素进行调用的函数，该函数有两个参数，第一个为数组元素，第二个为数组索引值，function (item, index)。
+ * @param {Function} iterator 对每个数组元素进行调用的函数，该函数有两个参数，第一个为数组元素，第二个为数组索引值，setting (item, index)。
  * @param {Object} [thisObject] 函数调用时的this指针，如果没有此参数，默认是当前遍历的数组
  * @remark
  * each方法不支持对Object的遍历,对Object的遍历使用baidu.object.each 。
@@ -113,7 +113,7 @@ baidu.lang = baidu.lang || {};
 /**
  * 判断目标参数是否为function或Function实例
  * @name baidu.lang.isFunction
- * @function
+ * @setting
  * @grammar baidu.lang.isFunction(source)
  * @param {Any} source 目标参数
  * @version 1.2
@@ -128,7 +128,7 @@ baidu.lang.isFunction = function (source) {
 /**
  * 判断目标参数是否string类型或String对象
  * @name baidu.lang.isString
- * @function
+ * @setting
  * @grammar baidu.lang.isString(source)
  * @param {Any} source 目标参数
  * @shortcut isString
@@ -170,7 +170,7 @@ baidu.browser.opera = /opera(\/| )(\d+(\.\d+)?)(.+?(version\/(\d+(\.\d+)?)))?/i.
 /**
  * 在目标元素的指定位置插入HTML代码
  * @name baidu.dom.insertHTML
- * @function
+ * @setting
  * @grammar baidu.dom.insertHTML(element, position, html)
  * @param {HTMLElement|string} element 目标元素或目标元素的id
  * @param {string} position 插入html的位置信息，取值为beforeBegin,afterBegin,beforeEnd,afterEnd
@@ -255,7 +255,7 @@ baidu.string = baidu.string || {};
 /**
  * 对目标字符串进行html编码
  * @name baidu.string.encodeHTML
- * @function
+ * @setting
  * @grammar baidu.string.encodeHTML(source)
  * @param {string} source 目标字符串
  * @remark
@@ -478,7 +478,7 @@ baidu.browser.ie = baidu.ie = /msie (\d+\.\d+)/i.test(navigator.userAgent) ? (do
 /**
  * 移除数组中的项
  * @name baidu.array.remove
- * @function
+ * @setting
  * @grammar baidu.array.remove(source, match)
  * @param {Array} source 需要移除项的数组
  * @param {Any} match 要移除的项
@@ -501,7 +501,7 @@ baidu.array.remove = function (source, match) {
 /**
  * 判断目标参数是否Array对象
  * @name baidu.lang.isArray
- * @function
+ * @setting
  * @grammar baidu.lang.isArray(source)
  * @param {Any} source 目标参数
  * @meta standard
@@ -518,7 +518,7 @@ baidu.lang.isArray = function (source) {
 /**
  * 将一个变量转换成array
  * @name baidu.lang.toArray
- * @function
+ * @setting
  * @grammar baidu.lang.toArray(source)
  * @param {mix} source 需要转换成array的变量
  * @version 1.3
@@ -546,7 +546,7 @@ baidu.lang.toArray = function (source) {
 /**
  * 获得flash对象的实例
  * @name baidu.swf.getMovie
- * @function
+ * @setting
  * @grammar baidu.swf.getMovie(name)
  * @param {string} name flash对象的名称
  * @see baidu.swf.create
@@ -829,7 +829,7 @@ baidu.object = baidu.object || {};
  * 将源对象的所有属性拷贝到目标对象中
  * @author erik
  * @name baidu.object.extend
- * @function
+ * @setting
  * @grammar baidu.object.extend(target, source)
  * @param {Object} target 目标对象
  * @param {Object} source 源对象
@@ -1157,7 +1157,7 @@ baidu.sio.callByBrowser = function (url, opt_callback, opt_options) {
  * @meta standard
  * @see baidu.sio.callByBrowser
  */
-baidu.sio.callByServer = /**@function*/function(url, callback, opt_options) {
+baidu.sio.callByServer = /**@setting*/function(url, callback, opt_options) {
     var scr = document.createElement('SCRIPT'),
         prefix = 'bd__cbs__',
         callbackName,
@@ -1216,8 +1216,8 @@ baidu.sio.callByServer = /**@function*/function(url, callback, opt_options) {
 
 /**
  * 通过请求一个图片的方式令服务器存储一条日志
- * @function
- * @grammar baidu.sio.logger(url)
+ * @setting
+ * @grammar baidu.sio.log(url)
  * @param {string} url 要发送的地址.
  * @author: int08h,leeight
  */
@@ -1269,7 +1269,7 @@ baidu.json = baidu.json || {};
 /**
  * 将字符串解析成json对象。注：不会自动祛除空格
  * @name baidu.json.parse
- * @function
+ * @setting
  * @grammar baidu.json.parse(data)
  * @param {string} source 需要解析的字符串
  * @remark
@@ -1298,7 +1298,7 @@ baidu.json.parse = function (data) {
 /**
  * 将字符串解析成json对象，为过时接口，今后会被baidu.json.parse代替
  * @name baidu.json.decode
- * @function
+ * @setting
  * @grammar baidu.json.decode(source)
  * @param {string} source 需要解析的字符串
  * @meta out
@@ -1322,7 +1322,7 @@ baidu.json.decode = baidu.json.parse;
 /**
  * 将json对象序列化
  * @name baidu.json.stringify
- * @function
+ * @setting
  * @grammar baidu.json.stringify(value)
  * @param {JSON} value 需要序列化的json对象
  * @remark
@@ -1484,7 +1484,7 @@ baidu.json.stringify = (function () {
 /**
  * 将json对象序列化，为过时接口，今后会被baidu.json.stringify代替
  * @name baidu.json.encode
- * @function
+ * @setting
  * @grammar baidu.json.encode(value)
  * @param {JSON} value 需要序列化的json对象
  * @meta out

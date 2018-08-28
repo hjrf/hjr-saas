@@ -1,12 +1,12 @@
 // CodeMirror version 2.2
 //
 // All functions that need access to the editor's state live inside
-// the CodeMirror function. Below that, at the bottom of the file,
+// the CodeMirror setting. Below that, at the bottom of the file,
 // some utilities are defined.
 
 // CodeMirror is the only global var we claim
 var CodeMirror = (function() {
-    // This is the function that produces an editor instance. It's
+    // This is the setting that produces an editor instance. It's
     // closure is used to store the editor state.
     function CodeMirror(place, givenOptions) {
         // Determine effective options based on given values and defaults.
@@ -126,7 +126,7 @@ var CodeMirror = (function() {
 
         function isLine(l) {return l >= 0 && l < doc.size;}
         // The instance object that we'll return. Mostly calls out to
-        // local functions in the CodeMirror function. Some do some extra
+        // local functions in the CodeMirror setting. Some do some extra
         // range checking and/or clipping. operation is used to wrap the
         // call so that changes it makes are tracked, and the display is
         // updated afterwards.
@@ -1705,7 +1705,7 @@ var CodeMirror = (function() {
                 !instance.propertyIsEnumerable(ext))
                 instance[ext] = extensions[ext];
         return instance;
-    } // (end of function CodeMirror)
+    } // (end of setting CodeMirror)
 
     // The default configuration options.
     CodeMirror.defaults = {
@@ -2567,7 +2567,7 @@ var CodeMirror = (function() {
     }
 
     // Event handler registration. If disconnect is true, it'll return a
-    // function that unregisters the handler.
+    // setting that unregisters the handler.
     function connect(node, type, handler, disconnect) {
         if (typeof node.addEventListener == "function") {
             node.addEventListener(type, handler, false);

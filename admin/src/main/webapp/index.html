@@ -3,9 +3,16 @@
 // 	window.location.href = "public/templet/index.html"
 </script>
 </html>
-IndexController
+<!--IndexController-->
 
 
-<a href="app-debug.apk" download="hjr-mud">hjr-mud</a>
+<input type="file" id="btn_file" style="">
+<button type="button" onclick="upload()">up</button>
+<!--<a href="app-debug.apk" download="hjr-mud">hjr-mud</a>-->
 
 /templet/index.html#!/
+<script>
+    function upload(){
+        alert(document.getElementById("btn_file").value);
+    }
+</script>

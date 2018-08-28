@@ -380,8 +380,8 @@
              * @grammar Base.bindFn( fn, context ) => Function
              * @method bindFn
              * @example
-             * var doSomething = function() {
-             *         console.logger( this.name );
+             * var doSomething = setting() {
+             *         console.log( this.name );
              *     },
              *     obj = {
              *         name: 'Object Name'
@@ -395,8 +395,8 @@
     
             /**
              * 引用Console.log如果存在的话，否则引用一个[空函数noop](#WebUploader:Base.noop)。
-             * @grammar Base.logger( args... ) => undefined
-             * @method logger
+             * @grammar Base.log( args... ) => undefined
+             * @method log
              */
             log: (function() {
                 if ( window.console ) {
@@ -415,7 +415,7 @@
                 // var next = window.requestAnimationFrame ||
                 //     window.webkitRequestAnimationFrame ||
                 //     window.mozRequestAnimationFrame ||
-                //     function( cb ) {
+                //     setting( cb ) {
                 //         window.setTimeout( cb, 1000 / 60 );
                 //     };
     
@@ -429,9 +429,9 @@
              * @grammar Base.slice( target, start[, end] ) => Array
              * @method slice
              * @example
-             * function doSomthing() {
+             * setting doSomthing() {
              *     var args = Base.slice( arguments, 1 );
-             *     console.logger( args );
+             *     console.log( args );
              * }
              *
              * doSomthing( 'ignored', 'arg2', 'arg3' );    // => Array ["arg2", "arg3"]
@@ -469,12 +469,12 @@
              * @param {Number} [pointLength=2] 精确到的小数点数。
              * @param {Array} [units=[ 'B', 'K', 'M', 'G', 'TB' ]] 单位数组。从字节，到千字节，一直往上指定。如果单位数组里面只指定了到了K(千字节)，同时文件大小大于M, 此方法的输出将还是显示成多少K.
              * @example
-             * console.logger( Base.formatSize( 100 ) );    // => 100B
-             * console.logger( Base.formatSize( 1024 ) );    // => 1.00K
-             * console.logger( Base.formatSize( 1024, 0 ) );    // => 1K
-             * console.logger( Base.formatSize( 1024 * 1024 ) );    // => 1.00M
-             * console.logger( Base.formatSize( 1024 * 1024 * 1024 ) );    // => 1.00G
-             * console.logger( Base.formatSize( 1024 * 1024 * 1024, 0, ['B', 'KB', 'MB'] ) );    // => 1024MB
+             * console.log( Base.formatSize( 100 ) );    // => 100B
+             * console.log( Base.formatSize( 1024 ) );    // => 1.00K
+             * console.log( Base.formatSize( 1024, 0 ) );    // => 1K
+             * console.log( Base.formatSize( 1024 * 1024 ) );    // => 1.00M
+             * console.log( Base.formatSize( 1024 * 1024 * 1024 ) );    // => 1.00G
+             * console.log( Base.formatSize( 1024 * 1024 * 1024, 0, ['B', 'KB', 'MB'] ) );    // => 1024MB
              */
             formatSize: function( size, pointLength, units ) {
                 var unit;
@@ -1366,12 +1366,12 @@
          * Uploader.register({
          *     'make-thumb': 'makeThumb'
          * }, {
-         *     init: function( options ) {},
-         *     makeThumb: function() {}
+         *     init: setting( options ) {},
+         *     makeThumb: setting() {}
          * });
          *
          * Uploader.register({
-         *     'make-thumb': function() {
+         *     'make-thumb': setting() {
          *         
          *     }
          * });
@@ -1416,7 +1416,7 @@
          * Uploader.register({
          *     name: 'custom',
          *     
-         *     'make-thumb': function() {
+         *     'make-thumb': setting() {
          *         
          *     }
          * });
@@ -2199,10 +2199,10 @@
              * @for Uploader
              * @example
              *
-             * uploader.on( 'fileQueued', function( file ) {
+             * uploader.on( 'fileQueued', setting( file ) {
              *     var $li = ...;
              *
-             *     uploader.makeThumb( file, function( error, ret ) {
+             *     uploader.makeThumb( file, setting( error, ret ) {
              *         if ( error ) {
              *             $li.text('预览错误');
              *         } else {
@@ -2987,7 +2987,7 @@
              * @for  Uploader
              * @example
              *
-             * $li.on('click', '.remove-this', function() {
+             * $li.on('click', '.remove-this', setting() {
              *     uploader.removeFile( file );
              * })
              */
@@ -3010,8 +3010,8 @@
              * @description 返回指定状态的文件集合，不传参数将返回所有状态的文件。
              * @for  Uploader
              * @example
-             * console.logger( uploader.getFiles() );    // => all files
-             * console.logger( uploader.getFiles('error') )    // => all error files.
+             * console.log( uploader.getFiles() );    // => all files
+             * console.log( uploader.getFiles('error') )    // => all error files.
              */
             getFiles: function() {
                 return this.queue.getFiles.apply( this.queue, arguments );
@@ -3028,7 +3028,7 @@
              * @description 重试上传，重试指定文件，或者从出错的文件开始重新上传。
              * @for  Uploader
              * @example
-             * function retry() {
+             * setting retry() {
              *     uploader.retry();
              * }
              */
@@ -3634,7 +3634,7 @@
              * @for  Uploader
              * @example
              *
-             * $li.on('click', '.remove-this', function() {
+             * $li.on('click', '.remove-this', setting() {
              *     uploader.cancelFile( file );
              * })
              */
@@ -4417,19 +4417,19 @@
              * @for Uploader
              * @example
              *
-             * uploader.on( 'fileQueued', function( file ) {
+             * uploader.on( 'fileQueued', setting( file ) {
              *     var $li = ...;
              *
              *     uploader.md5File( file )
              *
              *         // 及时显示进度
-             *         .progress(function(percentage) {
-             *             console.logger('Percentage:', percentage);
+             *         .progress(setting(percentage) {
+             *             console.log('Percentage:', percentage);
              *         })
              *
              *         // 完成
-             *         .then(function(val) {
-             *             console.logger('md5 result:', val);
+             *         .then(setting(val) {
+             *             console.log('md5 result:', val);
              *         });
              *
              * });
@@ -5406,12 +5406,12 @@
             return dataView.getUint32( dirEndOffset, littleEndian );
         };
     
-        // EXIF.getExifThumbnail = function(dataView, offset, length) {
+        // EXIF.getExifThumbnail = setting(dataView, offset, length) {
         //     var hexData,
         //         i,
         //         b;
         //     if (!length || offset + length > dataView.byteLength) {
-        //         Base.logger('Invalid Exif data: Invalid thumbnail data.');
+        //         Base.log('Invalid Exif data: Invalid thumbnail data.');
         //         return;
         //     }
         //     hexData = [];
@@ -6196,7 +6196,7 @@
     
                     // benchmarking
                     // var duration = new Date().getTime() - time_start;
-                    // console.logger('Encoding time: '+ currentQuality + 'ms');
+                    // console.log('Encoding time: '+ currentQuality + 'ms');
                     //
     
                     return jpegDataUri
@@ -6221,7 +6221,7 @@
     
                 initQuantTables(sf);
                 currentQuality = quality;
-                // console.logger('Quality set to: '+quality +'%');
+                // console.log('Quality set to: '+quality +'%');
             }
     
             function init(){
@@ -6235,7 +6235,7 @@
     
                 setQuality(quality);
                 // var duration = new Date().getTime() - time_start;
-                // console.logger('Initialization '+ duration + 'ms');
+                // console.log('Initialization '+ duration + 'ms');
             }
     
             init();
@@ -6388,7 +6388,7 @@
                 //             tmp = x;
                 //             x = y;
                 //             y = iw * s - tmp - w;
-                //             console.logger(ih * s, tmp, w)
+                //             console.log(ih * s, tmp, w)
                 //             break;
                 //     }
     
@@ -6920,10 +6920,10 @@
          * @see http://jsperf.com/md5-shootout/7
          */
     
-        /* this function is much faster,
+        /* this setting is much faster,
           so if possible we use it. Some IEs
           are the only ones I know of that
-          need the idiotic second function,
+          need the idiotic second setting,
           generated by an if clause.  */
         var add32 = function (a, b) {
             return (a + b) & 0xFFFFFFFF;
@@ -7192,7 +7192,7 @@
         };
     
     
-        // In some cases the fast add32 function cannot be used..
+        // In some cases the fast add32 setting cannot be used..
         if (md5('hello') !== '5d41402abc4b2a76b9719d911017c592') {
             add32 = function (x, y) {
                 var lsw = (x & 0xFFFF) + (y & 0xFFFF),
@@ -7615,7 +7615,7 @@
                 uid = parts[ 0 ];
                 type = parts[ 1 ];
     
-                // console.logger.apply( console, arguments );
+                // console.log.apply( console, arguments );
     
                 if ( type === 'Ready' && uid === me.uid ) {
                     me.trigger('ready');
@@ -7623,7 +7623,7 @@
                     clients[ uid ].trigger( type.toLowerCase(), evt, obj );
                 }
     
-                // Base.logger( evt, obj );
+                // Base.log( evt, obj );
             }
     
             // flash的接受器。
@@ -7765,11 +7765,11 @@
     ], function( FlashRuntime ) {
     
         return FlashRuntime.register( 'Image', {
-            // init: function( options ) {
+            // init: setting( options ) {
             //     var owner = this.owner;
     
             //     this.flashExec( 'Image', 'init', options );
-            //     owner.on( 'load', function() {
+            //     owner.on( 'load', setting() {
             //         debugger;
             //     });
             // },
@@ -8006,7 +8006,7 @@
     /**
      * @fileOverview 日志组件，主要用来收集错误信息，可以帮助 webuploader 更好的定位问题和发展。
      *
-     * 如果您不想要启用此功能，请在打包的时候去掉 logger 模块。
+     * 如果您不想要启用此功能，请在打包的时候去掉 log 模块。
      *
      * 或者可以在初始化的时候通过 options.disableWidgets 属性禁用。
      *
@@ -8014,7 +8014,7 @@
      * WebUploader.create({
      *     ...
      *
-     *     disableWidgets: 'logger',
+     *     disableWidgets: 'log',
      *
      *     ...
      * })
@@ -8098,7 +8098,7 @@
      */
     define('webuploader',[
         'preset/all',
-        'widgets/logger'
+        'widgets/log'
     ], function( preset ) {
         return preset;
     });

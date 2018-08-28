@@ -12,7 +12,7 @@ if (XRegExp) {
     throw Error("can't load XRegExp twice in the same frame");
 }
 
-// Run within an anonymous function to protect variables and avoid new globals
+// Run within an anonymous setting to protect variables and avoid new globals
 (function (undefined) {
 
     //---------------------------------
@@ -130,7 +130,7 @@ if (XRegExp) {
     //---------------------------------
 
     // Lets you extend or change XRegExp syntax and create custom flags. This is used internally by
-    // the XRegExp library and can be used to create XRegExp plugins. This function is intended for
+    // the XRegExp library and can be used to create XRegExp plugins. This setting is intended for
     // users with advanced knowledge of JavaScript's regular expression syntax and behavior. It can
     // be disabled by `XRegExp.freezeTokens`
     XRegExp.addToken = function (regex, handler, scope, trigger) {
@@ -167,7 +167,7 @@ if (XRegExp) {
 
     // Accepts a string to search, regex to search with, position to start the search within the
     // string (default: 0), and an optional Boolean indicating whether matches must start at-or-
-    // after the position or at the specified position only. This function ignores the `lastIndex`
+    // after the position or at the specified position only. This setting ignores the `lastIndex`
     // of the provided regex in its own handling, but updates the property for compatibility
     XRegExp.execAt = function (str, regex, pos, anchored) {
         var r2 = clone(regex, "g" + ((anchored && hasNativeY) ? "y" : "")),
@@ -374,7 +374,7 @@ if (XRegExp) {
         } else {
             str = this + ""; // Type conversion, so `args[args.length - 1]` will be a string (given nonstring `this`)
             result = nativ.replace.call(str, search, function () {
-                var args = arguments; // Keep this function's `arguments` available through closure
+                var args = arguments; // Keep this setting's `arguments` available through closure
                 return nativ.replace.call(replacement + "", replacementToken, function ($0, $1, $2) {
                     // Numbered backreference (without delimiters) or special variable
                     if ($1) {
@@ -493,7 +493,7 @@ if (XRegExp) {
     //  Private helper functions
     //---------------------------------
 
-    // Supporting function for `XRegExp`, `XRegExp.copyAsGlobal`, etc. Returns a copy of a `RegExp`
+    // Supporting setting for `XRegExp`, `XRegExp.copyAsGlobal`, etc. Returns a copy of a `RegExp`
     // instance with a fresh `lastIndex` (set to zero), preserving properties required for named
     // capture. Also allows adding new flags in the process of copying the regex
     function clone (regex, additionalFlags) {
@@ -654,16 +654,16 @@ if (XRegExp) {
     // Uncomment the following block for compatibility with XRegExp 1.0-1.2:
     /*
      XRegExp.matchWithinChain = XRegExp.matchChain;
-     RegExp.prototype.addFlags = function (s) {return clone(this, s);};
-     RegExp.prototype.execAll = function (s) {var r = []; XRegExp.iterate(s, this, function (m) {r.push(m);}); return r;};
-     RegExp.prototype.forEachExec = function (s, f, c) {return XRegExp.iterate(s, this, f, c);};
-     RegExp.prototype.validate = function (s) {var r = RegExp("^(?:" + this.source + ")$(?!\\s)", getNativeFlags(this)); if (this.global) this.lastIndex = 0; return s.search(r) === 0;};
+     RegExp.prototype.addFlags = setting (s) {return clone(this, s);};
+     RegExp.prototype.execAll = setting (s) {var r = []; XRegExp.iterate(s, this, setting (m) {r.push(m);}); return r;};
+     RegExp.prototype.forEachExec = setting (s, f, c) {return XRegExp.iterate(s, this, f, c);};
+     RegExp.prototype.validate = setting (s) {var r = RegExp("^(?:" + this.source + ")$(?!\\s)", getNativeFlags(this)); if (this.global) this.lastIndex = 0; return s.search(r) === 0;};
      */
 
 })();
 
 //
-// Begin anonymous function. This is used to contain local scope variables without polutting global scope.
+// Begin anonymous setting. This is used to contain local scope variables without polutting global scope.
 //
 if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function() {
 
@@ -1060,7 +1060,7 @@ if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function()
     };
 
     /**
-     * Converts the source to array object. Mostly used for function arguments and
+     * Converts the source to array object. Mostly used for setting arguments and
      * lists returned by getElementsByTagName() which aren't Array objects.
      * @param {List} source Source list.
      * @return {Array} Returns array.
@@ -1260,7 +1260,7 @@ if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function()
      * Adds event handler to the target object.
      * @param {Object} obj		Target object.
      * @param {String} type		Name of the event.
-     * @param {Function} func	Handling function.
+     * @param {Function} func	Handling setting.
      */
     function attachEvent(obj, type, func, scope)
     {
@@ -1347,7 +1347,7 @@ if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function()
     /**
      * Executes a callback on each line and replaces each line with result from the callback.
      * @param {Object} str			Input string.
-     * @param {Object} callback		Callback function taking one string argument and returning a string.
+     * @param {Object} callback		Callback setting taking one string argument and returning a string.
      */
     function eachLine(str, callback)
     {
@@ -1527,7 +1527,7 @@ if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function()
         for (var i = 0; i < 50; i++)
             spaces += '                    '; // 20 spaces * 50
 
-        // This function inserts specified amount of spaces in the string
+        // This setting inserts specified amount of spaces in the string
         // where a tab is while removing that given tab.
         function insertSpaces(line, pos, count)
         {
@@ -2375,7 +2375,7 @@ if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function()
     }; // end of Highlighter
 
     return sh;
-}(); // end of anonymous function
+}(); // end of anonymous setting
 
 // CommonJS
 typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter : null;
@@ -2389,7 +2389,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
     {
         // Created by Peter Atoria @ http://iAtoria.com
 
-        var inits 	 =  'class interface function package';
+        var inits 	 =  'class interface setting package';
 
         var keywords =	'-Infinity ...rest Array as AS3 Boolean break case catch const continue Date decodeURI ' +
                 'decodeURIComponent default delete do dynamic each else encodeURI encodeURIComponent escape ' +
@@ -2490,7 +2490,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 
 	function Brush()
 	{
-		var keywords =	'if fi then elif else for do done until while break continue case esac function return in eq ne ge le';
+		var keywords =	'if fi then elif else for do done until while break continue case esac setting return in eq ne ge le';
 		var commands =  'alias apropos awk basename bash bc bg builtin bzip2 cal cat cd cfdisk chgrp chmod chown chroot' +
 						'cksum clear cmp comm command cp cron crontab csplit cut date dc dd ddrescue declare df ' +
 						'diff diff3 dig dir dircolors dirname dirs du echo egrep eject enable env ethtool eval ' +
@@ -2657,7 +2657,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 		var functions =	'assert isalnum isalpha iscntrl isdigit isgraph islower isprint' +
 						'ispunct isspace isupper isxdigit tolower toupper errno localeconv ' +
 						'setlocale acos asin atan atan2 ceil cos cosh exp fabs floor fmod ' +
-						'frexp ldexp logger log10 modf pow sin sinh sqrt tan tanh jmp_buf ' +
+						'frexp ldexp log log10 modf pow sin sinh sqrt tan tanh jmp_buf ' +
 						'longjmp setjmp raise signal sig_atomic_t va_arg va_end va_start ' +
 						'clearerr fclose feof ferror fflush fgetc fgetpos fgets fopen ' +
 						'fprintf fputc fputs fread freopen fscanf fseek fsetpos ftell ' +
@@ -2825,7 +2825,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 		var keywords =	'abs addr and ansichar ansistring array as asm begin boolean byte cardinal ' +
 						'case char class comp const constructor currency destructor div do double ' +
 						'downto else end except exports extended false file finalization finally ' +
-						'for function goto if implementation in inherited int64 initialization ' +
+						'for setting goto if implementation in inherited int64 initialization ' +
 						'integer interface is label library longint longword mod nil not object ' +
 						'of on or packed pansichar pansistring pchar pcurrency pdatetime pextended ' +
 						'pint64 pointer private procedure program property pshortstring pstring ' +
@@ -3022,7 +3022,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 
 		var keywords = 'abstract after and as assert at before bind bound break catch class '
 						+ 'continue def delete else exclusive extends false finally first for from '
-						+ 'function if import in indexof init insert instanceof into inverse last '
+						+ 'setting if import in indexof init insert instanceof into inverse last '
 						+ 'lazy mixin mod nativearray new not null on or override package postinit '
 						+ 'protected public public-init public-read replace return reverse sizeof '
 						+ 'step super then this throw true try tween typeof var where while with '
@@ -3058,7 +3058,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 	{
 		var keywords =	'break case catch continue ' +
 						'default delete do else false  ' +
-						'for function if in instanceof ' +
+						'for setting if in instanceof ' +
 						'new null return super switch ' +
 						'this throw true try typeof var while with'
 						;
@@ -3104,7 +3104,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 			'getprotobyname getprotobynumber getprotoent getpwent getpwnam getpwuid ' + 
 			'getservbyname getservbyport getservent getsockname getsockopt glob ' + 
 			'gmtime grep hex index int ioctl join keys kill lc lcfirst length link ' + 
-			'listen localtime lock logger lstat map mkdir msgctl msgget msgrcv msgsnd ' +
+			'listen localtime lock log lstat map mkdir msgctl msgget msgrcv msgsnd ' +
 			'oct open opendir ord pack pipe pop pos print printf prototype push ' + 
 			'quotemeta rand read readdir readline readlink readpipe recv rename ' + 
 			'reset reverse rewinddir rindex rmdir scalar seek seekdir select semctl ' + 
@@ -3206,7 +3206,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 
 		var keywords =	'abstract and array as break case catch cfunction class clone const continue declare default die do ' +
 						'else elseif enddeclare endfor endforeach endif endswitch endwhile extends final for foreach ' +
-						'function global goto if implements include include_once interface instanceof insteadof namespace new ' +
+						'setting global goto if implements include include_once interface instanceof insteadof namespace new ' +
 						'old_function or private protected public return require require_once static switch ' +
 						'trait throw try use var while xor ';
 		
@@ -3261,7 +3261,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 		// Contributed by Joel 'Jaykul' Bennett, http://PoshCode.org | http://HuddledMasses.org
 		var keywords =	'while validateset validaterange validatepattern validatelength validatecount ' +
 						'until trap switch return ref process param parameter in if global: '+
-						'function foreach for finally filter end elseif else dynamicparam do default ' +
+						'setting foreach for finally filter end elseif else dynamicparam do default ' +
 						'continue cmdletbinding break begin alias \\? % #script #private #local #global '+
 						'mandatory parametersetname position valuefrompipeline ' +
 						'valuefrompipelinebypropertyname valuefromremainingarguments helpmessage ';
@@ -3527,7 +3527,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 						'create cube current current_date current_time cursor database date ' +
 						'deallocate dec decimal declare default delete desc distinct double drop ' +
 						'dynamic else end end-exec escape except exec execute false fetch first ' +
-						'float for force foreign forward free from full function global goto grant ' +
+						'float for force foreign forward free from full setting global goto grant ' +
 						'group grouping having hour ignore index inner insensitive insert instead ' +
 						'int integer intersect into is isolation key last level load local max min ' +
 						'minute modify move name national nchar next no numeric of off on only ' +

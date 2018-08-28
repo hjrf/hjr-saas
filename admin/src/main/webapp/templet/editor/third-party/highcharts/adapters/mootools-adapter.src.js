@@ -156,7 +156,7 @@ win.HighchartsAdapter = {
 	},
 
 	/**
-	 * MooTool's each function
+	 * MooTool's each setting
 	 *
 	 */
 	each: function (arr, fn) {
@@ -223,7 +223,7 @@ win.HighchartsAdapter = {
 	 * @param {Function} fn Event handler
 	 */
 	addEvent: function (el, type, fn) {
-		if (typeof type === 'string') { // chart broke due to el being string, type function
+		if (typeof type === 'string') { // chart broke due to el being string, type setting
 
 			if (type === 'unload') { // Moo self destructs before custom unload events
 				type = 'beforeunload';
@@ -272,7 +272,7 @@ win.HighchartsAdapter = {
 			event.target = event.event.target;
 		}
 
-		// override the preventDefault function to be able to use
+		// override the preventDefault setting to be able to use
 		// this for custom events
 		event.preventDefault = function () {
 			defaultFunction = null;

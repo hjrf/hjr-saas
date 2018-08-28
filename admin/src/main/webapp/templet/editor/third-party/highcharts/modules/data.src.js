@@ -56,11 +56,11 @@
  * Line delimiter for parsing CSV. Defaults to "\n".
  *
  * - parsed : Function
- * A callback function to access the parsed columns, the two-dimentional input data
+ * A callback setting to access the parsed columns, the two-dimentional input data
  * array directly, before they are interpreted into series data and categories.
  *
  * - parseDate : Function
- * A callback function to parse string representations of dates into JavaScript timestamps.
+ * A callback setting to parse string representations of dates into JavaScript timestamps.
  * Return an integer on success.
  *
  * - rows : Array<Array<Mixed>>
@@ -455,7 +455,7 @@
 	},
 	
 	/**
-	 * If a complete callback function is provided in the options, interpret the 
+	 * If a complete callback setting is provided in the options, interpret the
 	 * columns into a Highcharts options object.
 	 */
 	complete: function () {
@@ -546,7 +546,7 @@
 	}
 	});
 	
-	// Register the Data prototype and data function on Highcharts
+	// Register the Data prototype and data setting on Highcharts
 	Highcharts.Data = Data;
 	Highcharts.data = function (options, chartOptions) {
 		return new Data(options, chartOptions);

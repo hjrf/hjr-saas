@@ -144,7 +144,7 @@ defaultOptions.exporting = {
 			,{
 
 				text: 'View SVG',
-				onclick: function () {
+				onclick: setting () {
 					var svg = this.getSVG()
 						.replace(/</g, '\n&lt;')
 						.replace(/>/g, '&gt;');
@@ -208,7 +208,7 @@ extend(Chart.prototype, {
 
 		// IE compatibility hack for generating SVG content that it doesn't really understand
 		if (!doc.createElementNS) {
-			/*jslint unparam: true*//* allow unused parameter ns in function below */
+			/*jslint unparam: true*//* allow unused parameter ns in setting below */
 			doc.createElementNS = function (ns, tagName) {
 				return doc.createElement(tagName);
 			};
@@ -296,7 +296,7 @@ extend(Chart.prototype, {
 			.replace(/\n/, ' ')
 			.replace(/<\/svg>.*?$/, '</svg>') // any HTML added to the container after the SVG (#894)
 			/* This fails in IE < 8
-			.replace(/([0-9]+)\.([0-9]+)/g, function(s1, s2, s3) { // round off to save weight
+			.replace(/([0-9]+)\.([0-9]+)/g, setting(s1, s2, s3) { // round off to save weight
 				return s2 +'.'+ s3[0];
 			})*/
 

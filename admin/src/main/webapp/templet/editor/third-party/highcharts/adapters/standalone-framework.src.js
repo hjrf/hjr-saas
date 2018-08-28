@@ -144,7 +144,7 @@ function augment(obj) {
 					preventDefault,
 					fn;
 
-				// Attach a simple preventDefault function to skip default handler if called
+				// Attach a simple preventDefault setting to skip default handler if called
 				preventDefault = function () {
 					args.defaultPrevented = true;
 				};

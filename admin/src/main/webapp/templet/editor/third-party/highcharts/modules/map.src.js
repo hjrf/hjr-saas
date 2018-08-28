@@ -294,7 +294,7 @@
 		/**
 		 * Fit an inner box to an outer. If the inner box overflows left or right, align it to the sides of the
 		 * outer. If it overflows both sides, fit it within the outer. This is a pattern that occurs more places
-		 * in Highcharts, perhaps it should be elevated to a common utility function.
+		 * in Highcharts, perhaps it should be elevated to a common utility setting.
 		 */
 		fitToBox: function (inner, outer) {
 			each([['x', 'width'], ['y', 'height']], function (dim) {

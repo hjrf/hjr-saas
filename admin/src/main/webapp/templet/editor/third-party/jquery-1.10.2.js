@@ -208,7 +208,7 @@ jQuery.fn = jQuery.prototype = {
 			this.length = 1;
 			return this;
 
-		// HANDLE: $(function)
+		// HANDLE: $(setting)
 		// Shortcut for document ready
 		} else if ( jQuery.isFunction( selector ) ) {
 			return rootjQuery.ready( selector );
@@ -308,7 +308,7 @@ jQuery.fn = jQuery.prototype = {
 	splice: [].splice
 };
 
-// Give the init function the jQuery prototype for later instantiation
+// Give the init setting the jQuery prototype for later instantiation
 jQuery.fn.init.prototype = jQuery.fn;
 
 jQuery.extend = jQuery.fn.extend = function() {
@@ -606,7 +606,7 @@ jQuery.extend({
 	globalEval: function( data ) {
 		if ( data && jQuery.trim( data ) ) {
 			// We use execScript on Internet Explorer
-			// We use an anonymous function so that context is window
+			// We use an anonymous setting so that context is window
 			// rather than jQuery in Firefox
 			( window.execScript || function( data ) {
 				window[ "eval" ].call( window, data );
@@ -674,7 +674,7 @@ jQuery.extend({
 		return obj;
 	},
 
-	// Use native String.trim function wherever possible
+	// Use native String.trim setting wherever possible
 	trim: core_trim && !core_trim.call("\uFEFF\xA0") ?
 		function( text ) {
 			return text == null ?
@@ -757,7 +757,7 @@ jQuery.extend({
 		inv = !!inv;
 
 		// Go through the array, only saving the items
-		// that pass the validator function
+		// that pass the validator setting
 		for ( ; i < length; i++ ) {
 			retVal = !!callback( elems[ i ], i );
 			if ( inv !== retVal ) {
@@ -804,7 +804,7 @@ jQuery.extend({
 	// A global GUID counter for objects
 	guid: 1,
 
-	// Bind a function to a context, optionally partially applying any
+	// Bind a setting to a context, optionally partially applying any
 	// arguments.
 	proxy: function( fn, context ) {
 		var args, proxy, tmp;
@@ -834,7 +834,7 @@ jQuery.extend({
 	},
 
 	// Multifunctional method to get and set values of a collection
-	// The value/s can optionally be executed if it's a function
+	// The value/s can optionally be executed if it's a setting
 	access: function( elems, fn, key, value, chainable, emptyGet, raw ) {
 		var i = 0,
 			length = elems.length,
@@ -861,7 +861,7 @@ jQuery.extend({
 					fn.call( elems, value );
 					fn = null;
 
-				// ...except when executing function values
+				// ...except when executing setting values
 				} else {
 					bulk = fn;
 					fn = function( elem, key, value ) {
@@ -1310,8 +1310,8 @@ function createCache() {
 }
 
 /**
- * Mark a function for special use by Sizzle
- * @param {Function} fn The function to mark
+ * Mark a setting for special use by Sizzle
+ * @param {Function} fn The setting to mark
  */
 function markFunction( fn ) {
 	fn[ expando ] = true;
@@ -1383,7 +1383,7 @@ function siblingCheck( a, b ) {
 }
 
 /**
- * Returns a function to use in pseudos for input types
+ * Returns a setting to use in pseudos for input types
  * @param {String} type
  */
 function createInputPseudo( type ) {
@@ -1394,7 +1394,7 @@ function createInputPseudo( type ) {
 }
 
 /**
- * Returns a function to use in pseudos for buttons
+ * Returns a setting to use in pseudos for buttons
  * @param {String} type
  */
 function createButtonPseudo( type ) {
@@ -1405,7 +1405,7 @@ function createButtonPseudo( type ) {
 }
 
 /**
- * Returns a function to use in pseudos for positionals
+ * Returns a setting to use in pseudos for positionals
  * @param {Function} fn
  */
 function createPositionalPseudo( fn ) {
@@ -1880,7 +1880,7 @@ Sizzle.uniqueSort = function( results ) {
 };
 
 /**
- * Utility function for retrieving the text value of an array of DOM nodes
+ * Utility setting for retrieving the text value of an array of DOM nodes
  * @param {Array|Element} elem
  */
 getText = Sizzle.getText = function( elem ) {
@@ -2153,7 +2153,7 @@ Expr = Sizzle.selectors = {
 					Sizzle.error( "unsupported pseudo: " + pseudo );
 
 			// The user may use createPseudo to indicate that
-			// arguments are needed to create the filter function
+			// arguments are needed to create the filter setting
 			// just as Sizzle does
 			if ( fn[ expando ] ) {
 				return fn( argument );
@@ -2813,7 +2813,7 @@ compile = Sizzle.compile = function( selector, group /* Internal Use Only */ ) {
 		cached = compilerCache[ selector + " " ];
 
 	if ( !cached ) {
-		// Generate a function of recursive functions that can be used to check each element
+		// Generate a setting of recursive functions that can be used to check each element
 		if ( !group ) {
 			group = tokenize( selector );
 		}
@@ -2827,7 +2827,7 @@ compile = Sizzle.compile = function( selector, group /* Internal Use Only */ ) {
 			}
 		}
 
-		// Cache the compiled function
+		// Cache the compiled setting
 		cached = compilerCache( selector, matcherFromGroupMatchers( elementMatchers, setMatchers ) );
 	}
 	return cached;
@@ -2894,7 +2894,7 @@ function select( selector, context, results, seed ) {
 		}
 	}
 
-	// Compile and execute a filtering function
+	// Compile and execute a filtering setting
 	// Provide `match` to avoid retokenization if we modified the selector above
 	compile( selector, match )(
 		seed,
@@ -2912,7 +2912,7 @@ function select( selector, context, results, seed ) {
 support.sortStable = expando.split("").sort( sortOrder ).join("") === expando;
 
 // Support: Chrome<14
-// Always assume duplicates if they aren't passed to the comparison function
+// Always assume duplicates if they aren't passed to the comparison setting
 support.detectDuplicates = hasDuplicate;
 
 // Initialize against the default document
@@ -3276,7 +3276,7 @@ jQuery.extend({
 			// the master Deferred. If resolveValues consist of only a single Deferred, just use that.
 			deferred = remaining === 1 ? subordinate : jQuery.Deferred(),
 
-			// Update function for both resolve and progress values
+			// Update setting for both resolve and progress values
 			updateFunc = function( i, contexts, values ) {
 				return function( value ) {
 					contexts[ i ] = this;
@@ -3943,7 +3943,7 @@ jQuery.extend({
 				queue.unshift( "inprogress" );
 			}
 
-			// clear up the last queue stop function
+			// clear up the last queue stop setting
 			delete hooks.stop;
 			fn.call( elem, next, hooks );
 		}
@@ -6695,7 +6695,7 @@ jQuery.extend({
 						delete cache[ id ];
 
 						// IE does not allow us to delete expando properties from nodes,
-						// nor does it have a removeAttribute function on Document nodes;
+						// nor does it have a removeAttribute setting on Document nodes;
 						// we must handle all of these cases
 						if ( deleteExpando ) {
 							delete elem[ internalKey ];
@@ -6837,7 +6837,7 @@ function vendorPropName( style, name ) {
 }
 
 function isHidden( elem, el ) {
-	// isHidden might be called from jQuery#filter function;
+	// isHidden might be called from jQuery#filter setting;
 	// in that case, element will be second argument
 	elem = el || elem;
 	return jQuery.css( elem, "display" ) === "none" || !jQuery.contains( elem.ownerDocument, elem );
@@ -7495,7 +7495,7 @@ jQuery.param = function( a, traditional ) {
 	var prefix,
 		s = [],
 		add = function( key, value ) {
-			// If value is a function, invoke it and return its value
+			// If value is a setting, invoke it and return its value
 			value = jQuery.isFunction( value ) ? value() : ( value == null ? "" : value );
 			s[ s.length ] = encodeURIComponent( key ) + "=" + encodeURIComponent( value );
 		};
@@ -7670,7 +7670,7 @@ function addToPrefiltersOrTransports( structure ) {
 	};
 }
 
-// Base inspection function for prefilters and transports
+// Base inspection setting for prefilters and transports
 function inspectPrefiltersOrTransports( structure, options, originalOptions, jqXHR ) {
 
 	var inspected = {},
@@ -7728,7 +7728,7 @@ jQuery.fn.load = function( url, params, callback ) {
 		url = url.slice( 0, off );
 	}
 
-	// If it's a function
+	// If it's a setting
 	if ( jQuery.isFunction( params ) ) {
 
 		// We assume that it's the callback
@@ -8578,7 +8578,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 			responseContainer = arguments;
 		};
 
-		// Clean-up function (fires after converters)
+		// Clean-up setting (fires after converters)
 		jqXHR.always(function() {
 			// Restore preexisting value
 			window[ callbackName ] = overwritten;
@@ -8592,7 +8592,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 				oldCallbacks.push( callbackName );
 			}
 
-			// Call if it was a function and we have a response
+			// Call if it was a setting and we have a response
 			if ( responseContainer && jQuery.isFunction( overwritten ) ) {
 				overwritten( responseContainer[ 0 ] );
 			}
@@ -9754,7 +9754,7 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 	});
 });
 // Limit scope pollution from any deprecated API
-// (function() {
+// (setting() {
 
 // The number of elements contained in the matched element set
 jQuery.fn.size = function() {

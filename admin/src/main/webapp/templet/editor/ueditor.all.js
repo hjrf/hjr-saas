@@ -51,7 +51,7 @@ var browser = UE.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.ie ) {
-         *     console.logger( '当前浏览器是IE' );
+         *     console.log( '当前浏览器是IE' );
          * }
          * ```
          */
@@ -62,7 +62,7 @@ var browser = UE.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.opera ) {
-         *     console.logger( '当前浏览器是Opera' );
+         *     console.log( '当前浏览器是Opera' );
          * }
          * ```
          */
@@ -73,7 +73,7 @@ var browser = UE.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.webkit ) {
-         *     console.logger( '当前浏览器是webkit内核浏览器' );
+         *     console.log( '当前浏览器是webkit内核浏览器' );
          * }
          * ```
          */
@@ -84,7 +84,7 @@ var browser = UE.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.mac ) {
-         *     console.logger( '当前浏览器运行在mac平台下' );
+         *     console.log( '当前浏览器运行在mac平台下' );
          * }
          * ```
          */
@@ -95,7 +95,7 @@ var browser = UE.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.quirks ) {
-         *     console.logger( '当前浏览器运行处于“怪异模式”' );
+         *     console.log( '当前浏览器运行处于“怪异模式”' );
          * }
          * ```
          */
@@ -107,7 +107,7 @@ var browser = UE.browser = function(){
     * @example
     * ```javascript
     * if ( UE.browser.gecko ) {
-    *     console.logger( '当前浏览器内核是gecko内核' );
+    *     console.log( '当前浏览器内核是gecko内核' );
     * }
     * ```
     */
@@ -137,7 +137,7 @@ var browser = UE.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.ie9Compat ) {
-         *     console.logger( '当前浏览器运行在IE9兼容模式下' );
+         *     console.log( '当前浏览器运行在IE9兼容模式下' );
          * }
          * ```
          */
@@ -149,7 +149,7 @@ var browser = UE.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.ie8 ) {
-         *     console.logger( '当前浏览器是IE8浏览器' );
+         *     console.log( '当前浏览器是IE8浏览器' );
          * }
          * ```
          */
@@ -161,7 +161,7 @@ var browser = UE.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.ie8Compat ) {
-         *     console.logger( '当前浏览器运行在IE8兼容模式下' );
+         *     console.log( '当前浏览器运行在IE8兼容模式下' );
          * }
          * ```
          */
@@ -173,7 +173,7 @@ var browser = UE.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.ie7Compat ) {
-         *     console.logger( '当前浏览器运行在IE7兼容模式下' );
+         *     console.log( '当前浏览器运行在IE7兼容模式下' );
          * }
          * ```
          */
@@ -186,7 +186,7 @@ var browser = UE.browser = function(){
          * @example
          * ```javascript
          * if ( UE.browser.ie6Compat ) {
-         *     console.logger( '当前浏览器运行在IE6模式或者怪异模式下' );
+         *     console.log( '当前浏览器运行在IE6模式或者怪异模式下' );
          * }
          * ```
          */
@@ -259,7 +259,7 @@ var browser = UE.browser = function(){
      * </ul>
      * @example
      * ```javascript
-     * console.logger( '当前浏览器版本号是： ' + UE.browser.version );
+     * console.log( '当前浏览器版本号是： ' + UE.browser.version );
      * ```
      */
     browser.version = version;
@@ -269,7 +269,7 @@ var browser = UE.browser = function(){
      * @example
      * ```javascript
      * if ( UE.browser.isCompatible ) {
-     *     console.logger( '浏览器与UEditor能够良好兼容' );
+     *     console.log( '浏览器与UEditor能够良好兼容' );
      * }
      * ```
      */
@@ -320,7 +320,7 @@ var utils = UE.utils = {
      * //output: key1: 1, key2: 2
      * UE.utils.each( demoObj, funciton ( value, key ) {
      *
-     *     console.logger( key + ":" + value );
+     *     console.log( key + ":" + value );
      *
      * } );
      * ```
@@ -338,7 +338,7 @@ var utils = UE.utils = {
      * //output: 0: DIV, 1: DIV ...
      * UE.utils.each( divs, funciton ( value, key ) {
      *
-     *     console.logger( key + ":" + value.tagName );
+     *     console.log( key + ":" + value.tagName );
      *
      * } );
      * ```
@@ -368,7 +368,7 @@ var utils = UE.utils = {
      * @example
      * ```javascript
      *
-     * var protoObject = { sayHello: function () { console.logger('Hello UEditor!'); } };
+     * var protoObject = { sayHello: setting () { console.log('Hello UEditor!'); } };
      *
      * var newObject = UE.utils.makeInstance( protoObject );
      * //output: Hello UEditor!
@@ -400,7 +400,7 @@ var utils = UE.utils = {
      * UE.utils.extend( target, source );
      *
      * //output: { name: 'source', sex: 1, age: 17 }
-     * console.logger( target );
+     * console.log( target );
      *
      * ```
      */
@@ -422,7 +422,7 @@ var utils = UE.utils = {
      * UE.utils.extend( target, source, true );
      *
      * //output: { name: 'target', sex: 1, age: 17 }
-     * console.logger( target );
+     * console.log( target );
      *
      * ```
      */
@@ -456,7 +456,7 @@ var utils = UE.utils = {
      * UE.utils.extend2( target, source1, source2 );
      *
      * //output: { name: 'source', age: 17, title: 'dev' }
-     * console.logger( target );
+     * console.log( target );
      *
      * ```
      */
@@ -482,17 +482,17 @@ var utils = UE.utils = {
      * @return { Object } 继承superClass后的子类对象
      * @example
      * ```javascript
-     * function SuperClass(){
+     * setting SuperClass(){
      *     this.name = "小李";
      * }
      *
      * SuperClass.prototype = {
-     *     hello:function(str){
-     *         console.logger(this.name + str);
+     *     hello:setting(str){
+     *         console.log(this.name + str);
      *     }
      * }
      *
-     * function SubClass(){
+     * setting SubClass(){
      *     this.name = "小张";
      * }
      *
@@ -523,8 +523,8 @@ var utils = UE.utils = {
      * var name = 'window',
      *     newTest = null;
      *
-     * function test () {
-     *     console.logger( this.name );
+     * setting test () {
+     *     console.log( this.name );
      * }
      *
      * newTest = UE.utils.bind( test, { name: 'object' } );
@@ -555,8 +555,8 @@ var utils = UE.utils = {
      * ```javascript
      * var start = 0;
      *
-     * function test(){
-     *     console.logger( new Date() - start );
+     * setting test(){
+     *     console.log( new Date() - start );
      * }
      *
      * var testDefer = UE.utils.defer( test, 1000 );
@@ -581,8 +581,8 @@ var utils = UE.utils = {
      * @example
      * ```javascript
      *
-     * function test(){
-     *     console.logger(1);
+     * setting test(){
+     *     console.log(1);
      * }
      *
      * var testDefer = UE.utils.defer( test, 1000, true );
@@ -615,7 +615,7 @@ var utils = UE.utils = {
      *     arr = [ 3, 4, 6, 8, 1, 1, 2 ];
      *
      * //output: 4
-     * console.logger( UE.utils.indexOf( arr, item ) );
+     * console.log( UE.utils.indexOf( arr, item ) );
      * ```
      */
 
@@ -633,7 +633,7 @@ var utils = UE.utils = {
      *     arr = [ 3, 4, 6, 8, 1, 2, 8, 3, 2, 1, 1, 4 ];
      *
      * //output: 9
-     * console.logger( UE.utils.indexOf( arr, item, 5 ) );
+     * console.log( UE.utils.indexOf( arr, item, 5 ) );
      * ```
      */
     indexOf:function (array, item, start) {
@@ -660,7 +660,7 @@ var utils = UE.utils = {
      *
      * UE.utils.removeItem( arr, 4 );
      * //output: [ 5, 7, 1, 3, 6 ]
-     * console.logger( arr );
+     * console.log( arr );
      *
      * ```
      */
@@ -684,13 +684,13 @@ var utils = UE.utils = {
      * var str = " UEdtior ";
      *
      * //output: 9
-     * console.logger( str.length );
+     * console.log( str.length );
      *
      * //output: 7
-     * console.logger( UE.utils.trim( " UEdtior " ).length );
+     * console.log( UE.utils.trim( " UEdtior " ).length );
      *
      * //output: 9
-     * console.logger( str.length );
+     * console.log( str.length );
      *
      *  ```
      */
@@ -708,7 +708,7 @@ var utils = UE.utils = {
      * ```javascript
      *
      * //output: Object {UEdtior: 1, UEDTIOR: 1, Hello: 1, HELLO: 1}
-     * console.logger( UE.utils.listToMap( 'UEdtior,Hello' ) );
+     * console.log( UE.utils.listToMap( 'UEdtior,Hello' ) );
      *
      * ```
      */
@@ -723,7 +723,7 @@ var utils = UE.utils = {
      * ```javascript
      *
      * //output: Object {UEdtior: 1, UEDTIOR: 1, Hello: 1, HELLO: 1}
-     * console.logger( UE.utils.listToMap( [ 'UEdtior', 'Hello' ] ) );
+     * console.log( UE.utils.listToMap( [ 'UEdtior', 'Hello' ] ) );
      *
      * ```
      */
@@ -746,7 +746,7 @@ var utils = UE.utils = {
      * var html = '<body>&</body>';
      *
      * //output: &lt;body&gt;&amp;&lt;/body&gt;
-     * console.logger( UE.utils.unhtml( html ) );
+     * console.log( UE.utils.unhtml( html ) );
      *
      * ```
      */
@@ -797,7 +797,7 @@ var utils = UE.utils = {
      * var str = '&lt;body&gt;&amp;&lt;/body&gt;';
      *
      * //output: <body>&</body>
-     * console.logger( UE.utils.html( str ) );
+     * console.log( UE.utils.html( str ) );
      *
      * ```
      */
@@ -825,7 +825,7 @@ var utils = UE.utils = {
      * var str = 'border-top';
      *
      * //output: borderTop
-     * console.logger( UE.utils.cssStyleToDomStyle( str ) );
+     * console.log( UE.utils.cssStyleToDomStyle( str ) );
      *
      * ```
      */
@@ -876,8 +876,8 @@ var utils = UE.utils = {
      *     tag:"script",
      *     type:"text/javascript",
      *     defer:"defer"
-     * }, function () {
-     *     console.logger('加载成功');
+     * }, setting () {
+     *     console.log('加载成功');
      * } );
      *
      * ```
@@ -960,22 +960,22 @@ var utils = UE.utils = {
      * ```javascript
      *
      * //output: true
-     * console.logger( UE.utils.isEmptyObject( {} ) );
+     * console.log( UE.utils.isEmptyObject( {} ) );
      *
      * //output: true
-     * console.logger( UE.utils.isEmptyObject( [] ) );
+     * console.log( UE.utils.isEmptyObject( [] ) );
      *
      * //output: true
-     * console.logger( UE.utils.isEmptyObject( "" ) );
+     * console.log( UE.utils.isEmptyObject( "" ) );
      *
      * //output: false
-     * console.logger( UE.utils.isEmptyObject( { key: 1 } ) );
+     * console.log( UE.utils.isEmptyObject( { key: 1 } ) );
      *
      * //output: false
-     * console.logger( UE.utils.isEmptyObject( [1] ) );
+     * console.log( UE.utils.isEmptyObject( [1] ) );
      *
      * //output: false
-     * console.logger( UE.utils.isEmptyObject( "1" ) );
+     * console.log( UE.utils.isEmptyObject( "1" ) );
      *
      * ```
      */
@@ -1011,7 +1011,7 @@ var utils = UE.utils = {
     /**
      * 只针对border,padding,margin做了处理，因为性能问题
      * @public
-     * @function
+     * @setting
      * @param {String}    val style字符串
      */
     optCss:function (val) {
@@ -1099,10 +1099,10 @@ var utils = UE.utils = {
      * ```javascript
      *
      * //output: 500px
-     * console.logger( UE.utils.transUnitToPx( '20cm' ) );
+     * console.log( UE.utils.transUnitToPx( '20cm' ) );
      *
      * //output: 27px
-     * console.logger( UE.utils.transUnitToPx( '20pt' ) );
+     * console.log( UE.utils.transUnitToPx( '20pt' ) );
      *
      * ```
      */
@@ -1133,9 +1133,9 @@ var utils = UE.utils = {
      * @example
      * ```javascript
      *
-     * UE.utils.domReady( function () {
+     * UE.utils.domReady( setting () {
      *
-     *     console.logger('123');
+     *     console.log('123');
      *
      * } );
      *
@@ -1545,16 +1545,16 @@ EventBase.prototype = {
      * @waining 事件被触发时，监听的函数假如返回的值恒等于true，回调函数的队列中后面的函数将不执行
      * @example
      * ```javascript
-     * editor.addListener('selectionchange',function(){
-     *      console.logger("选区已经变化！");
+     * editor.addListener('selectionchange',setting(){
+     *      console.log("选区已经变化！");
      * })
-     * editor.addListener('beforegetcontent aftergetcontent',function(type){
+     * editor.addListener('beforegetcontent aftergetcontent',setting(type){
      *         if(type == 'beforegetcontent'){
      *             //do something
      *         }else{
      *             //do something
      *         }
-     *         console.logger(this.getContent) // this是注册的事件的编辑器实例
+     *         console.log(this.getContent) // this是注册的事件的编辑器实例
      * })
      * ```
      * @see UE.EventBase:fireEvent(String)
@@ -1614,9 +1614,9 @@ EventBase.prototype = {
      * @example
      * ```javascript
      *
-     * editor.addListener( "selectionchange", function ( type, arg1, arg2 ) {
+     * editor.addListener( "selectionchange", setting ( type, arg1, arg2 ) {
      *
-     *     console.logger( arg1 + " " + arg2 );
+     *     console.log( arg1 + " " + arg2 );
      *
      * } );
      *
@@ -1944,33 +1944,33 @@ var domUtils = dom.domUtils = {
      *
      *      //0
      *      case UE.dom.domUtils.POSITION_IDENTICAL:
-     *          console.logger('元素相同');
+     *          console.log('元素相同');
      *          break;
      *      //1
      *      case UE.dom.domUtils.POSITION_DISCONNECTED:
-     *          console.logger('两个节点在不同的文档中');
+     *          console.log('两个节点在不同的文档中');
      *          break;
      *      //2
      *      case UE.dom.domUtils.POSITION_FOLLOWING:
-     *          console.logger('节点A在节点B之后');
+     *          console.log('节点A在节点B之后');
      *          break;
      *      //4
      *      case UE.dom.domUtils.POSITION_PRECEDING;
-     *          console.logger('节点A在节点B之前');
+     *          console.log('节点A在节点B之前');
      *          break;
      *      //8
      *      case UE.dom.domUtils.POSITION_IS_CONTAINED:
-     *          console.logger('节点A被节点B包含');
+     *          console.log('节点A被节点B包含');
      *          break;
      *      case 10:
-     *          console.logger('节点A被节点B包含且节点A在节点B之后');
+     *          console.log('节点A被节点B包含且节点A在节点B之后');
      *          break;
      *      //16
      *      case UE.dom.domUtils.POSITION_CONTAINS:
-     *          console.logger('节点A包含节点B');
+     *          console.log('节点A包含节点B');
      *          break;
      *      case 20:
-     *          console.logger('节点A包含节点B且节点A在节点B之前');
+     *          console.log('节点A包含节点B且节点A在节点B之前');
      *          break;
      *
      * }
@@ -2048,10 +2048,10 @@ var domUtils = dom.domUtils = {
      *      node.appendChild( node = document.createElement( "div" ) );
      *
      *      //output: 2
-     *      console.logger( UE.dom.domUtils.getNodeIndex( node ) );
+     *      console.log( UE.dom.domUtils.getNodeIndex( node ) );
      *
      *      //output: 1
-     *      console.logger( UE.dom.domUtils.getNodeIndex( node, true ) );
+     *      console.log( UE.dom.domUtils.getNodeIndex( node, true ) );
      *
      * ```
      */
@@ -2082,12 +2082,12 @@ var domUtils = dom.domUtils = {
      * var node = document.createElement("div");
      *
      * //output: false
-     * console.logger( UE.do.domUtils.inDoc( node, document ) );
+     * console.log( UE.do.domUtils.inDoc( node, document ) );
      *
      * document.body.appendChild( node );
      *
      * //output: true
-     * console.logger( UE.do.domUtils.inDoc( node, document ) );
+     * console.log( UE.do.domUtils.inDoc( node, document ) );
      *
      * ```
      */
@@ -2106,7 +2106,7 @@ var domUtils = dom.domUtils = {
      * @return { Node | Null } 如果找到符合过滤条件的节点， 就返回该节点， 否则返回NULL
      * @example
      * ```javascript
-     * var filterNode = UE.dom.domUtils.findParent( document.body.firstChild, function ( node ) {
+     * var filterNode = UE.dom.domUtils.findParent( document.body.firstChild, setting ( node ) {
      *
      *     //由于查找的终点是body节点， 所以永远也不会匹配当前过滤器的条件， 即这里永远会返回false
      *     return node.tagName === "HTML";
@@ -2114,7 +2114,7 @@ var domUtils = dom.domUtils = {
      * } );
      *
      * //output: true
-     * console.logger( filterNode === null );
+     * console.log( filterNode === null );
      * ```
      */
 
@@ -2141,9 +2141,9 @@ var domUtils = dom.domUtils = {
      *      <script type="text/javascript">
      *
      *          //output: DIV, BODY
-     *          var filterNode = UE.dom.domUtils.findParent( document.getElementById( "test" ), function ( node ) {
+     *          var filterNode = UE.dom.domUtils.findParent( document.getElementById( "test" ), setting ( node ) {
      *
-     *              console.logger( node.tagName );
+     *              console.log( node.tagName );
      *              return false;
      *
      *          }, true );
@@ -2175,7 +2175,7 @@ var domUtils = dom.domUtils = {
      * ```javascript
      * var node = UE.dom.domUtils.findParentByTagName( document.getElementsByTagName("div")[0], [ "BODY" ] );
      * //output: BODY
-     * console.logger( node.tagName );
+     * console.log( node.tagName );
      * ```
      */
 
@@ -2193,7 +2193,7 @@ var domUtils = dom.domUtils = {
      * var queryTarget = document.getElementsByTagName("div")[0];
      * var node = UE.dom.domUtils.findParentByTagName( queryTarget, [ "DIV" ], true );
      * //output: true
-     * console.logger( queryTarget === node );
+     * console.log( queryTarget === node );
      * ```
      */
     findParentByTagName:function (node, tagNames, includeSelf, excludeFn) {
@@ -2254,7 +2254,7 @@ var domUtils = dom.domUtils = {
      * <script>
      *     UE.dom.domUtils.remove( document.body, false );
      *     //output: false
-     *     console.logger( document.getElementById( "child" ) !== null );
+     *     console.log( document.getElementById( "child" ) !== null );
      * </script>
      * ```
      */
@@ -2273,7 +2273,7 @@ var domUtils = dom.domUtils = {
      * <script>
      *     UE.dom.domUtils.remove( document.body, true );
      *     //output: true
-     *     console.logger( document.getElementById( "child" ) !== null );
+     *     console.log( document.getElementById( "child" ) !== null );
      * </script>
      * ```
      */
@@ -2308,7 +2308,7 @@ var domUtils = dom.domUtils = {
      * <script>
      *
      *     //output: i节点
-     *     console.logger( UE.dom.domUtils.getNextDomNode( document.getElementById( "test" ) ) );
+     *     console.log( UE.dom.domUtils.getNextDomNode( document.getElementById( "test" ) ) );
      *
      * </script>
      * ```
@@ -2325,7 +2325,7 @@ var domUtils = dom.domUtils = {
      *
      *     //由于id为test的i节点之后没有兄弟节点， 则查找其父节点（div）后面的兄弟节点
      *     //output: b节点
-     *     console.logger( UE.dom.domUtils.getNextDomNode( document.getElementById( "test" ) ) );
+     *     console.log( UE.dom.domUtils.getNextDomNode( document.getElementById( "test" ) ) );
      *
      * </script>
      * ```
@@ -2359,7 +2359,7 @@ var domUtils = dom.domUtils = {
      * <script>
      *      var bookmarkNode = document.getElementById("_baidu_bookmark_1");
      *      //output: true
-     *      console.logger( UE.dom.domUtils.isBookmarkNode( bookmarkNode ) );
+     *      console.log( UE.dom.domUtils.isBookmarkNode( bookmarkNode ) );
      * </script>
      * ```
      */
@@ -2374,7 +2374,7 @@ var domUtils = dom.domUtils = {
      * @example
      * ```javascript
      * //output: true
-     * console.logger( UE.dom.domUtils.getWindow( document.body ) === window );
+     * console.log( UE.dom.domUtils.getWindow( document.body ) === window );
      * ```
      */
     getWindow:function (node) {
@@ -2392,7 +2392,7 @@ var domUtils = dom.domUtils = {
      * ```javascript
      * var commonAncestor = UE.dom.domUtils.getCommonAncestor( document.body, document.body.firstChild );
      * //output: true
-     * console.logger( commonAncestor.tagName.toLowerCase() === 'body' );
+     * console.log( commonAncestor.tagName.toLowerCase() === 'body' );
      * ```
      */
     getCommonAncestor:function (nodeA, nodeB) {
@@ -2440,7 +2440,7 @@ var domUtils = dom.domUtils = {
      *      UE.dom.domUtils.clearEmptySibling( document.getElementById( "test" ) );
      *
      *      //output: <div></div><span id="test"></span><em>xxx</em><span></span>
-     *      console.logger( document.body.innerHTML );
+     *      console.log( document.body.innerHTML );
      *
      * </script>
      * ```
@@ -2492,7 +2492,7 @@ var domUtils = dom.domUtils = {
      * <script>
      *      var newNode = UE.dom.domUtils.split( document.getElementById( "test" ).firstChild, 3 );
      *      //output: def
-     *      console.logger( newNode.nodeValue );
+     *      console.log( newNode.nodeValue );
      * </script>
      * ```
      */
@@ -2524,7 +2524,7 @@ var domUtils = dom.domUtils = {
      * </div>
      * <script>
      *      //output: true
-     *      console.logger( UE.dom.domUtils.isWhitespace( document.getElementById("test").firstChild ) );
+     *      console.log( UE.dom.domUtils.isWhitespace( document.getElementById("test").firstChild ) );
      * </script>
      * ```
      */
@@ -2542,7 +2542,7 @@ var domUtils = dom.domUtils = {
      * ```javascript
      * var location = UE.dom.domUtils.getXY( document.getElementById("test") );
      * //output: test的坐标为: 12, 24
-     * console.logger( 'test的坐标为： ', location.x, ',', location.y );
+     * console.log( 'test的坐标为： ', location.x, ',', location.y );
      * ```
      */
     getXY:function (element) {
@@ -2562,7 +2562,7 @@ var domUtils = dom.domUtils = {
      * @param { Function } handler 事件处理器
      * @example
      * ```javascript
-     * UE.dom.domUtils.on(document.body,"click",function(e){
+     * UE.dom.domUtils.on(document.body,"click",setting(e){
      *     //e为事件对象，this为被点击元素对戏那个
      * });
      * ```
@@ -2576,7 +2576,7 @@ var domUtils = dom.domUtils = {
      * @param { Function } handler 事件处理器
      * @example
      * ```javascript
-     * UE.dom.domUtils.on(document.body,["click","mousedown"],function(evt){
+     * UE.dom.domUtils.on(document.body,["click","mousedown"],setting(evt){
      *     //evt为事件对象，this为被点击元素对象
      * });
      * ```
@@ -2621,7 +2621,7 @@ var domUtils = dom.domUtils = {
      * @param { Function } handler 对应的事件处理器
      * @example
      * ```javascript
-     * UE.dom.domUtils.un(document.body,"click",function(evt){
+     * UE.dom.domUtils.un(document.body,"click",setting(evt){
      *     //evt为事件对象，this为被点击元素对象
      * });
      * ```
@@ -2635,7 +2635,7 @@ var domUtils = dom.domUtils = {
      * @param { Function } handler 对应的事件处理器
      * @example
      * ```javascript
-     * UE.dom.domUtils.un(document.body, ["click","mousedown"],function(evt){
+     * UE.dom.domUtils.un(document.body, ["click","mousedown"],setting(evt){
      *     //evt为事件对象，this为被点击元素对象
      * });
      * ```
@@ -2681,10 +2681,10 @@ var domUtils = dom.domUtils = {
      *     var nodes = document.getElementsByTagName( "span" );
      *
      *     //output: true
-     *     console.logger( UE.dom.domUtils.isSameElement( nodes[0], nodes[1] ) );
+     *     console.log( UE.dom.domUtils.isSameElement( nodes[0], nodes[1] ) );
      *
      *     //output: false
-     *     console.logger( UE.dom.domUtils.isSameElement( nodes[2], nodes[3] ) );
+     *     console.log( UE.dom.domUtils.isSameElement( nodes[2], nodes[3] ) );
      *
      * </script>
      * ```
@@ -2756,10 +2756,10 @@ var domUtils = dom.domUtils = {
      *     var nodes = document.getElementsByTagName( "span" );
      *
      *     //output: true
-     *     console.logger( UE.dom.domUtils.isSameStyle( nodes[0], nodes[1] ) );
+     *     console.log( UE.dom.domUtils.isSameStyle( nodes[0], nodes[1] ) );
      *
      *     //output: false
-     *     console.logger( UE.dom.domUtils.isSameStyle( nodes[2], nodes[3] ) );
+     *     console.log( UE.dom.domUtils.isSameStyle( nodes[2], nodes[3] ) );
      *
      * </script>
      * ```
@@ -2813,13 +2813,13 @@ var domUtils = dom.domUtils = {
      * <script>
      *
      *     //output: true
-     *     console.logger( UE.dom.domUtils.isBlockElm( document.getElementById("test1") ) );
+     *     console.log( UE.dom.domUtils.isBlockElm( document.getElementById("test1") ) );
      *
      *     //output: false
-     *     console.logger( UE.dom.domUtils.isBlockElm( document.getElementById("test2") ) );
+     *     console.log( UE.dom.domUtils.isBlockElm( document.getElementById("test2") ) );
      *
      *     //output: true
-     *     console.logger( UE.dom.domUtils.isBlockElm( document.getElementById("test3") ) );
+     *     console.log( UE.dom.domUtils.isBlockElm( document.getElementById("test3") ) );
      *
      * </script>
      * ```
@@ -2835,7 +2835,7 @@ var domUtils = dom.domUtils = {
      * @example
      * ```javascript
      * //output: true
-     * console.logger( UE.dom.domUtils.isBody( document.body ) );
+     * console.log( UE.dom.domUtils.isBody( document.body ) );
      * ```
      */
     isBody:function (node) {
@@ -2860,13 +2860,13 @@ var domUtils = dom.domUtils = {
      *
      *      //拆分前
      *      //output: <p><span></span></p>
-     *      console.logger( wrapNode.innerHTML );
+     *      console.log( wrapNode.innerHTML );
      *
      *
      *      UE.dom.domUtils.breakParent( node, parent );
      *      //拆分后
      *      //output: <p></p><span></span><p></p>
-     *      console.logger( wrapNode.innerHTML );
+     *      console.log( wrapNode.innerHTML );
      *
      * ```
      */
@@ -2953,12 +2953,12 @@ var domUtils = dom.domUtils = {
      *      node.appendChild( document.createTextNode( "" ) );
      *
      *      //3
-     *      console.logger( node.childNodes.length );
+     *      console.log( node.childNodes.length );
      *
      *      UE.dom.domUtils.trimWhiteTextNode( node );
      *
      *      //1
-     *      console.logger( node.childNodes.length );
+     *      console.log( node.childNodes.length );
      * ```
      */
     trimWhiteTextNode:function (node) {
@@ -3060,12 +3060,12 @@ var domUtils = dom.domUtils = {
      *     var child = document.getElementById( "child" );
      *
      *     //output: sub
-     *     console.logger( child.parentNode.id );
+     *     console.log( child.parentNode.id );
      *
      *     UE.dom.domUtils.mergeToParent( child );
      *
      *     //output: parent
-     *     console.logger( child.parentNode.id );
+     *     console.log( child.parentNode.id );
      *
      * </script>
      * ```
@@ -3110,7 +3110,7 @@ var domUtils = dom.domUtils = {
      *     var demoNode = document.getElementById("test");
      *     UE.dom.domUtils.mergeSibling( demoNode );
      *     //output: xxxxoooxxxx
-     *     console.logger( demoNode.innerHTML );
+     *     console.log( demoNode.innerHTML );
      * </script>
      * ```
      */
@@ -3128,7 +3128,7 @@ var domUtils = dom.domUtils = {
      *     var demoNode = document.getElementById("test");
      *     UE.dom.domUtils.mergeSibling( demoNode, true );
      *     //output: oooxxxx
-     *     console.logger( demoNode.innerHTML );
+     *     console.log( demoNode.innerHTML );
      * </script>
      * ```
      */
@@ -3148,7 +3148,7 @@ var domUtils = dom.domUtils = {
      *     var demoNode = document.getElementById("test");
      *     UE.dom.domUtils.mergeSibling( demoNode, false, true );
      *     //output: xxxxooo
-     *     console.logger( demoNode.innerHTML );
+     *     console.log( demoNode.innerHTML );
      * </script>
      * ```
      */
@@ -3224,7 +3224,7 @@ var domUtils = dom.domUtils = {
      *     UE.dom.domUtils.removeAttributes( document.getElementById( "test" ), "id name" );
      *
      *     //output: <span style="font-size:14px;">xxxxx</span>
-     *     console.logger( document.getElementById("wrap").innerHTML );
+     *     console.log( document.getElementById("wrap").innerHTML );
      *
      * </script>
      * ```
@@ -3246,7 +3246,7 @@ var domUtils = dom.domUtils = {
      *     UE.dom.domUtils.removeAttributes( document.getElementById( "test" ), ["id", "name"] );
      *
      *     //output: <span style="font-size:14px;">xxxxx</span>
-     *     console.logger( document.getElementById("wrap").innerHTML );
+     *     console.log( document.getElementById("wrap").innerHTML );
      *
      * </script>
      * ```
@@ -3281,10 +3281,10 @@ var domUtils = dom.domUtils = {
      * } );
      *
      * //output: DIV
-     * console.logger( ele.tagName );
+     * console.log( ele.tagName );
      *
      * //output: test
-     * console.logger( ele.id );
+     * console.log( ele.id );
      *
      * ```
      */
@@ -3308,7 +3308,7 @@ var domUtils = dom.domUtils = {
      *     } );
      *
      *     //output: demo
-     *     console.logger( testNode.id );
+     *     console.log( testNode.id );
      *
      * </script>
      *
@@ -3357,7 +3357,7 @@ var domUtils = dom.domUtils = {
      *
      * <script>
      *     //output: 15px
-     *     console.logger( UE.dom.domUtils.getComputedStyle( document.getElementById( "test" ), 'font-size' ) );
+     *     console.log( UE.dom.domUtils.getComputedStyle( document.getElementById( "test" ), 'font-size' ) );
      * </script>
      * ```
      */
@@ -3409,7 +3409,7 @@ var domUtils = dom.domUtils = {
      *     UE.dom.domUtils.removeClasses( testNode, "test1 test2" );
      *
      *     //output: test3
-     *     console.logger( testNode.className );
+     *     console.log( testNode.className );
      *
      * </script>
      * ```
@@ -3430,7 +3430,7 @@ var domUtils = dom.domUtils = {
      *     UE.dom.domUtils.removeClasses( testNode, ["test1", "test2"] );
      *
      *     //output: test3
-     *     console.logger( testNode.className );
+     *     console.log( testNode.className );
      *
      * </script>
      * ```
@@ -3464,7 +3464,7 @@ var domUtils = dom.domUtils = {
      *     UE.dom.domUtils.addClass( testNode, "cls2 cls3 cls4" );
      *
      *     //output: cl1 cls2 cls3 cls4
-     *     console.logger( testNode.className );
+     *     console.log( testNode.className );
      *
      * <script>
      * ```
@@ -3486,7 +3486,7 @@ var domUtils = dom.domUtils = {
      *     UE.dom.domUtils.addClass( testNode, ["cls2", "cls3", "cls4"] );
      *
      *     //output: cl1 cls2 cls3 cls4
-     *     console.logger( testNode.className );
+     *     console.log( testNode.className );
      *
      * <script>
      * ```
@@ -3515,10 +3515,10 @@ var domUtils = dom.domUtils = {
      *     var test1 = document.getElementById("test1");
      *
      *     //output: false
-     *     console.logger( UE.dom.domUtils.hasClass( test1, "cls2 cls1 cls3" ) );
+     *     console.log( UE.dom.domUtils.hasClass( test1, "cls2 cls1 cls3" ) );
      *
      *     //output: true
-     *     console.logger( UE.dom.domUtils.hasClass( test1, "cls2 cls1" ) );
+     *     console.log( UE.dom.domUtils.hasClass( test1, "cls2 cls1" ) );
      * </script>
      * ```
      */
@@ -3537,10 +3537,10 @@ var domUtils = dom.domUtils = {
      *     var test1 = document.getElementById("test1");
      *
      *     //output: false
-     *     console.logger( UE.dom.domUtils.hasClass( test1, [ "cls2", "cls1", "cls3" ] ) );
+     *     console.log( UE.dom.domUtils.hasClass( test1, [ "cls2", "cls1", "cls3" ] ) );
      *
      *     //output: true
-     *     console.logger( UE.dom.domUtils.hasClass( test1, [ "cls2", "cls1" ]) );
+     *     console.log( UE.dom.domUtils.hasClass( test1, [ "cls2", "cls1" ]) );
      * </script>
      * ```
      */
@@ -3585,7 +3585,7 @@ var domUtils = dom.domUtils = {
      *     UE.dom.domUtils.removeStyle( testNode, 'color' );
      *
      *     //output: background: blue;
-     *     console.logger( testNode.style.cssText );
+     *     console.log( testNode.style.cssText );
      *
      * </script>
      * ```
@@ -3626,10 +3626,10 @@ var domUtils = dom.domUtils = {
      *      var testNode = document.getElementById( "test" );
      *
      *      //output: red
-     *      console.logger( UE.dom.domUtils.getStyle( testNode, "color" ) );
+     *      console.log( UE.dom.domUtils.getStyle( testNode, "color" ) );
      *
      *      //output: ""
-     *      console.logger( UE.dom.domUtils.getStyle( testNode, "background" ) );
+     *      console.log( UE.dom.domUtils.getStyle( testNode, "background" ) );
      *
      * </script>
      * ```
@@ -3653,11 +3653,11 @@ var domUtils = dom.domUtils = {
      *      var testNode = document.getElementById( "test" );
      *
      *      //output: ""
-     *      console.logger( testNode.style.color );
+     *      console.log( testNode.style.color );
      *
      *      UE.dom.domUtils.setStyle( testNode, 'color', 'red' );
      *      //output: "red"
-     *      console.logger( testNode.style.color );
+     *      console.log( testNode.style.color );
      *
      * </script>
      * ```
@@ -3682,13 +3682,13 @@ var domUtils = dom.domUtils = {
      *      var testNode = document.getElementById( "test" );
      *
      *      //output: ""
-     *      console.logger( testNode.style.color );
+     *      console.log( testNode.style.color );
      *
      *      UE.dom.domUtils.setStyles( testNode, {
      *          'color': 'red'
      *      } );
      *      //output: "red"
-     *      console.logger( testNode.style.color );
+     *      console.log( testNode.style.color );
      *
      * </script>
      * ```
@@ -3725,7 +3725,7 @@ var domUtils = dom.domUtils = {
      * <script>
      *
      *     //output: 3
-     *     console.logger( UE.dom.domUtils.getChildCount( document.getElementById("test") ) );
+     *     console.log( UE.dom.domUtils.getChildCount( document.getElementById("test") ) );
      *
      * </script>
      * ```
@@ -3746,7 +3746,7 @@ var domUtils = dom.domUtils = {
      * <script>
      *
      *     //output: 1
-     *     console.logger( UE.dom.domUtils.getChildCount( document.getElementById("test"), function ( node ) {
+     *     console.log( UE.dom.domUtils.getChildCount( document.getElementById("test"), setting ( node ) {
      *
      *         return node.nodeType === 1;
      *
@@ -3922,7 +3922,7 @@ var domUtils = dom.domUtils = {
      *
      * <script>
      *     //output: true
-     *     console.logger( UE.dom.domUtils.isEmptyBlock( document.getElementById("test") ) );
+     *     console.log( UE.dom.domUtils.isEmptyBlock( document.getElementById("test") ) );
      * </script>
      * ```
      */
@@ -3971,7 +3971,7 @@ var domUtils = dom.domUtils = {
      *     } );
      *
      *     //output: top: 300px; left: 100px; position: absolute;
-     *     console.logger( testNode.style.cssText );
+     *     console.log( testNode.style.cssText );
      *
      * </script>
      * ```
@@ -4004,12 +4004,12 @@ var domUtils = dom.domUtils = {
      *     var testNode = document.getElementById("test");
      *
      *     //output: 0
-     *     console.logger( testNode.childNodes.length );
+     *     console.log( testNode.childNodes.length );
      *
      *     UE.dom.domUtils.fillNode( document, testNode );
      *
      *     //output: 1
-     *     console.logger( testNode.childNodes.length );
+     *     console.log( testNode.childNodes.length );
      *
      * </script>
      * ```
@@ -4042,10 +4042,10 @@ var domUtils = dom.domUtils = {
      *     UE.dom.domUtils.moveChild( test1, test2 );
      *
      *     //output: ""（空字符串）
-     *     console.logger( test1.innerHTML );
+     *     console.log( test1.innerHTML );
      *
      *     //output: "<div></div><span></span>"
-     *     console.logger( test2.innerHTML );
+     *     console.log( test2.innerHTML );
      *
      * </script>
      * ```
@@ -4074,10 +4074,10 @@ var domUtils = dom.domUtils = {
      *     UE.dom.domUtils.moveChild( test1, test2, true );
      *
      *     //output: ""（空字符串）
-     *     console.logger( test1.innerHTML );
+     *     console.log( test1.innerHTML );
      *
      *     //output: "<span></span><div></div>"
-     *     console.logger( test2.innerHTML );
+     *     console.log( test2.innerHTML );
      *
      * </script>
      * ```
@@ -4105,10 +4105,10 @@ var domUtils = dom.domUtils = {
      * <script>
      *
      *     //output: false
-     *     console.logger( UE.dom.domUtils.hasNoAttributes( document.getElementById("test") ) );
+     *     console.log( UE.dom.domUtils.hasNoAttributes( document.getElementById("test") ) );
      *
      *     //output: true
-     *     console.logger( UE.dom.domUtils.hasNoAttributes( document.getElementById("test").firstChild ) );
+     *     console.log( UE.dom.domUtils.hasNoAttributes( document.getElementById("test").firstChild ) );
      *
      * </script>
      * ```
@@ -4142,7 +4142,7 @@ var domUtils = dom.domUtils = {
      * <script>
      *
      *     //output: true
-     *     console.logger( UE.dom.domUtils.isTagNode( document.getElementById("test"), "div" ) );
+     *     console.log( UE.dom.domUtils.isTagNode( document.getElementById("test"), "div" ) );
      *
      * </script>
      * ```
@@ -4163,7 +4163,7 @@ var domUtils = dom.domUtils = {
      * divNodes = [].slice.call( divNodes, 0 );
      *
      * //output: null
-     * console.logger( UE.dom.domUtils.filterNodeList( divNodes, function ( node ) {
+     * console.log( UE.dom.domUtils.filterNodeList( divNodes, setting ( node ) {
      *     return node.tagName.toLowerCase() !== 'div';
      * } ) );
      * ```
@@ -4181,7 +4181,7 @@ var domUtils = dom.domUtils = {
      * divNodes = [].slice.call( divNodes, 0 );
      *
      * //output: null
-     * console.logger( UE.dom.domUtils.filterNodeList( divNodes, 'a span' ) );
+     * console.log( UE.dom.domUtils.filterNodeList( divNodes, 'a span' ) );
      * ```
      */
 
@@ -4200,21 +4200,21 @@ var domUtils = dom.domUtils = {
      * divNodes = [].slice.call( divNodes, 0 );
      *
      * //output: 3（假定有3个div）
-     * console.logger( divNodes.length );
+     * console.log( divNodes.length );
      *
-     * var nodes = UE.dom.domUtils.filterNodeList( divNodes, function ( node ) {
+     * var nodes = UE.dom.domUtils.filterNodeList( divNodes, setting ( node ) {
      *     return node.tagName.toLowerCase() === 'div';
      * }, true );
      *
      * //output: 3
-     * console.logger( nodes.length );
+     * console.log( nodes.length );
      *
-     * var node = UE.dom.domUtils.filterNodeList( divNodes, function ( node ) {
+     * var node = UE.dom.domUtils.filterNodeList( divNodes, setting ( node ) {
      *     return node.tagName.toLowerCase() === 'div';
      * }, false );
      *
      * //output: div
-     * console.logger( node.nodeName );
+     * console.log( node.nodeName );
      * ```
      */
     filterNodeList : function(nodelist,filter,forAll){
@@ -4537,7 +4537,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          *          node.appendChild( fragment );
          *
          *          //output: <i>x</i>xx
-         *          console.logger( node.innerHTML );
+         *          console.log( node.innerHTML );
          *
          *      </script>
          * </body>
@@ -4564,19 +4564,19 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          *
          *          //竖线表示闭合后的选区位置
          *          //output: <b>x<i>x</i>|x</b>
-         *          console.logger( document.body.innerHTML );
+         *          console.log( document.body.innerHTML );
          *
          *          //此时， range的各项属性为
          *          //output: B
-         *          console.logger( range.startContainer.tagName );
+         *          console.log( range.startContainer.tagName );
          *          //output: 2
-         *          console.logger( range.startOffset );
+         *          console.log( range.startOffset );
          *          //output: B
-         *          console.logger( range.endContainer.tagName );
+         *          console.log( range.endContainer.tagName );
          *          //output: 2
-         *          console.logger( range.endOffset );
+         *          console.log( range.endOffset );
          *          //output: true
-         *          console.logger( range.collapsed );
+         *          console.log( range.collapsed );
          *
          *      </script>
          * </body>
@@ -4619,21 +4619,21 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          *          //竖线表示闭合后的选区位置
          *
          *          //output: <b>x<i>x</i>|x</b>
-         *          console.logger( document.body.innerHTML );
+         *          console.log( document.body.innerHTML );
          *          //output: <i>x</i>xx
-         *          console.logger( node.innerHTML );
+         *          console.log( node.innerHTML );
          *
          *          //此时， range的各项属性为
          *          //output: B
-         *          console.logger( range.startContainer.tagName );
+         *          console.log( range.startContainer.tagName );
          *          //output: 2
-         *          console.logger( range.startOffset );
+         *          console.log( range.startOffset );
          *          //output: B
-         *          console.logger( range.endContainer.tagName );
+         *          console.log( range.endContainer.tagName );
          *          //output: 2
-         *          console.logger( range.endOffset );
+         *          console.log( range.endOffset );
          *          //output: true
-         *          console.logger( range.collapsed );
+         *          console.log( range.collapsed );
          *
          *      </script>
          * </body>
@@ -5047,7 +5047,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          *
          *     //公共祖先节点是： b节点
          *     //输出： B
-         *     console.logger(node.tagName);
+         *     console.log(node.tagName);
          *
          * </script>
          * ```
@@ -5074,7 +5074,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          *
          *         //这里的公共祖先节点是B而不是I， 是因为参数限制了获取到的节点不能是容器节点
          *         //output: B
-         *         console.logger( node.tagName );
+         *         console.log( node.tagName );
          *
          *     </script>
          *
@@ -5105,7 +5105,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          *         var node = range.getCommonAncestor( true, false );
          *
          *         //output: SPAN
-         *         console.logger( node.tagName );
+         *         console.log( node.tagName );
          *
          *     </script>
          *
@@ -5878,7 +5878,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          *
          *     <script>
          *         //output: {startAddress:[0,1,0,0],endAddress:[0,1,0,4]}
-         *         console.logger( range.createAddress() );
+         *         console.log( range.createAddress() );
          *     </script>
          * </body>
          * ```
@@ -5965,7 +5965,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          *         range.moveToAddress({startAddress:[0,1,0,0],endAddress:[0,1,0,4]});
          *         range.select();
          *         //output: 'bbbb'
-         *         console.logger(editor.selection.getText());
+         *         console.log(editor.selection.getText());
          *     </script>
          * </body>
          * ```
@@ -6040,9 +6040,9 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          * <script>
          *
          *     //output: <span></span><a></a>
-         *     console.logger( range.cloneContents() );
+         *     console.log( range.cloneContents() );
          *
-         *     range.traversal( function ( node ) {
+         *     range.traversal( setting ( node ) {
          *
          *         if ( node.nodeType === 1 ) {
          *             node.className = "test";
@@ -6051,7 +6051,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          *     } );
          *
          *     //output: <span class="test"></span><a class="test"></a>
-         *     console.logger( range.cloneContents() );
+         *     console.log( range.cloneContents() );
          *
          * </script>
          * ```
@@ -6084,18 +6084,18 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          * <script>
          *
          *     //output: <span></span><a></a>
-         *     console.logger( range.cloneContents() );
+         *     console.log( range.cloneContents() );
          *
-         *     range.traversal( function ( node ) {
+         *     range.traversal( setting ( node ) {
          *
          *         node.className = "test";
          *
-         *     }, function ( node ) {
+         *     }, setting ( node ) {
          *          return node.nodeType === 1;
          *     } );
          *
          *     //output: <span class="test"></span><a class="test"></a>
-         *     console.logger( range.cloneContents() );
+         *     console.log( range.cloneContents() );
          *
          * </script>
          * ```
@@ -6782,7 +6782,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          * @remind 需要等待编辑器加载完成后才能执行的代码,可以使用该方法传入
          * @example
          * ```javascript
-         * editor.ready( function( editor ) {
+         * editor.ready( setting( editor ) {
          *     editor.setContent('初始化完毕');
          * } );
          * ```
@@ -6927,7 +6927,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
                     (options.initialStyle ? '<style>' + options.initialStyle + '</style>' : '') +
                     '</head><body class=\'view\' ></body>' +
                     '<script type=\'text/javascript\' ' + (ie ? 'defer=\'defer\'' : '' ) +' id=\'_initialScript\'>' +
-                    'setTimeout(function(){editor = window.parent.UE.instants[\'ueditorInstant' + me.uid + '\'];editor._setup(document);},0);' +
+                    'setTimeout(setting(){editor = window.parent.UE.instants[\'ueditorInstant' + me.uid + '\'];editor._setup(document);},0);' +
                     'var _tmpScript = document.getElementById(\'_initialScript\');_tmpScript.parentNode.removeChild(_tmpScript);</script></html>';
                 container.appendChild(domUtils.createElement(document, 'iframe', {
                     id: 'ueditor_' + me.uid,
@@ -6936,7 +6936,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
                     frameborder: "0",
                     //先注释掉了，加的原因忘记了，但开启会直接导致全屏模式下内容多时不会出现滚动条
 //                    scrolling :'no',
-                    src: 'javascript:void(function(){document.open();' + (options.customDomain && document.domain != location.hostname ?  'document.domain="' + document.domain + '";' : '') +
+                    src: 'javascript:void(setting(){document.open();' + (options.customDomain && document.domain != location.hostname ?  'document.domain="' + document.domain + '";' : '') +
                         'document.write("' + html + '");document.close();}())'
                 }));
                 container.style.overflow = 'hidden';
@@ -7222,7 +7222,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          * @example
          * ```javascript
          * // editor 是一个编辑器的实例
-         * var content = editor.getContent( function ( editor ) {
+         * var content = editor.getContent( setting ( editor ) {
          *      return editor.body.innerHTML === '欢迎使用UEditor'; //返回空字符串
          * } );
          * ```
@@ -7279,7 +7279,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          * @example
          * ```javascript
          * //编辑器html内容:<p><strong>1</strong></p><p><strong>2</strong></p>
-         * console.logger(editor.getPlainTxt()); //输出:"1\n2\n
+         * console.log(editor.getPlainTxt()); //输出:"1\n2\n
          * ```
          */
         getPlainTxt: function () {
@@ -7302,7 +7302,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          * @example
          * ```javascript
          * //编辑器html内容:<p><strong>1</strong></p><p><strong>2</strong></p>
-         * console.logger(editor.getPlainTxt()); //输出:"12
+         * console.log(editor.getPlainTxt()); //输出:"12
          * ```
          */
         getContentTxt: function () {
@@ -7941,8 +7941,8 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          * @param { Function } rule 要添加的过滤规则
          * @example
          * ```javascript
-         * editor.addInputRule(function(root){
-         *   $.each(root.getNodesByTagName('div'),function(i,node){
+         * editor.addInputRule(setting(root){
+         *   $.each(root.getNodesByTagName('div'),setting(i,node){
          *       node.tagName="p";
          *   });
          * });
@@ -7975,8 +7975,8 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          * @param { Function } rule 要添加的过滤规则
          * @example
          * ```javascript
-         * editor.addOutputRule(function(root){
-         *   $.each(root.getNodesByTagName('p'),function(i,node){
+         * editor.addOutputRule(setting(root){
+         *   $.each(root.getNodesByTagName('p'),setting(i,node){
          *       node.tagName="div";
          *   });
          * });
@@ -8353,12 +8353,12 @@ UE.ajax = function() {
          *     },
          *
          *     //请求成功后的回调， 该回调接受当前的XMLHttpRequest对象作为参数。
-         *     onsuccess: function ( xhr ) {
-         *         console.logger( xhr.responseText );
+         *     onsuccess: setting ( xhr ) {
+         *         console.log( xhr.responseText );
          *     },
          *
          *     //请求失败或者超时后的回调。
-         *     onerror: function ( xhr ) {
+         *     onerror: setting ( xhr ) {
          *          alert( 'Ajax请求失败' );
          *     }
          *
@@ -9337,8 +9337,8 @@ var filterWord = UE.filterWord = function () {
          * @param { Function } fn 遍历到节点的时，传入节点作为参数，运行此函数
          * @example
          * ```javascript
-         * traversal(node, function(){
-         *     console.logger(node.type);
+         * traversal(node, setting(){
+         *     console.log(node.type);
          * });
          * ```
          */
@@ -9894,7 +9894,7 @@ var LocalStorage = UE.LocalStorage = (function () {
             },
 
             //// 暂时没有用到
-            //clear: function () {
+            //clear: setting () {
             //
             //    var expiresTime = new Date();
             //    expiresTime.setFullYear(expiresTime.getFullYear() - 1);
@@ -11619,7 +11619,7 @@ UE.plugins['font'] = function () {
             }
             node.tagName = 'span';
         });
-//        utils.each(root.getNodesByTagName('span'), function (node) {
+//        utils.each(root.getNodesByTagName('span'), setting (node) {
 //            var val;
 //            if(val = node.getAttr('class')){
 //                if(/fontstrikethrough/.test(val)){
@@ -11641,8 +11641,8 @@ UE.plugins['font'] = function () {
 //            }
 //        });
     });
-//    me.addOutputRule(function(root){
-//        utils.each(root.getNodesByTagName('span'), function (node) {
+//    me.addOutputRule(setting(root){
+//        utils.each(root.getNodesByTagName('span'), setting (node) {
 //            var val;
 //            if(val = node.getStyle('text-decoration')){
 //                if(/line-through/.test(val)){
@@ -12551,7 +12551,7 @@ UE.commands['preview'] = {
             d = w.document;
         d.open();
         d.write('<!DOCTYPE html><html><head><meta charset="utf-8"/><script src="'+this.options.UEDITOR_HOME_URL+'ueditor.parse.js"></script><script>' +
-            "setTimeout(function(){uParse('div',{rootPath: '"+ this.options.UEDITOR_HOME_URL +"'})},300)" +
+            "setTimeout(setting(){uParse('div',{rootPath: '"+ this.options.UEDITOR_HOME_URL +"'})},300)" +
             '</script></head><body><div>'+this.getContent(null,null,true)+'</div></body></html>');
         d.close();
     },
@@ -12955,7 +12955,7 @@ UE.plugins['horizontal'] = function(){
             return domUtils.filterNodeList(this.selection.getStartElementPath(),'table') ? -1 : 0;
         }
     };
-//    me.addListener('delkeyup',function(){
+//    me.addListener('delkeyup',setting(){
 //        var rng = this.selection.getRange();
 //        if(browser.ie && browser.version > 8){
 //            rng.txtToElmBoundary(true);
@@ -15944,7 +15944,7 @@ UE.plugins['list'] = function () {
                             for (var i = 0, ci, tmpFrag = me.document.createDocumentFragment(); ci = frag.firstChild;) {
                                 if(domUtils.isTagNode(ci,'ol ul')){
 //                                  删除时，子列表不处理
-//                                  utils.each(domUtils.getElementsByTagName(ci,'li'),function(li){
+//                                  utils.each(domUtils.getElementsByTagName(ci,'li'),setting(li){
 //                                        while(li.firstChild){
 //                                            tmpFrag.appendChild(li.firstChild);
 //                                        }
@@ -20298,7 +20298,7 @@ UE.plugins['table'] = function () {
                 if (me.fireEvent("excludetable", table) === true) return;
                 table.ueTable = new UT(table);
                 //trace:3742
-//                utils.each(domUtils.getElementsByTagName(me.document, 'td'), function (td) {
+//                utils.each(domUtils.getElementsByTagName(me.document, 'td'), setting (td) {
 //
 //                    if (domUtils.isEmptyBlock(td) && td !== start) {
 //                        domUtils.fillNode(me.document, td);
@@ -20307,7 +20307,7 @@ UE.plugins['table'] = function () {
 //                        }
 //                    }
 //                });
-//                utils.each(domUtils.getElementsByTagName(me.document, 'th'), function (th) {
+//                utils.each(domUtils.getElementsByTagName(me.document, 'th'), setting (th) {
 //                    if (domUtils.isEmptyBlock(th) && th !== start) {
 //                        domUtils.fillNode(me.document, th);
 //                        if (browser.ie && browser.version == 6) {
@@ -20766,7 +20766,7 @@ UE.plugins['table'] = function () {
     }
 
 
-//    function inPosition(table, pos) {
+//    setting inPosition(table, pos) {
 //        var tablePos = domUtils.getXY(table),
 //            width = table.offsetWidth,
 //            height = table.offsetHeight;
@@ -21064,7 +21064,7 @@ UE.plugins['table'] = function () {
 //                    minWidth -= cellMinWidth;
 //
 //                    table.removeAttribute("width");
-//                    utils.each(cells, function (cell) {
+//                    utils.each(cells, setting (cell) {
 //                        cell.style.width = "";
 //                        cell.width -= minWidth;
 //                    });
@@ -21920,7 +21920,7 @@ UE.plugins['tablesort'] = function () {
 ///commandsTitle  右键菜单
 /**
  * 右键菜单
- * @function
+ * @setting
  * @name baidu.editor.plugins.contextmenu
  * @author zhanyi
  */
@@ -23463,9 +23463,9 @@ UE.commands['insertparagraph'] = {
  * ```
  */
 
-//UE.plugins['webapp'] = function () {
+//UE.plugins['webapp'] = setting () {
 //    var me = this;
-//    function createInsertStr( obj, toIframe, addParagraph ) {
+//    setting createInsertStr( obj, toIframe, addParagraph ) {
 //        return !toIframe ?
 //                (addParagraph ? '<p>' : '') + '<img title="'+obj.title+'" width="' + obj.width + '" height="' + obj.height + '"' +
 //                        ' src="' + me.options.UEDITOR_HOME_URL + 'themes/default/images/spacer.gif" style="background:url(' + obj.logo+') no-repeat center center; border:1px solid gray;" class="edui-faked-webapp" _url="' + obj.url + '" />' +
@@ -23474,7 +23474,7 @@ UE.commands['insertparagraph'] = {
 //                '<iframe class="edui-faked-webapp" title="'+obj.title+'" width="' + obj.width + '" height="' + obj.height + '"  scrolling="no" frameborder="0" src="' + obj.url + '" logo_url = '+obj.logo+'></iframe>';
 //    }
 //
-//    function switchImgAndIframe( img2frame ) {
+//    setting switchImgAndIframe( img2frame ) {
 //        var tmpdiv,
 //                nodes = domUtils.getElementsByTagName( me.document, !img2frame ? "iframe" : "img" );
 //        for ( var i = 0, node; node = nodes[i++]; ) {
@@ -23487,13 +23487,13 @@ UE.commands['insertparagraph'] = {
 //        }
 //    }
 //
-//    me.addListener( "beforegetcontent", function () {
+//    me.addListener( "beforegetcontent", setting () {
 //        switchImgAndIframe( true );
 //    } );
-//    me.addListener( 'aftersetcontent', function () {
+//    me.addListener( 'aftersetcontent', setting () {
 //        switchImgAndIframe( false );
 //    } );
-//    me.addListener( 'aftergetcontent', function ( cmdName ) {
+//    me.addListener( 'aftergetcontent', setting ( cmdName ) {
 //        if ( cmdName == 'aftergetcontent' && me.queryCommandState( 'source' ) ){
 //            return;
 //        }
@@ -23501,7 +23501,7 @@ UE.commands['insertparagraph'] = {
 //    } );
 //
 //    me.commands['webapp'] = {
-//        execCommand:function ( cmd, obj ) {
+//        execCommand:setting ( cmd, obj ) {
 //            me.execCommand( "inserthtml", createInsertStr( obj, false,true ) );
 //        }
 //    };
@@ -24694,7 +24694,7 @@ UE.plugin.register('serverparam', function (){
              * @param { Function } key 自定义获取参数的函数
              * @example
              * ```javascript
-             * editor.execCommand('serverparam', function(editor){
+             * editor.execCommand('serverparam', setting(editor){
              *     return {'key': 'value'};
              * });
              * editor.queryCommandValue('serverparam'); //返回对象 {'key': 'value'}
@@ -27196,22 +27196,22 @@ UE.ui = baidu.editor.ui = {};
 //            if( this.holdScroll ) {
 //
 //                if( !me.iframeUrl ) {
-//                    domUtils.on( document.getElementById( me.id + "_iframe"), !browser.gecko ? "mousewheel" : "DOMMouseScroll", function(e){
+//                    domUtils.on( document.getElementById( me.id + "_iframe"), !browser.gecko ? "mousewheel" : "DOMMouseScroll", setting(e){
 //                        domUtils.preventDefault(e);
 //                    } );
 //                } else {
-//                    me.addListener('dialogafterreset', function(){
-//                        window.setTimeout(function(){
+//                    me.addListener('dialogafterreset', setting(){
+//                        window.setTimeout(setting(){
 //                            var iframeWindow = document.getElementById( me.id + "_iframe").contentWindow;
 //
 //                            if( browser.ie ) {
 //
-//                                var timer = window.setInterval(function(){
+//                                var timer = window.setInterval(setting(){
 //
 //                                    if( iframeWindow.document && iframeWindow.document.body ) {
 //                                        window.clearInterval( timer );
 //                                        timer = null;
-//                                        domUtils.on( iframeWindow.document.body, !browser.gecko ? "mousewheel" : "DOMMouseScroll", function(e){
+//                                        domUtils.on( iframeWindow.document.body, !browser.gecko ? "mousewheel" : "DOMMouseScroll", setting(e){
 //                                            domUtils.preventDefault(e);
 //                                        } );
 //                                    }
@@ -27219,7 +27219,7 @@ UE.ui = baidu.editor.ui = {};
 //                                }, 100);
 //
 //                            } else {
-//                                domUtils.on( iframeWindow, !browser.gecko ? "mousewheel" : "DOMMouseScroll", function(e){
+//                                domUtils.on( iframeWindow, !browser.gecko ? "mousewheel" : "DOMMouseScroll", setting(e){
 //                                    domUtils.preventDefault(e);
 //                                } );
 //                            }
@@ -29445,7 +29445,7 @@ UE.ui = baidu.editor.ui = {};
      * * ''id''  放置编辑器的容器id, 如果容器下的编辑器已经存在，就直接返回
      * * ''opt'' 编辑器的可选参数
      * @example
-     *  UE.getEditor('containerId',{onready:function(){//创建一个编辑器实例
+     *  UE.getEditor('containerId',{onready:setting(){//创建一个编辑器实例
      *      this.setContent('hello')
      *  }});
      *  UE.getEditor('containerId'); //返回刚创建的实例

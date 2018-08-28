@@ -327,8 +327,8 @@ if(!Array.prototype.indexOf){
 	//		 offsetY: int => draws at a y offset
 	//		 scaleWidth: int => scales horizontally to width
 	//		 scaleHeight: int => scales vertically to height
-	//		 renderCallback: function => will call the function after the first render is completed
-	//		 forceRedraw: function => will call the function on every frame, if it returns true, will redraw
+	//		 renderCallback: setting => will call the setting after the first render is completed
+	//		 forceRedraw: setting => will call the setting on every frame, if it returns true, will redraw
 	this.canvg = function (target, s, opts) {
 		// no parameters
 		if (target == null && s == null && opts == null) {

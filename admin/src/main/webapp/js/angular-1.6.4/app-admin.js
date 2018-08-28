@@ -3,24 +3,76 @@ var baseUrl = "../admin/"
 mainApp.config(function($routeProvider, $locationProvider) {
 $routeProvider
 	.when('/', {
-		templateUrl: baseUrl+'user/show.html',
-	    controller: 'UserController'
+		templateUrl: baseUrl+'system/user/show.html',
+	    controller: 'userController'
 	})
-	.when('/user', {
-		templateUrl: baseUrl+'user/show.html',
-	    controller: 'UserController'
+	.when('/system/user', {
+		templateUrl: baseUrl+'system/user/show.html',
+	    controller: 'userController'
 	})
-	.when('/role', {
-		templateUrl: baseUrl+'role/show.html',
-	    controller: 'RoleController'
+	.when('/system/role', {
+		templateUrl: baseUrl+'system/role/show.html',
+	    controller: 'roleController'
 	})
-	.when('/logger', {
-		templateUrl: baseUrl+'logger/show.html',
-	    controller: 'LogController'
+	.when('/system/log', {
+		templateUrl: baseUrl+'system/log/show.html',
+	    controller: 'logController'
 	})
-	.when('/api/mud', {
-		templateUrl: baseUrl+'api/mud/map.html',
-	    controller: 'MudController'
+	.when('/mud/player', {
+		templateUrl: baseUrl+'mud/player/show.html',
+		controller: 'playerController'
+	})
+	.when('/mud/attr', {
+		templateUrl: baseUrl+'mud/attr/show.html',
+		controller: 'attrController'
+	})
+	.when('/mud/character', {
+		templateUrl: baseUrl+'mud/character/show.html',
+		controller: 'characterController'
+	})
+	.when('/mud/items', {
+		templateUrl: baseUrl+'mud/items/show.html',
+		controller: 'itemsController'
+	})
+	.when('/mud/joinChaIte', {
+		templateUrl: baseUrl+'mud/joinChaIte/show.html',
+		controller: 'joinChaIteController'
+	})
+	.when('/mud/joinChaSki', {
+		templateUrl: baseUrl+'mud/joinChaSki/show.html',
+		controller: 'joinChaSkiController'
+	})
+	.when('/mud/joinChaTalk', {
+		templateUrl: baseUrl+'mud/joinChaTalk/show.html',
+		controller: 'joinChaTalkController'
+	})
+	.when('/mud/joinIteSki', {
+		templateUrl: baseUrl+'mud/joinIteSki/show.html',
+		controller: 'joinIteSkiController'
+	})
+	.when('/mud/pangbai', {
+		templateUrl: baseUrl+'mud/pangbai/show.html',
+		controller: 'pangbaiController'
+	})
+	.when('/mud/room', {
+		templateUrl: baseUrl+'mud/room/show.html',
+		controller: 'roomController'
+	})
+	.when('/mud/skill', {
+		templateUrl: baseUrl+'mud/skill/show.html',
+		controller: 'skillController'
+	})
+	.when('/mud/task', {
+		templateUrl: baseUrl+'mud/task/show.html',
+		controller: 'taskController'
+	})
+	.when('/mud/work', {
+		templateUrl: baseUrl+'mud/work/show.html',
+		controller: 'workController'
+	})
+	.when('/mud/map', {
+		templateUrl: baseUrl+'mud/map/show.html',
+		controller: 'mapController'
 	})
 	.otherwise({
 		redirectTo: '/404'
@@ -30,7 +82,7 @@ $routeProvider
 mainApp.controller('MainController',function ($scope,$http,$location,$window) { 	
 	$scope.navTree = [];
 	$(function() {
-		$.getJSON("../admin/role/navTree.json",function(data){
+		$.getJSON("../admin/system/role/navTree.json",function(data){
 			$scope.navTree = data;
 		});
 	});
@@ -156,7 +208,23 @@ mainApp.controller('MainController',function ($scope,$http,$location,$window) {
 //全局配置
 mainApp.run(function($rootScope) {  
 
-})   
+})
+
+
+mainApp.filter('unique', function () {
+	return function (collection, keyname) {
+		var output = [],
+			keys = [];
+		angular.forEach(collection, function (item) {
+			var key = item[keyname];
+			if (keys.indexOf(key) === -1) {
+				keys.push(key);
+				output.push(item);
+			}
+		});
+		return output;
+	};
+});
 
 
 mainApp.service('$hjr', function() {
@@ -194,7 +262,8 @@ mainApp.service('$hjr', function() {
 //页面参数初始化	
 var modifyState = "";
 //分页参数初始化  
-var customerArray = new Array();//往后台传的参数集合
-var	pagenumber = 3; //pagenumber：每页记录数 
+var customerArray = {};//往后台传的参数集合
+var	pagenumber = 10; //pagenumber：每页记录数
 var page = {"pagenumber":pagenumber,"current":1};//往后台传的参数集合-分页功能
-var search = { "search": [{"whereFiled":"","where":"","likeFiled":"","like":""}]};
+var search = {"whereFiled":"","where":"","likeFiled":"","like":""};
+var jsonData = {};

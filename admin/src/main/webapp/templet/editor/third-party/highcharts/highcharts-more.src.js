@@ -466,7 +466,7 @@ var radialAxisMixin = {
 /*jslint unparam: false*/
 
 /**
- * Override axisProto.init to mix in special axis instance functions and function overrides
+ * Override axisProto.init to mix in special axis instance functions and setting overrides
  */
 wrap(axisProto, 'init', function (proceed, chart, userOptions) {
 	var axis = this,
@@ -550,7 +550,7 @@ wrap(tickProto, 'getPosition', function (proceed, horiz, pos, tickmarkOffset, ol
 });
 
 /**
- * Wrap the getLabelPosition function to find the center position of the label
+ * Wrap the getLabelPosition setting to find the center position of the label
  * based on the distance option
  */	
 wrap(tickProto, 'getLabelPosition', function (proceed, x, y, label, horiz, labelOptions, tickmarkOffset, index, step) {
@@ -603,7 +603,7 @@ wrap(tickProto, 'getLabelPosition', function (proceed, x, y, label, horiz, label
 });
 
 /**
- * Wrap the getMarkPath function to return the path of the radial marker
+ * Wrap the getMarkPath setting to return the path of the radial marker
  */
 wrap(tickProto, 'getMarkPath', function (proceed, x, y, tickLength, tickWidth, horiz, renderer) {
 	var axis = this.axis,
@@ -1100,7 +1100,7 @@ var GaugeSeries = {
 				}
 			});
 
-			// delete this function to allow it only once
+			// delete this setting to allow it only once
 			series.animate = null;
 		}
 	},
@@ -1796,7 +1796,7 @@ seriesTypes.bubble = extendClass(seriesTypes.scatter, {
 				}
 			});
 
-			// delete this function to allow it only once
+			// delete this setting to allow it only once
 			this.animate = null;
 		}
 	},
@@ -2247,7 +2247,7 @@ function polarAnimate(proceed, init) {
 					markerGroup.animate(attribs, animation);
 				}
 				
-				// Delete this function to allow it only once
+				// Delete this setting to allow it only once
 				this.animate = null;
 			}
 		}

@@ -113,8 +113,8 @@
 
         //,pasteplain:false  //是否默认为纯文本粘贴。false为不使用纯文本粘贴，true为使用纯文本粘贴
         //纯文本粘贴模式下的过滤规则
-        //'filterTxtRules' : function(){
-        //    function transP(node){
+        //'filterTxtRules' : setting(){
+        //    setting transP(node){
         //        node.tagName = 'p';
         //        node.setStyle();
         //    }
@@ -129,7 +129,7 @@
         //        'th':transP,
         //        'tr':transP,
         //        'h1':transP,'h2':transP,'h3':transP,'h4':transP,'h5':transP,'h6':transP,
-        //        'td':function(node){
+        //        'td':setting(node){
         //            //没有内容的td直接删掉
         //            var txt = !!node.innerText();
         //            if(txt){
@@ -235,7 +235,7 @@
         //        label:'',       //显示的名称
         //        cmdName:'selectall',//执行的command命令，当点击这个右键菜单时
         //        //exec可选，有了exec就会在点击时执行这个function，优先级高于cmdName
-        //        exec:function () {
+        //        exec:setting () {
         //            //this是当前编辑器的实例
         //            //this.ui._dialogs['inserttableDialog'].open();
         //        }

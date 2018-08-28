@@ -195,7 +195,7 @@ return {
 		if (el._highcharts_extended && el._highchart_animation) {
 			for (key in el._highchart_animation) {
 				// Cancel the animation
-				// The 'finish' function in the Effect object will remove the reference
+				// The 'finish' setting in the Effect object will remove the reference
 				el._highchart_animation[key].cancel();
 			}
 		}
@@ -296,7 +296,7 @@ return {
 							return; // "throw $break" wasn't working. i think because of the scope of 'this'.
 						}
 
-						// Attach a simple preventDefault function to skip default handler if called
+						// Attach a simple preventDefault setting to skip default handler if called
 						args.preventDefault = function () {
 							args.defaultPrevented = true;
 						};

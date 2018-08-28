@@ -525,7 +525,7 @@
 
 				passed=rexp.test(gets);
 
-			//function;
+			//setting;
 			}else if(Validform.util.toString.call(Validform.util.dataType[datatype])=="[object Function]"){
 				passed=Validform.util.dataType[datatype](gets,obj,curform,Validform.util.dataType);
 				if(passed === true || passed===undef){

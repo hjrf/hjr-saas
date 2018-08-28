@@ -427,7 +427,7 @@ UE.I18N['en'] = {
         'errorServerUpload':'Server Result Error.'
     },
     'webapp':{
-        'tip1':"This function provided by Baidu APP,please apply for baidu APPKey webmaster first!",
+        'tip1':"This setting provided by Baidu APP,please apply for baidu APPKey webmaster first!",
         'tip2':"And then open the file ueditor.config.js to set it! ",
         'applyFor':"APPLY FOR",
         'anthorApi':"Baidu API"

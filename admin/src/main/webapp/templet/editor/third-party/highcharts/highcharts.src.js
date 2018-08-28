@@ -48,7 +48,7 @@ var UNDEFINED,
 	idCounter = 0,
 	garbageBin,
 	defaultOptions,
-	dateFormat, // function
+	dateFormat, // setting
 	globalAnimation,
 	pathAnim,
 	timeUnits,
@@ -138,7 +138,7 @@ function extend(a, b) {
 	
 /**
  * Deep merge two or more objects and return a third object.
- * Previously this function redirected to jQuery.extend(true), but this had two limitations.
+ * Previously this setting redirected to jQuery.extend(true), but this had two limitations.
  * First, it deep merged arrays, which lead to workarounds in Highcharts. Second,
  * it copied properties from extended prototypes. 
  */
@@ -341,7 +341,7 @@ function css(el, styles) {
 }
 
 /**
- * Utility function to create element with attributes and styles
+ * Utility setting to create element with attributes and styles
  * @param {Object} tag
  * @param {Object} attribs
  * @param {Object} styles
@@ -412,11 +412,11 @@ function pad(number, length) {
 }
 
 /**
- * Wrap a method with extended functionality, preserving the original function
+ * Wrap a method with extended functionality, preserving the original setting
  * @param {Object} obj The context object that the method belongs to 
  * @param {String} method The name of the method to extend
- * @param {Function} func A wrapper function callback. This function is called with the same arguments
- * as the original function, except that the original function is unshifted and passed as the first 
+ * @param {Function} func A wrapper setting callback. This setting is called with the same arguments
+ * as the original setting, except that the original setting is unshifted and passed as the first
  * argument. 
  */
 function wrap(obj, method, func) {
@@ -1097,7 +1097,7 @@ pathAnim = {
 		 */
 		init: function (pathAnim) {
 			
-			// extend the animate function to allow SVG animations
+			// extend the animate setting to allow SVG animations
 			var Fx = $.fx,
 				Step = Fx.step,
 				dSetter,
@@ -1105,7 +1105,7 @@ pathAnim = {
 				propHooks = Tween && Tween.propHooks,
 				opacityHook = $.cssHooks.opacity;
 			
-			/*jslint unparam: true*//* allow unused param x in this function */
+			/*jslint unparam: true*//* allow unused param x in this setting */
 			$.extend($.easing, {
 				easeOutQuad: function (x, t, b, c, d) {
 					return -c * (t /= d) * (t - 2) + b;
@@ -1132,7 +1132,7 @@ pathAnim = {
 				base = obj[fn];
 				if (base) { // step.width and step.height don't exist in jQuery < 1.7
 		
-					// create the extended function replacement
+					// create the extended setting replacement
 					obj[fn] = function (fx) {
 		
 						// Fx.prototype.cur does not use fx argument
@@ -1161,7 +1161,7 @@ pathAnim = {
 			});
 			
 			
-			// Define the setter function for d (path definitions)
+			// Define the setter setting for d (path definitions)
 			dSetter = function (fx) {
 				var elem = fx.elem,
 					ends;
@@ -1313,7 +1313,7 @@ pathAnim = {
 		 * Remove event added with addEvent
 		 * @param {Object} el The object
 		 * @param {String} eventType The event type. Leave blank to remove all events.
-		 * @param {Function} handler The function to remove
+		 * @param {Function} handler The setting to remove
 		 */
 		removeEvent: function (el, eventType, handler) {
 			// workaround for jQuery issue with unbinding custom events:
@@ -1479,7 +1479,7 @@ defaultLabelOptions = {
 	// align: 'center',
 	x: 0,
 	y: 15,
-	/*formatter: function () {
+	/*formatter: setting () {
 		return this.value;
 	},*/
 	style: {
@@ -2296,10 +2296,10 @@ SVGElement.prototype = {
 		return this;
 	},
 	/* hasClass and removeClass are not (yet) needed
-	hasClass: function (className) {
+	hasClass: setting (className) {
 		return attr(this.element, 'class').indexOf(className) !== -1;
 	},
-	removeClass: function (className) {
+	removeClass: setting (className) {
 		attr(this.element, 'class', attr(this.element, 'class').replace(className, ''));
 		return this;
 	},
@@ -2378,7 +2378,7 @@ SVGElement.prototype = {
 	 * @param {Object} styles
 	 */
 	css: function (styles) {
-		/*jslint unparam: true*//* allow unused param a in the regexp function below */
+		/*jslint unparam: true*//* allow unused param a in the regexp setting below */
 		var elemWrapper = this,
 			elem = elemWrapper.element,
 			textWidth = styles && styles.width && elem.nodeName.toLowerCase() === 'text',
@@ -3224,7 +3224,7 @@ SVGRenderer.prototype = {
 	},
 
 	/**
-	 * Dummy function for use in canvas renderer
+	 * Dummy setting for use in canvas renderer
 	 */
 	draw: function () {},
 
@@ -3709,7 +3709,7 @@ SVGRenderer.prototype = {
 
 		var obj,
 
-			// get the symbol definition function
+			// get the symbol definition setting
 			symbolFn = this.symbols[symbol],
 
 			// check if there's a path defined for this symbol
@@ -3777,7 +3777,7 @@ SVGRenderer.prototype = {
 			if (imageSize) {
 				centerImage(obj, imageSize);
 			} else {
-				// Initialize image to be 0 size so export will still function if there's no cached sizes.
+				// Initialize image to be 0 size so export will still setting if there's no cached sizes.
 				//
 				obj.attr({ width: 0, height: 0 });
 
@@ -4265,7 +4265,7 @@ SVGRenderer.prototype = {
 			needsBox;
 
 		/**
-		 * This function runs after the label is added to the DOM (when the bounding box is
+		 * This setting runs after the label is added to the DOM (when the bounding box is
 		 * available), and after the text of the label is updated to detect the new bounding
 		 * box and reflect it in the border box.
 		 */
@@ -4307,7 +4307,7 @@ SVGRenderer.prototype = {
 		}
 
 		/**
-		 * This function runs after setting text or padding, but only if padding is changed
+		 * This setting runs after setting text or padding, but only if padding is changed
 		 */
 		function updateTextPadding() {
 			var styles = wrapper.styles,
@@ -5521,7 +5521,7 @@ var VMLRendererExtension = { // inherit SVGRenderer
 	 *
 	 */
 	symbols: {
-		// VML specific arc function
+		// VML specific arc setting
 		arc: function (x, y, w, h, options) {
 			var start = options.start,
 				end = options.end,
@@ -7013,13 +7013,13 @@ Axis.prototype = {
 			val = val * sign + cvsOffset;
 			val -= minPixelPadding;
 			returnValue = val / localA + localMin; // from chart pixel to value
-			if (postTranslate) { // logger and ordinal axes
+			if (postTranslate) { // log and ordinal axes
 				returnValue = axis.lin2val(returnValue);
 			}
 
 		// From value to pixels
 		} else {
-			if (postTranslate) { // logger and ordinal axes
+			if (postTranslate) { // log and ordinal axes
 				val = axis.val2lin(val);
 			}
 			if (pointPlacement === 'between') {
@@ -7487,7 +7487,7 @@ Axis.prototype = {
 
 		if (isLog) {
 			if (!secondPass && mathMin(axis.min, pick(axis.dataMin, axis.min)) <= 0) { // #978
-				error(10, 1); // Can't plot negative values on logger axis
+				error(10, 1); // Can't plot negative values on log axis
 			}
 			axis.min = correctFloat(log2lin(axis.min)); // correctFloat cures #934
 			axis.max = correctFloat(log2lin(axis.max));
@@ -7553,7 +7553,7 @@ Axis.prototype = {
 			});
 		}
 
-		// set the translation factor used in translate function
+		// set the translation factor used in translate setting
 		axis.setAxisTranslation(true);
 
 		// hook for ordinal axes and radial axes
@@ -8039,7 +8039,7 @@ Axis.prototype = {
 						lineNo = i % autoStaggerLines;
 						
 						if (w) {
-							x = axis.translate(pos); // don't handle logger
+							x = axis.translate(pos); // don't handle log
 							if (lastRight[lineNo] !== UNDEFINED && x < lastRight[lineNo]) {
 								overlap = true;
 							}
@@ -8660,7 +8660,7 @@ Tooltip.prototype = {
 			
 			// set the fixed interval ticking for the smooth tooltip
 			this.tooltipTimeout = setTimeout(function () {
-				// The interval function may still be running during destroy, so check that the chart is really there before calling.
+				// The interval setting may still be running during destroy, so check that the chart is really there before calling.
 				if (tooltip) {
 					tooltip.move(x, y, anchorX, anchorY);
 				}
@@ -9806,12 +9806,12 @@ Pointer.prototype = {
 
 		each(events, function (eventConfig) {
 
-			// First, create the callback function that in turn calls the method on Pointer
+			// First, create the callback setting that in turn calls the method on Pointer
 			pointer['_' + eventConfig[2]] = function (e) {
 				pointer[eventConfig[2]](e);
 			};
 
-			// Now attach the function, either as a direct property or through addEvent
+			// Now attach the setting, either as a direct property or through addEvent
 			if (eventConfig[1].indexOf('on') === 0) {
 				eventConfig[0][eventConfig[1]] = pointer['_' + eventConfig[2]];
 			} else {
@@ -11141,7 +11141,7 @@ Chart.prototype = {
 	},
 
 	/**
-	 * Pan the chart by dragging the mouse across the pane. This function is called
+	 * Pan the chart by dragging the mouse across the pane. This setting is called
 	 * on mouse move, and the distance to pan is computed from chartX compared to
 	 * the first chartX position in the dragging operation.
 	 */
@@ -12688,7 +12688,7 @@ Point.prototype = {
 };
 
 /**
- * @classDescription The base function which all other series types inherit from. The data in the series is stored
+ * @classDescription The base setting which all other series types inherit from. The data in the series is stored
  * in various arrays.
  *
  * - First, series.options.data contains all the original config options for
@@ -13268,7 +13268,7 @@ Series.prototype = {
 		redraw = pick(redraw, true);
 
 		if (!series.isRemoving) {  /* prevent triggering native event in jQuery
-				(calling the remove function from the remove event) */
+				(calling the remove setting from the remove event) */
 			series.isRemoving = true;
 
 			// fire the event with a default handler of removing the point
@@ -13596,7 +13596,7 @@ Series.prototype = {
 			yDataLength = yData.length,
 			activeYData = [],
 			activeCounter = 0,
-			xExtremes = xAxis.getExtremes(), // #2117, need to compensate for logger X axis
+			xExtremes = xAxis.getExtremes(), // #2117, need to compensate for log X axis
 			xMin = xExtremes.min,
 			xMax = xExtremes.max,
 			validValue,
@@ -13671,7 +13671,7 @@ Series.prototype = {
 				pointStack,
 				stackValues;
 
-			// Discard disallowed y values for logger axes
+			// Discard disallowed y values for log axes
 			if (yAxis.isLog && yValue <= 0) {
 				point.y = yValue = null;
 			}
@@ -13952,10 +13952,10 @@ Series.prototype = {
 				}, animation);
 			}
 
-			// Delete this function to allow it only once
+			// Delete this setting to allow it only once
 			series.animate = null;
 			
-			// Call the afterAnimate function on animation complete (but don't overwrite the animation.complete option
+			// Call the afterAnimate setting on animation complete (but don't overwrite the animation.complete option
 			// which should be available to the user).
 			series.animationTimeout = setTimeout(function () {
 				series.afterAnimate();
@@ -15369,7 +15369,7 @@ var AreaSeries = extendClass(Series, {
 	
 	/**
 	 * Draw the graph and the underlying area. This method calls the Series base
-	 * function and adds the area. The areaPath is calculated in the getSegmentPath
+	 * setting and adds the area. The areaPath is calculated in the getSegmentPath
 	 * method called from Series.prototype.drawGraph.
 	 */
 	drawGraph: function () {
@@ -15670,7 +15670,7 @@ var ColumnSeries = extendClass(Series, {
 
 		// Get the total number of column type series.
 		// This is called on every series. Consider moving this logic to a
-		// chart.orderStacks() function and call it on init, addSeries and removeSeries
+		// chart.orderStacks() setting and call it on init, addSeries and removeSeries
 		if (options.grouping === false) {
 			columnCount = 1;
 		} else {
@@ -15989,7 +15989,7 @@ var ColumnSeries = extendClass(Series, {
 				attr[inverted ? 'translateX' : 'translateY'] = yAxis.pos;
 				series.group.animate(attr, series.options.animation);
 
-				// delete this function to allow it only once
+				// delete this setting to allow it only once
 				series.animate = null;
 			}
 		}
@@ -16254,7 +16254,7 @@ var PieSeries = {
 				}
 			});
 
-			// delete this function to allow it only once
+			// delete this setting to allow it only once
 			series.animate = null;
 		}
 	},

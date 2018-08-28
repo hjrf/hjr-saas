@@ -8,12 +8,12 @@ document.createElement('audio');
 document.createElement('track');
 
 /**
- * Doubles as the main function for users to create a player instance and also
+ * Doubles as the main setting for users to create a player instance and also
  * the main library object.
  *
  * **ALIASES** videojs, _V_ (deprecated)
  *
- * The `vjs` function can be used to initialize or retrieve a player.
+ * The `vjs` setting can be used to initialize or retrieve a player.
  *
  *     var myPlayer = vjs('my_video_id');
  *
@@ -127,7 +127,7 @@ vjs.players = {};
  * The constructor can be defined through the init property of an object argument.
  *
  *     var Animal = CoreObject.extend({
- *       init: function(name, sound){
+ *       init: setting(name, sound){
  *         this.name = name;
  *       }
  *     });
@@ -136,16 +136,16 @@ vjs.players = {};
  * prototype.
  *
  *    var Animal = CoreObject.extend({
- *       init: function(name){
+ *       init: setting(name){
  *         this.name = name;
  *       },
- *       getName: function(){
+ *       getName: setting(){
  *         return this.name;
  *       },
  *       sound: '...'
  *    });
  *
- *    Animal.prototype.makeSound = function(){
+ *    Animal.prototype.makeSound = setting(){
  *      alert(this.sound);
  *    };
  *
@@ -194,13 +194,13 @@ vjs.CoreObject.extend = function(props){
   // Make sure to check the unobfuscated version for external libs
   init = props['init'] || props.init || this.prototype['init'] || this.prototype.init || function(){};
   // In Resig's simple class inheritance (previously used) the constructor
-  //  is a function that calls `this.init.apply(arguments)`
+  //  is a setting that calls `this.init.apply(arguments)`
   // However that would prevent us from using `ParentObject.call(this);`
   //  in a Child constuctor because the `this` in `this.init`
   //  would still refer to the Child and cause an inifinite loop.
   // We would instead have to do
   //    `ParentObject.prototype.init.apply(this, argumnents);`
-  //  Bleh. We're not creating a _super() function, so it's good to keep
+  //  Bleh. We're not creating a _super() setting, so it's good to keep
   //  the parent constructor reference simple.
   subObj = function(){
     init.apply(this, arguments);
@@ -214,7 +214,7 @@ vjs.CoreObject.extend = function(props){
 
   // Make the class extendable
   subObj.extend = vjs.CoreObject.extend;
-  // Make a function for creating instances
+  // Make a setting for creating instances
   subObj.create = vjs.CoreObject.create;
 
   // Extend subObj's prototype with functions and other properties from props
@@ -239,7 +239,7 @@ vjs.CoreObject.create = function(){
   // Create a new object that inherits from this object's prototype
   var inst = vjs.obj.create(this.prototype);
 
-  // Apply this constructor function to the new object
+  // Apply this constructor setting to the new object
   this.apply(inst, arguments);
 
   // Return the new object
@@ -254,7 +254,7 @@ vjs.CoreObject.create = function(){
 
 /**
  * Add an event listener to element
- * It stores the handler function in a separate cache object
+ * It stores the handler setting in a separate cache object
  * and adds a generic handler to the element's event,
  * along with a unique id (guid) to the element.
  * @param  {Element|Object}   elem Element or object to bind listeners to
@@ -324,7 +324,7 @@ vjs.off = function(elem, type, fn) {
   // If no events exist, nothing to unbind
   if (!data.handlers) { return; }
 
-  // Utility function
+  // Utility setting
   var removeType = function(t){
      data.handlers[t] = [];
      vjs.cleanUpEvents(elem,t);
@@ -530,7 +530,7 @@ vjs.trigger = function(elem, event) {
   }
 
   // Unless explicitly stopped or the event does not bubble (e.g. media events)
-    // recursively calls this function to bubble the event up the DOM.
+    // recursively calls this setting to bubble the event up the DOM.
     if (parent && !event.isPropagationStopped() && event.bubbles !== false) {
     vjs.trigger(parent, event);
 
@@ -647,24 +647,24 @@ vjs.obj = {};
  *
  * https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/create
  *
- * @function
+ * @setting
  * @param  {Object}   obj Object to use as prototype
  * @private
  */
  vjs.obj.create = Object.create || function(obj){
-  //Create a new function called 'F' which is just an empty object.
+  //Create a new setting called 'F' which is just an empty object.
   function F() {}
 
-  //the prototype of the 'F' function should point to the
-  //parameter of the anonymous function.
+  //the prototype of the 'F' setting should point to the
+  //parameter of the anonymous setting.
   F.prototype = obj;
 
-  //create a new constructor function based off of the 'F' function.
+  //create a new constructor setting based off of the 'F' setting.
   return new F();
 };
 
 /**
- * Loop through each property in an object and call a function
+ * Loop through each property in an object and call a setting
  * whose arguments are (key,value)
  * @param  {Object}   obj Object of properties
  * @param  {Function} fn  Function to be called on each property.
@@ -752,26 +752,26 @@ vjs.obj.isPlain = function(obj){
 };
 
 /**
- * Bind (a.k.a proxy or Context). A simple method for changing the context of a function
-   It also stores a unique id on the function so it can be easily removed from events
+ * Bind (a.k.a proxy or Context). A simple method for changing the context of a setting
+   It also stores a unique id on the setting so it can be easily removed from events
  * @param  {*}   context The object to bind as scope
- * @param  {Function} fn      The function to be bound to a scope
- * @param  {Number=}   uid     An optional unique ID for the function to be set
+ * @param  {Function} fn      The setting to be bound to a scope
+ * @param  {Number=}   uid     An optional unique ID for the setting to be set
  * @return {Function}
  * @private
  */
 vjs.bind = function(context, fn, uid) {
-  // Make sure the function has a unique ID
+  // Make sure the setting has a unique ID
   if (!fn.guid) { fn.guid = vjs.guid++; }
 
-  // Create the new function that changes the context
+  // Create the new setting that changes the context
   var ret = function() {
     return fn.apply(context, arguments);
   };
 
-  // Allow for the ability to individualize this function
+  // Allow for the ability to individualize this setting
   // Needed in the case where multiple objects might share the same prototype
-  // IF both items add an event listener with the same function, then you try to remove just one
+  // IF both items add an event listener with the same setting, then you try to remove just one
   // it will remove both because they both have the same guid.
   // when using this, you need to use the bind method when you remove the listener as well.
   // currently used in text tracks
@@ -790,7 +790,7 @@ vjs.bind = function(context, fn, uid) {
 vjs.cache = {};
 
 /**
- * Unique ID for an element or function
+ * Unique ID for an element or setting
  * @type {Number}
  * @private
  */
@@ -1247,7 +1247,7 @@ vjs.getAbsoluteURL = function(url){
   return url;
 };
 
-// usage: logger('inside coolFunc',this,arguments);
+// usage: log('inside coolFunc',this,arguments);
 // http://paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/
 vjs.log = function(){
   vjs.log.history = vjs.log.history || [];   // store logs to an array for reference
@@ -1311,8 +1311,8 @@ vjs.findPosition = function(el) {
  *
  * Components are also event emitters.
  *
- *     button.on('click', function(){
- *       console.logger('Button Clicked!');
+ *     button.on('click', setting(){
+ *       console.log('Button Clicked!');
  *     });
  *
  *     button.trigger('customevent');
@@ -1666,7 +1666,7 @@ vjs.Component.prototype.addChild = function(child, options){
   }
 
   // If a name wasn't used to create the component, check if we can use the
-  // name function of the component
+  // name setting of the component
   componentName = componentName || (component.name && component.name());
 
   if (componentName) {
@@ -1760,7 +1760,7 @@ vjs.Component.prototype.initChildren = function(){
  * @return {String} The constructed class name
  */
 vjs.Component.prototype.buildCSSClass = function(){
-    // Child classes can include a function that does:
+    // Child classes can include a setting that does:
     // return 'CLASS NAME' + this._super();
     return '';
 };
@@ -1771,7 +1771,7 @@ vjs.Component.prototype.buildCSSClass = function(){
 /**
  * Add an event listener to this component's element
  *
- *     var myFunc = function(){
+ *     var myFunc = setting(){
  *       var myPlayer = this;
  *       // Do something when the event is fired
  *     };
@@ -1864,7 +1864,7 @@ vjs.Component.prototype.readyQueue_;
  * Bind a listener to the component's ready state
  *
  * Different from event listeners in that if the ready event has already happend
- * it will trigger the function immediately.
+ * it will trigger the setting immediately.
  *
  * @param  {Function} fn Ready listener
  * @return {vjs.Component}
@@ -2619,7 +2619,7 @@ vjs.MenuButton.prototype.buildCSSClass = function(){
 };
 
 // Focus - Add keyboard functionality to element
-// This function is not needed anymore. Instead, the keyboard functionality is handled by
+// This setting is not needed anymore. Instead, the keyboard functionality is handled by
 // treating the button as triggering a submenu. When the button is pressed, the submenu
 // appears. Pressing the button again makes the submenu disappear.
 vjs.MenuButton.prototype.onFocus = function(){};
@@ -2697,13 +2697,13 @@ vjs.MenuButton.prototype.unpressButton = function(){
 vjs.Player = vjs.Component.extend({
 
   /**
-   * player's constructor function
+   * player's constructor setting
    *
    * @constructs
    * @method init
    * @param {Element} tag        The original video tag used for configuring options
    * @param {Object=} options    Player options
-   * @param {Function=} ready    Ready callback function
+   * @param {Function=} ready    Ready callback setting
    */
   init: function(tag, options, ready){
     this.tag = tag; // Store the original tag used to set options
@@ -2983,14 +2983,14 @@ vjs.Player.prototype.unloadTech = function(){
 // First is a plugin reload issue in Firefox that has been around for 11 years: https://bugzilla.mozilla.org/show_bug.cgi?id=90268
 // Then with the new fullscreen API, Mozilla and webkit browsers will reload the flash object after going to fullscreen.
 // To get around this, we're unloading the tech, caching source and currentTime values, and reloading the tech once the plugin is resized.
-// reloadTech: function(betweenFn){
-//   vjs.logger('unloadingTech')
+// reloadTech: setting(betweenFn){
+//   vjs.log('unloadingTech')
 //   this.unloadTech();
-//   vjs.logger('unloadedTech')
+//   vjs.log('unloadedTech')
 //   if (betweenFn) { betweenFn.call(); }
-//   vjs.logger('LoadingTech')
+//   vjs.log('LoadingTech')
 //   this.loadTech(this.techName, { src: this.cache_.src })
-//   vjs.logger('loadedTech')
+//   vjs.log('loadedTech')
 // },
 
 /* Fallbacks for unsupported event types
@@ -3026,7 +3026,7 @@ vjs.Player.prototype.trackProgress = function(){
 
   this.progressInterval = setInterval(vjs.bind(this, function(){
     // Don't trigger unless buffered amount is greater than last time
-    // logger(this.cache_.bufferEnd, this.buffered().end(0), this.duration())
+    // log(this.cache_.bufferEnd, this.buffered().end(0), this.duration())
     /* TODO: update for multiple buffered regions */
     if (this.cache_.bufferEnd < this.buffered().end(0)) {
       this.trigger('progress');
@@ -3622,7 +3622,7 @@ vjs.Player.prototype.selectSource = function(sources){
 };
 
 /**
- * The source function updates the video source
+ * The source setting updates the video source
  *
  * There are three types of variables you can pass as the argument.
  *
@@ -3954,7 +3954,7 @@ vjs.Player.prototype.listenForUserActivity = function(){
   this.on('touchcancel', onMouseUp);
 
   // Run an interval every 250 milliseconds instead of stuffing everything into
-  // the mousemove/touchmove function itself, to prevent performance degradation.
+  // the mousemove/touchmove setting itself, to prevent performance degradation.
   // `this.reportUserActivity` simply sets this.userActivity_ to true, which
   // then gets picked up by this loop
   // http://ejohn.org/blog/learning-from-twitter/
@@ -3991,22 +3991,22 @@ vjs.Player.prototype.listenForUserActivity = function(){
 };
 
 // Methods to add support for
-// networkState: function(){ return this.techCall('networkState'); },
-// readyState: function(){ return this.techCall('readyState'); },
-// seeking: function(){ return this.techCall('seeking'); },
-// initialTime: function(){ return this.techCall('initialTime'); },
-// startOffsetTime: function(){ return this.techCall('startOffsetTime'); },
-// played: function(){ return this.techCall('played'); },
-// seekable: function(){ return this.techCall('seekable'); },
-// videoTracks: function(){ return this.techCall('videoTracks'); },
-// audioTracks: function(){ return this.techCall('audioTracks'); },
-// videoWidth: function(){ return this.techCall('videoWidth'); },
-// videoHeight: function(){ return this.techCall('videoHeight'); },
-// defaultPlaybackRate: function(){ return this.techCall('defaultPlaybackRate'); },
-// playbackRate: function(){ return this.techCall('playbackRate'); },
-// mediaGroup: function(){ return this.techCall('mediaGroup'); },
-// controller: function(){ return this.techCall('controller'); },
-// defaultMuted: function(){ return this.techCall('defaultMuted'); }
+// networkState: setting(){ return this.techCall('networkState'); },
+// readyState: setting(){ return this.techCall('readyState'); },
+// seeking: setting(){ return this.techCall('seeking'); },
+// initialTime: setting(){ return this.techCall('initialTime'); },
+// startOffsetTime: setting(){ return this.techCall('startOffsetTime'); },
+// played: setting(){ return this.techCall('played'); },
+// seekable: setting(){ return this.techCall('seekable'); },
+// videoTracks: setting(){ return this.techCall('videoTracks'); },
+// audioTracks: setting(){ return this.techCall('audioTracks'); },
+// videoWidth: setting(){ return this.techCall('videoWidth'); },
+// videoHeight: setting(){ return this.techCall('videoHeight'); },
+// defaultPlaybackRate: setting(){ return this.techCall('defaultPlaybackRate'); },
+// playbackRate: setting(){ return this.techCall('playbackRate'); },
+// mediaGroup: setting(){ return this.techCall('mediaGroup'); },
+// controller: setting(){ return this.techCall('controller'); },
+// defaultMuted: setting(){ return this.techCall('defaultMuted'); }
 
 // TODO
 // currentSrcList: the array of sources including other formats and bitrates
@@ -4699,7 +4699,7 @@ vjs.MuteToggle.prototype.update = function(){
 
   // Don't rewrite the button text if the actual text doesn't change.
   // This causes unnecessary and confusing information for screen reader users.
-  // This check is needed because this function gets called every time the volume level is changed.
+  // This check is needed because this setting gets called every time the volume level is changed.
   if(this.player_.muted()){
       if(this.el_.children[0].children[0].innerHTML!='Unmute'){
           this.el_.children[0].children[0].innerHTML = 'Unmute'; // change the button text to "Unmute"
@@ -5463,7 +5463,7 @@ vjs.Flash = vjs.MediaTechController.extend({
     // NOTE (2012-01-29): Cannot get Firefox to load the remote hosted SWF into a dynamically created iFrame
     // Firefox 9 throws a security error, unleess you call location.href right before doc.write.
     //    Not sure why that even works, but it causes the browser to look like it's continuously trying to load the page.
-    // Firefox 3.6 keeps calling the iframe onload function anytime I write to it, causing an endless loop.
+    // Firefox 3.6 keeps calling the iframe onload setting anytime I write to it, causing an endless loop.
 
     if (options['iFrameMode'] === true && !vjs.IS_FIREFOX) {
 
@@ -5478,7 +5478,7 @@ vjs.Flash = vjs.MediaTechController.extend({
         'frameBorder': 0
       });
 
-      // Update ready function names in flash vars for iframe window
+      // Update ready setting names in flash vars for iframe window
       flashVars['readyFunction'] = 'ready';
       flashVars['eventProxyFunction'] = 'events';
       flashVars['errorEventProxyFunction'] = 'errors';
@@ -5538,7 +5538,7 @@ vjs.Flash = vjs.MediaTechController.extend({
         // So far no issues with swf ready event being called before it's set on the window.
         iWin['player'] = this.player_;
 
-        // Create swf ready function for iFrame window
+        // Create swf ready setting for iFrame window
         iWin['ready'] = vjs.bind(this.player_, function(currSwf){
           var el = iDoc.getElementById(currSwf),
               player = this,
@@ -6320,7 +6320,7 @@ vjs.TextTrack.prototype.activate = function(){
   // Only activate if not already active.
   if (this.mode_ === 0) {
     // Update current cue on timeupdate
-    // Using unique ID for bind function so other tracks don't remove listener
+    // Using unique ID for bind setting so other tracks don't remove listener
     this.player_.on('timeupdate', vjs.bind(this, this.update, this.id_));
 
     // Reset cue time on media end
@@ -6337,7 +6337,7 @@ vjs.TextTrack.prototype.activate = function(){
  * Turn off cue tracking.
  */
 vjs.TextTrack.prototype.deactivate = function(){
-  // Using unique ID for bind function so other tracks don't remove listener
+  // Using unique ID for bind setting so other tracks don't remove listener
   this.player_.off('timeupdate', vjs.bind(this, this.update, this.id_));
   this.player_.off('ended', vjs.bind(this, this.reset, this.id_));
   this.reset(); // Reset
@@ -6748,7 +6748,7 @@ vjs.TextTrackButton = vjs.MenuButton.extend({
 
 // vjs.TextTrackButton.prototype.buttonPressed = false;
 
-// vjs.TextTrackButton.prototype.createMenu = function(){
+// vjs.TextTrackButton.prototype.createMenu = setting(){
 //   var menu = new vjs.Menu(this.player_);
 
 //   // Add a title list item to the top
@@ -6941,7 +6941,7 @@ vjs.ChaptersTrackMenuItem.prototype.update = function(){
   var cue = this.cue,
       currentTime = this.player_.currentTime();
 
-  // vjs.logger(currentTime, cue.startTime);
+  // vjs.log(currentTime, cue.startTime);
   this.selected(cue.startTime <= currentTime && currentTime < cue.endTime);
 };
 
@@ -6954,7 +6954,7 @@ vjs.obj.merge(vjs.ControlBar.prototype.options_['children'], {
 
 // vjs.Cue = vjs.Component.extend({
 //   /** @constructor */
-//   init: function(player, options){
+//   init: setting(player, options){
 //     vjs.Component.call(this, player, options);
 //   }
 // });
@@ -7048,7 +7048,7 @@ vjs.autoSetup = function(){
       vid = vids[i];
 
       // Check if element exists, has getAttribute func.
-      // IE seems to consider typeof el.getAttribute == 'object' instead of 'function' like expected, at least when loading the player immediately.
+      // IE seems to consider typeof el.getAttribute == 'object' instead of 'setting' like expected, at least when loading the player immediately.
       if (vid && vid.getAttribute) {
 
         // Make sure this player hasn't already been set up.
@@ -7101,7 +7101,7 @@ vjs.autoSetupTimeout(1);
  * the method for registering a video.js plugin
  *
  * @param  {String} name The name of the plugin
- * @param  {Function} init The function that is run when the player inits
+ * @param  {Function} init The setting that is run when the player inits
  */
 vjs.plugin = function(name, init){
   vjs.Player.prototype[name] = init;

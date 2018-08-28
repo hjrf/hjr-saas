@@ -368,7 +368,7 @@
              *     'before-send-file': 'doSomthingAsync'
              * }, {
              *
-             *     doSomthingAsync: function() {
+             *     doSomthingAsync: setting() {
              *         var deferred = Base.Deferred();
              *
              *         // 模拟一次异步操作。
@@ -388,12 +388,12 @@
              * @return {Boolean}
              * @for  Base
              * @example
-             * console.logger( Base.isPromise() );    // => false
-             * console.logger( Base.isPromise({ key: '123' }) );    // => false
-             * console.logger( Base.isPromise( Base.Deferred().promise() ) );    // => true
+             * console.log( Base.isPromise() );    // => false
+             * console.log( Base.isPromise({ key: '123' }) );    // => false
+             * console.log( Base.isPromise( Base.Deferred().promise() ) );    // => true
              *
              * // Deferred也是一个Promise
-             * console.logger( Base.isPromise( Base.Deferred() ) );    // => true
+             * console.log( Base.isPromise( Base.Deferred() ) );    // => true
              */
             isPromise: function( anything ) {
                 return anything && typeof anything.then === 'function';
@@ -421,7 +421,7 @@
                     // only a single Deferred, just use that.
                     deferred = remaining === 1 ? subordinate : Deferred(),
     
-                    // Update function for both resolve and progress values
+                    // Update setting for both resolve and progress values
                     updateFunc = function( i, contexts, values ) {
                         return function( value ) {
                             contexts[ i ] = this;
@@ -683,8 +683,8 @@
              * @grammar Base.bindFn( fn, context ) => Function
              * @method bindFn
              * @example
-             * var doSomething = function() {
-             *         console.logger( this.name );
+             * var doSomething = setting() {
+             *         console.log( this.name );
              *     },
              *     obj = {
              *         name: 'Object Name'
@@ -698,8 +698,8 @@
     
             /**
              * 引用Console.log如果存在的话，否则引用一个[空函数noop](#WebUploader:Base.noop)。
-             * @grammar Base.logger( args... ) => undefined
-             * @method logger
+             * @grammar Base.log( args... ) => undefined
+             * @method log
              */
             log: (function() {
                 if ( window.console ) {
@@ -718,7 +718,7 @@
                 // var next = window.requestAnimationFrame ||
                 //     window.webkitRequestAnimationFrame ||
                 //     window.mozRequestAnimationFrame ||
-                //     function( cb ) {
+                //     setting( cb ) {
                 //         window.setTimeout( cb, 1000 / 60 );
                 //     };
     
@@ -732,9 +732,9 @@
              * @grammar Base.slice( target, start[, end] ) => Array
              * @method slice
              * @example
-             * function doSomthing() {
+             * setting doSomthing() {
              *     var args = Base.slice( arguments, 1 );
-             *     console.logger( args );
+             *     console.log( args );
              * }
              *
              * doSomthing( 'ignored', 'arg2', 'arg3' );    // => Array ["arg2", "arg3"]
@@ -772,12 +772,12 @@
              * @param {Number} [pointLength=2] 精确到的小数点数。
              * @param {Array} [units=[ 'B', 'K', 'M', 'G', 'TB' ]] 单位数组。从字节，到千字节，一直往上指定。如果单位数组里面只指定了到了K(千字节)，同时文件大小大于M, 此方法的输出将还是显示成多少K.
              * @example
-             * console.logger( Base.formatSize( 100 ) );    // => 100B
-             * console.logger( Base.formatSize( 1024 ) );    // => 1.00K
-             * console.logger( Base.formatSize( 1024, 0 ) );    // => 1K
-             * console.logger( Base.formatSize( 1024 * 1024 ) );    // => 1.00M
-             * console.logger( Base.formatSize( 1024 * 1024 * 1024 ) );    // => 1.00G
-             * console.logger( Base.formatSize( 1024 * 1024 * 1024, 0, ['B', 'KB', 'MB'] ) );    // => 1024MB
+             * console.log( Base.formatSize( 100 ) );    // => 100B
+             * console.log( Base.formatSize( 1024 ) );    // => 1.00K
+             * console.log( Base.formatSize( 1024, 0 ) );    // => 1K
+             * console.log( Base.formatSize( 1024 * 1024 ) );    // => 1.00M
+             * console.log( Base.formatSize( 1024 * 1024 * 1024 ) );    // => 1.00G
+             * console.log( Base.formatSize( 1024 * 1024 * 1024, 0, ['B', 'KB', 'MB'] ) );    // => 1024MB
              */
             formatSize: function( size, pointLength, units ) {
                 var unit;
@@ -1838,12 +1838,12 @@
          * Uploader.register({
          *     'make-thumb': 'makeThumb'
          * }, {
-         *     init: function( options ) {},
-         *     makeThumb: function() {}
+         *     init: setting( options ) {},
+         *     makeThumb: setting() {}
          * });
          *
          * Uploader.register({
-         *     'make-thumb': function() {
+         *     'make-thumb': setting() {
          *         
          *     }
          * });
@@ -1888,7 +1888,7 @@
          * Uploader.register({
          *     name: 'custom',
          *     
-         *     'make-thumb': function() {
+         *     'make-thumb': setting() {
          *         
          *     }
          * });
@@ -2300,10 +2300,10 @@
              * @for Uploader
              * @example
              *
-             * uploader.on( 'fileQueued', function( file ) {
+             * uploader.on( 'fileQueued', setting( file ) {
              *     var $li = ...;
              *
-             *     uploader.makeThumb( file, function( error, ret ) {
+             *     uploader.makeThumb( file, setting( error, ret ) {
              *         if ( error ) {
              *             $li.text('预览错误');
              *         } else {
@@ -3088,7 +3088,7 @@
              * @for  Uploader
              * @example
              *
-             * $li.on('click', '.remove-this', function() {
+             * $li.on('click', '.remove-this', setting() {
              *     uploader.removeFile( file );
              * })
              */
@@ -3111,8 +3111,8 @@
              * @description 返回指定状态的文件集合，不传参数将返回所有状态的文件。
              * @for  Uploader
              * @example
-             * console.logger( uploader.getFiles() );    // => all files
-             * console.logger( uploader.getFiles('error') )    // => all error files.
+             * console.log( uploader.getFiles() );    // => all files
+             * console.log( uploader.getFiles('error') )    // => all error files.
              */
             getFiles: function() {
                 return this.queue.getFiles.apply( this.queue, arguments );
@@ -3129,7 +3129,7 @@
              * @description 重试上传，重试指定文件，或者从出错的文件开始重新上传。
              * @for  Uploader
              * @example
-             * function retry() {
+             * setting retry() {
              *     uploader.retry();
              * }
              */
@@ -3735,7 +3735,7 @@
              * @for  Uploader
              * @example
              *
-             * $li.on('click', '.remove-this', function() {
+             * $li.on('click', '.remove-this', setting() {
              *     uploader.cancelFile( file );
              * })
              */
@@ -4233,7 +4233,7 @@
     /**
      * @fileOverview 日志组件，主要用来收集错误信息，可以帮助 webuploader 更好的定位问题和发展。
      *
-     * 如果您不想要启用此功能，请在打包的时候去掉 logger 模块。
+     * 如果您不想要启用此功能，请在打包的时候去掉 log 模块。
      *
      * 或者可以在初始化的时候通过 options.disableWidgets 属性禁用。
      *
@@ -4241,7 +4241,7 @@
      * WebUploader.create({
      *     ...
      *
-     *     disableWidgets: 'logger',
+     *     disableWidgets: 'log',
      *
      *     ...
      * })
@@ -4982,12 +4982,12 @@
             return dataView.getUint32( dirEndOffset, littleEndian );
         };
     
-        // EXIF.getExifThumbnail = function(dataView, offset, length) {
+        // EXIF.getExifThumbnail = setting(dataView, offset, length) {
         //     var hexData,
         //         i,
         //         b;
         //     if (!length || offset + length > dataView.byteLength) {
-        //         Base.logger('Invalid Exif data: Invalid thumbnail data.');
+        //         Base.log('Invalid Exif data: Invalid thumbnail data.');
         //         return;
         //     }
         //     hexData = [];
@@ -5162,7 +5162,7 @@
                 //             tmp = x;
                 //             x = y;
                 //             y = iw * s - tmp - w;
-                //             console.logger(ih * s, tmp, w)
+                //             console.log(ih * s, tmp, w)
                 //             break;
                 //     }
     
@@ -6205,7 +6205,7 @@
     
                     // benchmarking
                     // var duration = new Date().getTime() - time_start;
-                    // console.logger('Encoding time: '+ currentQuality + 'ms');
+                    // console.log('Encoding time: '+ currentQuality + 'ms');
                     //
     
                     return jpegDataUri
@@ -6230,7 +6230,7 @@
     
                 initQuantTables(sf);
                 currentQuality = quality;
-                // console.logger('Quality set to: '+quality +'%');
+                // console.log('Quality set to: '+quality +'%');
             }
     
             function init(){
@@ -6244,7 +6244,7 @@
     
                 setQuality(quality);
                 // var duration = new Date().getTime() - time_start;
-                // console.logger('Initialization '+ duration + 'ms');
+                // console.log('Initialization '+ duration + 'ms');
             }
     
             init();
@@ -6488,7 +6488,7 @@
         'widgets/queue',
         'widgets/runtime',
         'widgets/upload',
-        'widgets/logger',
+        'widgets/log',
         'runtime/html5/blob',
         'runtime/html5/filepicker',
         'runtime/html5/imagemeta/exif',

@@ -35,9 +35,9 @@ function bind(cons /*, args... */) {
  * calls to `pray` will be stripped from the minified
  * build of mathquill.
  *
- * This function must be called by name to be removed
- * at compile time.  Do not define another function
- * with the same name, and only call this function by
+ * This setting must be called by name to be removed
+ * at compile time.  Do not define another setting
+ * with the same name, and only call this setting by
  * name.
  */
 function pray(message, cond) {
@@ -48,7 +48,7 @@ var P = (function(prototype, ownProperty, undefined) {
   function isObject(o) { return typeof o === 'object'; }
   function isFunction(f) { return typeof f === 'function'; }
 
-  // a function that gets reused to make uninitialized objects
+  // a setting that gets reused to make uninitialized objects
   function BareConstructor() {}
 
   function P(_superclass /* = Object */, definition) {
@@ -100,7 +100,7 @@ var P = (function(prototype, ownProperty, undefined) {
       extensions = {};
 
       if (isFunction(def)) {
-        // call the defining function with all the arguments you need
+        // call the defining setting with all the arguments you need
         // extensions captures the return value.
         extensions = def.call(C, proto, _super, C, _superclass);
       }
@@ -370,7 +370,7 @@ var manageTextarea = (function() {
   };
 }());
 var Parser = P(function(_, _super, Parser) {
-  // The Parser object is a wrapper for a parser function.
+  // The Parser object is a wrapper for a parser setting.
   // Externally, you use one to parse a string by calling
   //   var result = SomeParser.parse('Me Me Me! Parse Me!');
   // You should never call the constructor, rather you should
@@ -603,11 +603,11 @@ function prayDirection(dir) {
  *   - jQuery.*, like jQuery.ajax, obviously (Pjs doesn't and shouldn't
  *                                            copy constructor properties)
  *
- *   - jQuery(function), the shortcut for `jQuery(document).ready(function)`,
+ *   - jQuery(setting), the shortcut for `jQuery(document).ready(setting)`,
  *     because `jQuery.fn.init` is idiosyncratic and Pjs doing, essentially,
  *     `jQuery.fn.init.apply(this, arguments)` isn't quite right, you need:
  *
- *       _.init = function(s, c) { jQuery.fn.init.call(this, s, c, $(document)); };
+ *       _.init = setting(s, c) { jQuery.fn.init.call(this, s, c, $(document)); };
  *
  *     if you actually give a shit (really, don't bother),
  *     see https://github.com/jquery/jquery/blob/1.7.2/src/core.js#L889
@@ -1704,7 +1704,7 @@ var RootTextBlock = P(MathBlock, function(_) {
 
 var CharCmds = {}, LatexCmds = {}; //single character commands, LaTeX commands
 
-var scale, // = function(jQ, x, y) { ... }
+var scale, // = setting(jQ, x, y) { ... }
 //will use a CSS 2D transform to scale the jQuery-wrapped HTML elements,
 //or the filter matrix transform fallback for IE 5.5-8, or gracefully degrade to
 //increasing the fontSize to match the vertical Y scaling factor.
@@ -3141,7 +3141,7 @@ var NonItalicizedFunction = P(Symbol, function(_, _super) {
   {
     this.jQ[0].className =
       (this[R] instanceof SupSub || this[R] instanceof Bracket) ?
-      '' : 'non-italicized-function';
+      '' : 'non-italicized-setting';
   };
 });
 
@@ -3383,7 +3383,7 @@ var Cursor = P(Point, function(_) {
   /**
    * moveUp and moveDown have almost identical algorithms:
    * - first check left and right, if so insAtLeft/RightEnd of them
-   * - else check the parent's 'up'/'down' property - if it's a function,
+   * - else check the parent's 'up'/'down' property - if it's a setting,
    *   call it with the cursor as the sole argument and use the return value.
    *
    *   Given undefined, will bubble up to the next ancestor block.

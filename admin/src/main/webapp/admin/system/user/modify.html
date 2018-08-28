@@ -1,0 +1,59 @@
+<form name="myForm" ng-show="!listShow" class="main-cont content mCustomScrollbar" novalidate>
+<div class="page-wrap">
+			<!--开始::内容-->
+				<section class="page-hd">
+				操作
+				</section>
+				<div class="form-group-col-2">
+					<div class="form-label">用户名：</div>
+					<div class="form-cont">
+						<input type="text" placeholder="请输入..." class="form-control form-boxed" name="username" ng-model="formData.username" ng-maxlength="10" required>
+        				<span style="color:red" ng-show="myForm.username.$error.required" class="help-block"><i class="icon-warning-sign"/>必填</span>
+        				<span style="color:red" ng-show="myForm.username.$error.maxlength" class="help-block"><i class="icon-warning-sign"/>小于10</span>
+					</div>
+				</div>
+				<div ng-show="editHide" class="form-group-col-2">
+					<div class="form-label">密码：</div>
+					<div class="form-cont">
+						<input type="password" placeholder="请输入..." class="form-control form-boxed" name="password" ng-model="formData.password" ng-maxlength="10" required>
+						<span style="color:red" ng-show="myForm.password.$error.required" class="help-block"><i class="icon-warning-sign"/>必填</span>
+        				<span style="color:red" ng-show="myForm.password.$error.maxlength" class="help-block"><i class="icon-warning-sign"/>小于10</span>
+					</div>
+				</div>
+				<div class="form-group-col-2">
+					<div class="form-label">真实姓名：</div>
+					<div class="form-cont">
+						<input type="text" placeholder="请输入..." class="form-control form-boxed" name="realname" ng-model="formData.realname" ng-maxlength="10">
+					    <span style="color:red" ng-show="myForm.realname.$error.maxlength" class="help-block"><i class="icon-warning-sign"/>小于10</span>
+					</div>		
+				</div>
+				<div class="form-group-col-2">
+					<div class="form-label">用户类型：</div>
+					<div class="form-cont">
+						<select name="role" ng-model="formData.role" style="width:auto;" required>
+							<option >女装</option>
+							<option >男装</option>
+						</select>
+						<span style="color:red" ng-show="myForm.role.$error.required" class="help-block"><i class="icon-warning-sign"/>必填</span>
+					</div>	
+				</div>
+				<div class="form-group-col-2">
+					<div class="form-label">是否禁用：</div>
+					<div class="form-cont">
+						<label class="radio">
+							<input type="radio" name="isDisable" ng-model="formData.isDisable" />
+							<span>是</span>
+						</label>
+						<label class="radio">
+							<input type="radio" name="isDisable" ng-checked="true"  ng-model="formData.isDisable" />
+							<span>否</span>
+						</label>
+					</div>
+				</div>				
+<!-- 			<div ng-include="'../admin/filed/isDisable.html'"></div> -->
+<!-- 			<div ng-include="'../admin/filed/introduct.html'"></div>	 -->
+<!-- 			<div ng-include="'../admin/filed/sortNumber.html'"></div>	 -->
+			<div ng-include="'../admin/filed/submit.html'"></div>
+				<!--开始::结束-->
+			</div>							
+</form>

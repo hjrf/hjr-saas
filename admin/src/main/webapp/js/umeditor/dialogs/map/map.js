@@ -37,7 +37,7 @@
             "</head>" +
             "<body>" +
             "<scr_ipt>" +
-            "window.onload = function(){" +
+            "window.onload = setting(){" +
             "var scripts = document.scripts || document.getElementsByTagName(\"script\")," +
             "src = [];" +
             "for( var i = 1, len = scripts.length; i<len; i++ ) {" +
@@ -45,7 +45,7 @@
             "}" +
             "parent.UM.getEditor(<<id>>).getWidgetData(\'map\').requestMapApi( src );" +
             "};" +
-            "function mapReadyStateChange ( state ) { " +
+            "setting mapReadyStateChange ( state ) { " +
             " if ( state === 'complete' || state === 'loaded' ) {" +
             " document.close(); " +
             " } }" +
