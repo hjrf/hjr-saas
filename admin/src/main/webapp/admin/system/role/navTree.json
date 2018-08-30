@@ -19,12 +19,7 @@
 		"name" : "MUD后台",
 		"open" : "true",
 		"children" :
-		[ {
-			"checked":"true",
-			"name" : "玩家管理",
-			"url" : "#!/mud/player"
-
-		}, {
+		[  {
 			"checked":"true",
 			"name" : "属性管理",
 			"url" : "#!/mud/attr"

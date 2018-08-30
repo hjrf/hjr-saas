@@ -654,11 +654,11 @@ public class MudWebSocket extends BaseController {
         JoinRoomChaModel joinRoomChaModel = (JoinRoomChaModel) joinRoomChaMapper.queryForOneByChaId(chaId);
         if(joinRoomChaModel == null) {
             joinRoomChaModel = new JoinRoomChaModel();
-            joinRoomChaModel.setRoomId(roomModel.getId());
-            joinRoomChaModel.setChaId(chaId);
+            joinRoomChaModel.setRoomModel(roomModel);
+            joinRoomChaModel.setCharacterModel(characterModel);
             joinRoomChaMapper.create(joinRoomChaModel);
         }else{
-            joinRoomChaModel.setRoomId(roomModel.getId());
+            joinRoomChaModel.setRoomModel(roomModel);
             joinRoomChaMapper.updateModel(joinRoomChaModel);
         }
 
@@ -765,6 +765,7 @@ public class MudWebSocket extends BaseController {
         Map<String, Object> map = new HashMap<>();
         Map<String, Object> jsonStr = new HashMap<>();
         String roomId = (String) jsonObject.get("roomId");
+
         List<JoinRoomChaModel> joinRoomChaModelList = joinRoomChaMapper.queryForListByRoomId(roomId);
         for(JoinRoomChaModel joinRoomChaModel : joinRoomChaModelList){
             list = new ArrayList<>();
@@ -811,9 +812,9 @@ public class MudWebSocket extends BaseController {
         Map<String, Object> map = new HashMap<>();
         Map<String, Object> jsonStr = new HashMap<>();
        JoinRoomChaModel joinRoomChaModelCur = (JoinRoomChaModel) joinRoomChaMapper.queryForOneByChaId(chaId);
-        List<JoinRoomChaModel> joinRoomChaModelList = joinRoomChaMapper.queryForListByRoomId(joinRoomChaModelCur.getRoomId());
+        List<JoinRoomChaModel> joinRoomChaModelList = joinRoomChaMapper.queryForListByRoomId(joinRoomChaModelCur.getRoomModel().getId());
         for(JoinRoomChaModel joinRoomChaModel : joinRoomChaModelList){
-            CharacterModel characterModel =  characterMapper.queryForOneById(joinRoomChaModel.getChaId());
+            CharacterModel characterModel =  characterMapper.queryForOneById(joinRoomChaModel.getCharacterModel().getId());
             map = new HashMap<>();
             map.put("name","<font color='#ff2121'>"+characterModel.getName()+"</font>");
             map.put("type",characterModel.getType());

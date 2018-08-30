@@ -18,10 +18,6 @@ $routeProvider
 		templateUrl: baseUrl+'system/log/show.html',
 	    controller: 'logController'
 	})
-	.when('/mud/player', {
-		templateUrl: baseUrl+'mud/player/show.html',
-		controller: 'playerController'
-	})
 	.when('/mud/attr', {
 		templateUrl: baseUrl+'mud/attr/show.html',
 		controller: 'attrController'
@@ -235,35 +231,134 @@ mainApp.service('$hjr', function() {
     }
 //	全选
 	
-	this.selectAll = function($scope){  
+	this.selectAll = function($scope,fatherId,chaileClass){
 		$scope.selectAllChild = [];
-		if(jQuery('#selectAllFather')[0].checked==true)
-		{
-			for(var i=0;i<jQuery('.selectAllChild').length;i++)
-			{
-				jQuery('.selectAllChild')[i].checked=true;
-			}
+		if(jQuery('#'+fatherId)[0].checked==true) {
+			for(var i=0;i<jQuery('.'+chaileClass).length;i++) {jQuery('.'+chaileClass)[i].checked=true;}
 		}
-		else
-		{
-			for(var i=0;i<jQuery('.selectAllChild').length;i++)
-			{
-				jQuery('.selectAllChild')[i].checked=false;
-			}
-		}  
+		else {
+			for(var i=0;i<jQuery('.'+chaileClass).length;i++) {jQuery('.'+chaileClass)[i].checked=false;}
+		}
 	};
-	
+
+
+	this.defineInit = function($scope){
+		$scope.listShow = true;
+		$scope.editHide = false;
+		$scope.addHide = false;
+		$scope.formData = {};
+		$scope.models = [];
+		$scope.modelsSearch = [];
+		$scope.dropData = [];
+		$scope.searchData = [];
+		$scope.model = [];
+
+		$scope.customerArray = {};//往后台传的参数集合
+		$scope.customerArray.page  = {"pagenumber":10,"current":1};//分页
+		$scope.customerArray.search  = {"whereFiled":"","where":"","likeFiled":"","like":""};//搜索
+		$scope.customerArray.para  = {};//参数
+		return $scope;
+	};
+
+
+	this.listInit = function($scope,$http,p){
+		$scope.customerArray.page.current =p;
+		var para = JSON.stringify($scope.customerArray);
+		$http({
+			url:$scope.baseUrl+'show',
+			method: 'POST',
+			data:para,
+		}).then(function (result) {  //正确请求成功时处理
+			$scope.models = result.data;
+			console.log($scope.models);
+			if(result.data == ""){return}
+			pageCount = Math.ceil( result.data[0].recordNum/$scope.customerArray.page.pagenumber);//页数
+			$("#pager").pager({
+				pagenumber: $scope.customerArray.page.current,
+				pagecount: pageCount,
+				buttonClickCallback: $scope.listInit
+			});
+		});
+	};
+
+	this.customerListDataWithArray = function($scope,$http,p,url,pageId){
+		$scope.customerArraySearch.page.current = p;
+		var para = JSON.stringify($scope.customerArraySearch);
+		$http({
+			url:url,
+			method: 'POST',
+			data:para,
+		}).then(function (result) {  //正确请求成功时处理
+			$scope.modelsSearch = result.data
+			if(result.data == ""){return}
+			pageCount = Math.ceil(result.data[0].recordNum/$scope.customerArraySearch.page.pagenumber);
+			$("#"+pageId).pager({
+				pagenumber: $scope.customerArraySearch.page.current,
+				pagecount: pageCount,
+				buttonClickCallback: $scope.customerListDataWithArray
+			});
+		});
+	};
+
+	this.add = function($scope){
+		modifyState = "add";
+		$scope.formData = {};
+
+		$scope.listShow = false;
+		$scope.editHide = true;
+		$scope.addHide = false;
+
+	};
+
+
+	this.search = function($scope){
+		$scope.listInit(1);
+	};
+
+	this.del = function($scope,fatherId,chaileClass){
+		$.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () {
+			for(var i=0;i<jQuery('.'+chaileClass).length;i++)
+			{
+				if(jQuery('.'+chaileClass)[i].checked == true)
+				{
+					$http({
+						url:$scope.baseUrl+'del',
+						method: 'POST',
+						data: jQuery('.'+chaileClass)[i].id,
+					}).then(function (result) {  //正确请求成功时处理
+						$hjr.tips("删除成功！");
+						$scope.models = result.data;
+						$scope.modifyShow = false;
+						$scope.listShow = true;
+						if("" == result.data || jQuery('#'+fatherId)[0].checked==true){$scope.listInit(1);}
+					});
+				}
+			}
+
+		})
+	};
+
+//编辑按钮事件
+	this.edit = function($scope,model){
+		console.log(model)
+		modifyState = "edit";
+		$scope.formData = model;//点击编辑后数据匹配
+
+		$scope.listShow = false;
+		$scope.editHide = false;
+		$scope.addHide = true;
+	};
+
+	//显示按钮事件
+	this.list = function($scope){
+		$scope.listShow = true;
+		$scope.formData = {};
+	};
+
       
 });
 
 
-
-//参数初始化
 //页面参数初始化	
 var modifyState = "";
-//分页参数初始化  
-var customerArray = {};//往后台传的参数集合
-var	pagenumber = 10; //pagenumber：每页记录数
-var page = {"pagenumber":pagenumber,"current":1};//往后台传的参数集合-分页功能
-var search = {"whereFiled":"","where":"","likeFiled":"","like":""};
 var jsonData = {};

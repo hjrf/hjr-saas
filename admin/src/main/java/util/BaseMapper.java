@@ -2,6 +2,9 @@ package util;
 
 import com.hjr.admin.mud.JoinChaAttr.model.JoinChaAttrModel;
 import com.hjr.admin.mud.JoinRoomCha.model.JoinRoomChaModel;
+import com.hjr.admin.mud.character.model.CharacterModel;
+import com.hjr.admin.mud.room.model.RoomModel;
+import org.bson.types.ObjectId;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -73,6 +76,16 @@ public class BaseMapper <T extends BaseModel>{
 		}
 	}
 
+	public Object queryForOneById(String id) {
+		try {
+			Query query = new Query();
+			query.addCriteria(Criteria.where("id").is(id));
+			return mongoTemplate.findOne(query, clazz);
+		}catch (Exception e){
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 	public List<Object> queryForListByChaId(String chaId) {
 		try {
@@ -89,7 +102,7 @@ public class BaseMapper <T extends BaseModel>{
 	public List<Object> queryForListByRoomId(String roomId) {
 		try {
 			Query query = new Query();
-			query.addCriteria(Criteria.where("roomId").is(roomId));
+			query.addCriteria(Criteria.where("roomModel._id").is(new ObjectId(roomId)));
 			return mongoTemplate.find(query, clazz);
 		}
 		catch(Exception e) {

@@ -12,7 +12,7 @@
         				<span style="color:red" ng-show="myForm.username.$error.maxlength" class="help-block"><i class="icon-warning-sign"/>小于10</span>
 					</div>
 				</div>
-				<div ng-show="editHide" class="form-group-col-2">
+				<div class="form-group-col-2">
 					<div class="form-label">密码：</div>
 					<div class="form-cont">
 						<input type="password" placeholder="请输入..." class="form-control form-boxed" name="password" ng-model="formData.password" ng-maxlength="10" required>
@@ -27,25 +27,16 @@
 					    <span style="color:red" ng-show="myForm.realname.$error.maxlength" class="help-block"><i class="icon-warning-sign"/>小于10</span>
 					</div>		
 				</div>
-				<div class="form-group-col-2">
-					<div class="form-label">用户类型：</div>
-					<div class="form-cont">
-						<select name="role" ng-model="formData.role" style="width:auto;" required>
-							<option >女装</option>
-							<option >男装</option>
-						</select>
-						<span style="color:red" ng-show="myForm.role.$error.required" class="help-block"><i class="icon-warning-sign"/>必填</span>
-					</div>	
-				</div>
-				<div class="form-group-col-2">
+
+				<div ng-show="addHide" class="form-group-col-2">
 					<div class="form-label">是否禁用：</div>
 					<div class="form-cont">
 						<label class="radio">
-							<input type="radio" name="isDisable" ng-model="formData.isDisable" />
+							<input type="radio" name="isDisable" ng-value="1" ng-model="formData.isDisable" />
 							<span>是</span>
 						</label>
 						<label class="radio">
-							<input type="radio" name="isDisable" ng-checked="true"  ng-model="formData.isDisable" />
+							<input type="radio" name="isDisable" ng-checked="true" ng-value="0"  ng-model="formData.isDisable" />
 							<span>否</span>
 						</label>
 					</div>

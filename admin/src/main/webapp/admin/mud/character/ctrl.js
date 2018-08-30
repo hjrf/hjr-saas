@@ -3,21 +3,27 @@ mainApp.controller('characterController',function ($scope,$http,$location,$windo
 	var	baseUrl = "/mud/character/";
 	$scope.listShow = true;
 	$scope.formData = {};
-	$scope.models = [];		
+	$scope.models = [];
+	$scope.modelsSearch = [];
+	$scope.dropData = [];
+	$scope.searchData = [];
 	//页面初始化
 	init(1);
 	function init(p)
-	{	 
-		page = { "page": [{"pagenumber":pagenumber,"current":p}]};
-		customerArray.push(page);
-		customerArray.push(search);
+	{
+		page.pagenumber = page.pagenumber == undefined?pagenumber:page.pagenumber;
+		page.current = p;
+
+		customerArray.page = page;
+		customerArray.search = search;
+		var para = JSON.stringify(customerArray);
 		$http({
 			url:baseUrl+'show',
             method: 'POST',
-            data:JSON.stringify(customerArray),
+            data:para,
         }).then(function (result) {  //正确请求成功时处理  
-    	    $scope.models = result.data;
-    	    console.log($scope.models);
+			$scope.models = result.data;
+			console.log($scope.models);
     	    if(result.data == ""){return}
         	totalcount = result.data[0].recordNum;//totalcount：记录数  
     	    pageCount = Math.ceil(totalcount/pagenumber); 	
@@ -27,6 +33,36 @@ mainApp.controller('characterController',function ($scope,$http,$location,$windo
         		buttonClickCallback: init 
         	});	       
         });
+
+		initDropData();
+	}
+
+	$scope.modelSearch =  function (url){
+		page.pagenumber = 100;
+		var para = JSON.stringify(customerArray);
+		$http({
+			url:url,
+			method: 'POST',
+			data:para,
+		}).then(function (result) {  //正确请求成功时处理
+			$scope.modelsSearch = result.data;
+			console.log(result.data)
+		});
+	}
+
+	function initDropData(){
+		$http({
+			url:'/mud/map/show',
+			method: 'POST',
+			data:{},
+		}).then(function (result) {  //正确请求成功时处理
+			$scope.dropData.push({"name": "---请选择---", "value": ""});
+			for (var i = 0; i < result.data.length; i++) {
+				$scope.dropData.push({"name": result.data[i].name, "value": result.data[i].name});
+			}
+			$scope.searchData.drop = $scope.searchData.drop == undefined?$scope.dropData[0]:$scope.searchData.drop;//设置默认值
+
+		});
 	}
 
 //	全选
@@ -47,6 +83,13 @@ mainApp.controller('characterController',function ($scope,$http,$location,$windo
 //				jQuery('.selectAllChild')[i].checked=false;
 //			}
 //		}  
+	};
+
+	$scope.selectAll = function(){
+		$hjr.selectAll($scope);
+	};
+	$scope.selectAllSearch = function(){
+		$hjr.selectAllSearch ($scope);
 	};
   //删除操作
     $scope.del = function(){  //删除按钮事件,分为批量删除与单独删除
@@ -104,29 +147,61 @@ mainApp.controller('characterController',function ($scope,$http,$location,$windo
     };  
    
 //添加按钮事件	
-	$scope.add = function(){  
-		$scope.formData = {};
-		modifyState = "add";
-		$scope.listShow = false;
-		$scope.editHide = true;//使能编辑隐藏的字段
+	$scope.add = function(){
+		$hjr.add($scope);
     };
 
 //编辑按钮事件
-    $scope.edit = function(model){ 
-    	$scope.listShow = false;
-    	modifyState = "edit";
-    	$scope.formData = model;//点击编辑后数据匹配
-    	
+    $scope.edit = function(model){
+		$hjr.edit($scope,model);
     };
+
+	$scope.view = function(model){
+		$scope.listShow = false;
+		modifyState = "edit";
+		$scope.formData = model;//点击编辑后数据匹配
+
+	};
 //显示按钮事件
 	  $scope.list = function(){
-		  $scope.listShow = true;
+		  $hjr.list($scope);
 	  };
-	
+
 //  搜索
-	 $scope.search = function(){  
-		 search = { "search": [{"whereFiled":"role","where":$scope.searchData.drop,"likeFiled":"realname","like":$scope.searchData.str}]};
+
+	 $scope.search = function(){
+		 search.whereFiled = "mapName";
+		 search.where = $scope.searchData.drop.value;
+		 if($scope.searchData.drop.value != "") {
+			 page.pagenumber = 100;
+		 }else{
+			 page.pagenumber = 10;
+		 }
+		 search.likeFiled = "name";
+		 search.like = $scope.searchData.str;
  	     init(1);	   
-	 }
-	
-}); 
+	 };
+
+
+
+	$scope.show = function() {
+		console.log($scope.models);
+		var html = '<caption>标题</caption><table border="1">' +
+			'';
+		for (var i = 0; i < $scope.models.length; i++) {
+			html += "<tr>";
+			for (var key in $scope.models) {
+				var x = $scope.models[key].roomXY.split(",")[0];
+				var y = $scope.models[key].roomXY.split(",")[1];
+				if(y == i) {
+					html += "<td title="+JSON.stringify($scope.models[key])+">" + $scope.models[key].name + "</td>";
+				}
+			}
+			html += "</tr>";
+		}
+
+		html+='</table>';
+		$.MsgBox.Panel("预览",html);
+	};
+
+});

@@ -1,40 +1,33 @@
 mainApp.controller('roomController',function ($scope,$http,$location,$window,$hjr) {
 	//数据初始化
-	var	baseUrl = "/mud/room/";
-	$scope.listShow = true;
-	$scope.formData = {};
-	$scope.models = [];
-	$scope.dropData = [];
-	$scope.searchData = [];
+	$scope.baseUrl = "/mud/room/";
+
+
+	$scope = $hjr.defineInit($scope);
 	//页面初始化
-	init(1);
-	function init(p)
-	{
-		page.pagenumber = page.pagenumber == undefined?pagenumber:page.pagenumber;
-		page.current = p;
+	$hjr.listInit($scope,$http,1);
 
-		customerArray.page = page;
-		customerArray.search = search;
-		var para = JSON.stringify(customerArray);
-		$http({
-			url:baseUrl+'show',
-            method: 'POST',
-            data:para,
-        }).then(function (result) {  //正确请求成功时处理  
-			$scope.models = result.data;
-			console.log($scope.models);
-    	    if(result.data == ""){return}
-        	totalcount = result.data[0].recordNum;//totalcount：记录数  
-    	    pageCount = Math.ceil(totalcount/pagenumber); 	
-        	$("#pager").pager({
-        		pagenumber: p,
-        		pagecount: pageCount,
-        		buttonClickCallback: init 
-        	});	       
-        });
-
-		initDropData();
+	$scope.listInit =  function (p) {
+		$hjr.listInit($scope,$http,p);
 	}
+
+
+	$scope.customerArraySearch = {};//往后台传的参数集合
+	$scope.customerArraySearch.page  = {"pagenumber":10,"current":1};//分页
+	$scope.customerArraySearch.search  = {"whereFiled":"","where":"","likeFiled":"","like":""};//搜索
+	$scope.customerArraySearch.para  = {};//参数
+	$scope.modelsSearch = [];//返回数据容器
+
+	$scope.urlSearch = "";
+	$scope.customerListDataWithArrayInit =  function (url){
+		$scope.urlSearch = url;
+		$hjr.customerListDataWithArray($scope,$http,1,url,"pagerSearch") ;
+	}
+
+	$scope.customerListDataWithArray =  function (p){
+		$hjr.customerListDataWithArray($scope,$http,p,$scope.urlSearch,"pagerSearch") ;
+	}
+
 
 	function initDropData(){
 		$http({
@@ -54,53 +47,29 @@ mainApp.controller('roomController',function ($scope,$http,$location,$window,$hj
 //	全选
 	$scope.selectAllChild = [];
 	$scope.selectAll = function(){  
-		$hjr.selectAll($scope);		
-//		if(jQuery('#selectAllFather')[0].checked==true)
-//		{
-//			for(var i=0;i<jQuery('.selectAllChild').length;i++)
-//			{
-//				jQuery('.selectAllChild')[i].checked=true;
-//			}
-//		}
-//		else
-//		{
-//			for(var i=0;i<jQuery('.selectAllChild').length;i++)
-//			{
-//				jQuery('.selectAllChild')[i].checked=false;
-//			}
-//		}  
+		$hjr.selectAll($scope,"selectAllFather","selectAllChild");
+	};
+
+	$scope.selectAllSearch = function(){
+		$hjr.selectAll($scope,"selectAllFatherSearch","selectAllChildSearch");
 	};
   //删除操作
     $scope.del = function(){  //删除按钮事件,分为批量删除与单独删除
-    	$.MsgBox.Confirm("温馨提示", "执行删除后将无法恢复，确定继续吗？温馨提示", function () {
-    		for(var i=0;i<jQuery('.selectAllChild').length;i++)
-    	    	{	
-        			if(jQuery('.selectAllChild')[i].checked == true)
-        			{
-    		    		$http({
-    		    			url:baseUrl+'del',
-    					    method: 'POST',            
-    					    data: jQuery('.selectAllChild')[i].id,
-    					}).then(function (result) {  //正确请求成功时处理  
-    					    $hjr.tips("删除成功！");
-    					    $scope.models = result.data;
-    					    $scope.modifyShow = false;	
-    						$scope.listShow = true;
-    					    if("" == result.data || jQuery('#selectAllFather')[0].checked==true){init(1);}
-    					});
-        			}
-    	    	}
-
-    	});  
+		$hjr.del($scope,"selectAllFather","selectAllChild");
     };
-  
-    
-    
-    
-    
-    
-    
-    
+
+	//添加按钮事件
+	$scope.add = function(){
+		$hjr.add($scope);
+	};
+
+	//编辑按钮事件
+	$scope.edit = function(model){
+		$model = model;
+		$hjr.edit($scope,model);
+		modelsRoomCha(model);
+	};
+
   //编辑与新增操作
 	$scope.submit = function(){  //按钮事件
 		$http({
@@ -123,28 +92,66 @@ mainApp.controller('roomController',function ($scope,$http,$location,$window,$hj
 	        $scope.models = result.data;
 	        $scope.listShow = true;
 	    });
-    };  
-   
-//添加按钮事件	
-	$scope.add = function(){  
-		$scope.formData = {};
-		modifyState = "add";
+    };
+
+
+
+	$scope.modelsRoomCha = [];
+	function modelsRoomCha(model) {
+		$model = model;
+		page.pagenumber = 100;
+		$scope.customerArray.para = {"roomId":model.id};
+		var para = JSON.stringify($scope.customerArray);
+		$http({
+			url:'/mud/joinRoomCha/showRoomChaByRoomId',
+			method: 'POST',
+			data:para,
+		}).then(function (result) {  //正确请求成功时处理
+			$scope.modelsRoomCha = result.data;
+			for(index in $scope.modelsRoomCha){//a为对象的键值，person为对象
+				$scope.modelsRoomCha[index].characterModelToString = angular.toJson($scope.modelsRoomCha[index].characterModel);
+
+				$scope.modelsRoomCha[index].aa = "aaaaaa";
+			}
+			console.log(result.data)
+		});
+	}
+
+
+
+	//显示按钮事件
+	$scope.list = function(){
+		$hjr.list($scope);
+	};
+
+	$scope.view = function(model){
 		$scope.listShow = false;
-		$scope.editHide = true;//使能编辑隐藏的字段
-    };
+		modifyState = "edit";
+		$scope.formData = model;//点击编辑后数据匹配
 
-//编辑按钮事件
-    $scope.edit = function(model){ 
-    	$scope.listShow = false;
-    	modifyState = "edit";
-    	$scope.formData = model;//点击编辑后数据匹配
-    	
-    };
-//显示按钮事件
-	  $scope.list = function(){
-		  $scope.listShow = true;
-	  };
+	};
 
+	$scope.modelSearchSubmit = function(){
+		for(var i=0;i<jQuery('.selectAllChildSearch').length;i++)
+		{
+			if(jQuery('.selectAllChildSearch')[i].checked == true)
+			{
+				var chaId = jQuery('.selectAllChildSearch')[i].id;
+				$scope.customerArray.para = {"roomId":$model.id,"chaId": chaId};
+				var para = JSON.stringify($scope.customerArray);
+				$http({
+					url:'/mud/joinRoomCha/addRoomChaByRoomAndChaId',
+					method: 'POST',
+					data:para,
+				}).then(function (result) {  //正确请求成功时处理
+					$hjr.tips(result.data.msg);
+					console.log(result.data.msg);
+					modelsRoomCha($scope.model)
+				});
+			}
+		}
+
+	};
 //  搜索
 
 	 $scope.search = function(){
@@ -157,12 +164,13 @@ mainApp.controller('roomController',function ($scope,$http,$location,$window,$hj
 		 }
 		 search.likeFiled = "name";
 		 search.like = $scope.searchData.str;
- 	     init(1);	   
+
+ 	     $hjr.search($scope);
 	 };
 
 
 
-	$scope.view = function() {
+	$scope.show = function() {
 		console.log($scope.models);
 		var html = '<caption>标题</caption><table border="1">' +
 			'';

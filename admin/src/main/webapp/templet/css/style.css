@@ -1087,7 +1087,7 @@ a:active {
   top: 0;
   bottom: 0;
   padding: 55px 0;
-  z-index: 1;
+
 }
 .main-cont {
   padding: 0 5px 0 235px;
@@ -1542,7 +1542,7 @@ dialog [class^="icon-"] {
   height: 50px;
   line-height: 50px;
   color: #4f5f6f;
-  z-index: 20;
+  z-index: 19;
 }
 .top-hd .hd-lt {
   float: left;
@@ -2157,4 +2157,42 @@ textarea:focus {
 }
 .field-title.dashed {
   border-top-style: dashed;
+}
+
+.table{
+  width: 100%;
+  border-collapse:collapse;
+  border-spacing:0;
+
+
+}
+.fixedThead{
+  display: block;
+  width: 100%;
+
+}
+.scrollTbody{
+  display: block;
+  height: 262px;
+  overflow: auto;
+  width: 100%;
+
+}
+.table td,.table th {
+  text-align: center;
+  width: 200px;
+  border-bottom: none;
+  border-left: none;
+  border-right: 1px solid #CCC;
+  border-top: 1px solid #DDD;
+  padding: 2px 3px 3px 4px
+
+}
+.table tr{
+  border-left: 1px solid #EB8;
+  border-bottom: 1px solid #B74;
+}
+thead.fixedThead tr th:last-child {
+  color:#FF0000;
+  width: 218px;
 }

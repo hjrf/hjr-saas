@@ -12,6 +12,8 @@ public class BaseModel implements Serializable {
 	 * 
 	 */
 	protected static final long serialVersionUID = 1L;
+	@Id
+	private String id;
 	private String tenantId;
 	protected String title;
 	protected String type;
@@ -24,8 +26,6 @@ public class BaseModel implements Serializable {
 	protected String introduct;
 	protected int sortNumber;
 	protected int isDisable;
-	@Id
-	private String id;
 	private Long recordNum;
 	private boolean isRefresh;
 

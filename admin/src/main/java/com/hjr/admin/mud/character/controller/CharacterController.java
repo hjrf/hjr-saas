@@ -2,6 +2,8 @@ package com.hjr.admin.mud.character.controller;
 
 import com.hjr.admin.mud.character.model.CharacterModel;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +25,22 @@ public class CharacterController extends BaseController{
     public List<CharacterModel> show(HttpServletRequest request,@RequestBody String para){
     	return show(request,para,clazz);
     }
+
+    @RequestMapping(value="/showNPC",method=RequestMethod.POST)
+    public List<CharacterModel> showNPC(HttpServletRequest request,@RequestBody String para){
+        Query query = new Query();
+        query.addCriteria(Criteria.where("type").is("npc"));
+        List<CharacterModel> modelList = mongoTemplate.find(query, clazz);
+        return modelList;
+    }
+
+    @RequestMapping(value="/showAll",method=RequestMethod.POST)
+    public List<CharacterModel> showAll(HttpServletRequest request,@RequestBody String para){
+        List<CharacterModel> modelList = mongoTemplate.findAll( clazz);
+        return modelList;
+    }
+
+
 
     @RequestMapping(value="/add",method=RequestMethod.POST)
     public List<CharacterModel> add(@RequestBody CharacterModel model, HttpServletRequest request){

@@ -126,20 +126,33 @@ mainApp.controller('userController',function ($scope,$http,$location,$window,$hj
     };  
    
 //添加按钮事件	
-	$scope.add = function(){  
-		$scope.formData = {};
+	$scope.add = function(){
 		modifyState = "add";
+		$scope.formData = {};
+
 		$scope.listShow = false;
-		$scope.editHide = true;//使能编辑隐藏的字段
+		$scope.editHide = true;
+		$scope.addHide = false;
+
     };
 
 //编辑按钮事件
-    $scope.edit = function(model){ 
-    	$scope.listShow = false;
+    $scope.edit = function(model){
+    	console.log(model)
     	modifyState = "edit";
-    	$scope.formData = model;//点击编辑后数据匹配
-    	
+		$scope.formData = model;//点击编辑后数据匹配
+
+		$scope.listShow = false;
+		$scope.editHide = false;
+		$scope.addHide = true;
     };
+
+	//显示按钮事件
+	$scope.list = function(){
+		$scope.listShow = true;
+		$scope.formData = {};
+	};
+
 	//详情按钮事件
 	$scope.view = function(model) {
 		console.log(model)
@@ -153,10 +166,6 @@ mainApp.controller('userController',function ($scope,$http,$location,$window,$hj
 		html+='</table>';
 		$.MsgBox.Panel("预览",html);
 	};
-//显示按钮事件
-	  $scope.list = function(){
-		  $scope.listShow = true;
-	  };
 
 //  搜索
 

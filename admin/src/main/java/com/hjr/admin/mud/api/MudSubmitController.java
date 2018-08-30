@@ -1,4 +1,4 @@
-package com.hjr.admin.mud.api.controller;
+package com.hjr.admin.mud.api;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;

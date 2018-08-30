@@ -50,7 +50,7 @@
             filter: 'Alpha(opacity=60)', backgroundColor: 'black', top: '0', left: '0', opacity: '0.6'  
         });
         if(type == "panel"){
-            $("#mb_con").css({ zIndex: '999999', width: '800px',height:'800px', position: 'fixed',
+            $("#mb_con").css({ zIndex: '999999', width: '800px',height:'500px', position: 'fixed',
                 backgroundColor: 'White', borderRadius: '15px'
             });
         }else{
